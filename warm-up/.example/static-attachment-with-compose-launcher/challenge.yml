@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "static-attachment-with-compose"
+author: "dimas"
+
+# support markdown & html tags
+description: |
+  Example static attachment
+
+  Start challenge from: https://{{.host}}/{{.slug}}
+
+type: "StaticAttachment" # don't touch this value
+value: 1000 # don't touch this value
+
+flags:
+  - "flag{testing}"
+
+
+provide: "./dist"
+
+dashboard:
+  type: "compose"
+  config: "./src/docker-compose.yml"

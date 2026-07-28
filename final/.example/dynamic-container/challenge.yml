@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "dynamic-container"
+author: "test"
+
+# support markdown & html tags
+description: |
+  Testing dynamic container
+
+type: "DynamicContainer" # don't touch this value
+value: 1000 # don't touch this value
+
+provide: "./dist"
+
+container:
+  flagTemplate: "FLAG{ini_test_flag_[TEAM_HASH]}"
+  containerImage: "{{.slug}}:latest"
+  memoryLimit: 512
+  cpuCount: 3
+  storageLimit: 512
+  exposePort: 8011
+  enableTrafficCapture: false
+
+scripts:
+  start: cd src && docker build -t {{.slug}} .
