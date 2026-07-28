@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/master/internal/template/templates/others/ctf-template/.gzctf/gzevent.schema.yaml
 title: "HOLOGY 9 2026 Quals"
-start: "2026-09-18T02:00:00Z" # blm fix
-end: "2026-09-19T00:00:00Z" # blm fix
+start: "2026-09-18T02:00:00Z"
+end: "2026-09-18T10:00:00Z"
 poster: "../../.gzctf/favicon.ico"
 hidden: false
 summary: "example summary"
@@ -15,6 +15,6 @@ teamMemberCountLimit: 0
 containerCountLimit: 3
 practiceMode: true
 writeupRequired: false
-writeupDeadline: "2026-09-19T00:00:00Z" # blm fix
+writeupDeadline: "2026-09-18T10:00:00Z"
 writeupNote: "Bikin writeup ya!"
 bloodBonus: 0
