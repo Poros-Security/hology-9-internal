@@ -1,7 +1,6 @@
 # CTF Challenge Maker & Writeup Submission Guide
 
-**Flag Format:** `FINDIT{.*}`
-**Maximum Flag Length:** `127`
+**Flag Format:** `HOLOGY9{.*}`
 
 ## Important Dates
 
