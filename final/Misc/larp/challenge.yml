@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "strongest larper of today"
+author: "2byte"
+
+description: |
+  Gojo is definitely the most OP character in my opinion… for the most part. It’s clear that the only way the plot could progress was if he was sealed away in the eternal prison or whatever that thing was called, cause otherwise his powers would just end the story then and there in the shibuya arc and everything that follows . It’s the same deal as Sukana being sealed away inside Yuji— just outright too strong to be allowed out to move freely inside the plot as of right now.
+  There have been instances in the manga though where his 'infinity' is distorted and it stops him from maintaining it. It took him a lot of practice to be able to achieve a perpetual infinity going on 24/7, so theoretically it’s possible someone with the correct cursed technique could offset it.
+
+type: "StaticAttachment"
+value: 1000
+
+flags:
+  - "HOLOGY9{ry0iki_73nk4i_mury0ukuu5h0_62c0185aab680153}"
+
+provide: "./dist"
