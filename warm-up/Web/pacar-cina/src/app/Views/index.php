@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>HACK IT BRAW!</title>
+    <title>HOLOGY 9</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -103,8 +103,8 @@
 </head>
 <body>
 <header>
-    <div class="brand">HACK IT BRAW!<span>67</span></div>
-    <div class="org">QUALIFIERS 2026</div>
+    <div class="brand">HOLOGY<span>9</span></div>
+    <div class="org">WARM UP 2026</div>
 </header>
 
 <main>
