@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ -n "$GZCTF_FLAG" ]; then
+    echo "$GZCTF_FLAG" > /flag-12038102123124910213808410298418312098.txt
+    chmod 444 /flag-12038102123124910213808410298418312098.txt
+fi
+
+exec "$@"

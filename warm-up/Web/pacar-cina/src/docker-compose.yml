@@ -1,0 +1,10 @@
+services:
+  warmup-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: on-failure
+    ports:
+      - 8011:80
+    environment:
+      - GZCTF_FLAG=HOLOGY9{info_aja_web_ub_banyak_pake_ci}
