@@ -4,7 +4,7 @@ name: "pacar CIna"
 author: "POROS-Security"
 
 description: |
-  <img alt="pacar CI-na" width="360" src="https://scontent.fsub2-2.fna.fbcdn.net/v/t39.30808-6/739335558_1219957991199454_207468399635384900_n.jpg?stp=dst-jpg_tt6&cstp=mx1280x1280&ctp=p526x296&_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_ohc=HFgBoMyRBrgQ7kNvwFvBpjU&_nc_oc=AdqmF83iJxjD7kYydIjEzp_ypZfF8rfF_Gv4kQV-y9zeK2xYVPJnHuPBus6YjCVXyQE&_nc_zt=23&_nc_ht=scontent.fsub2-2.fna&_nc_gid=B6wMRRZGvToH6PMbdYBLfQ&_nc_ss=7b289&oh=00_AQEEgUu_qHE8u04FFbzC3ZmmIx46cmM-55dvTmC2oMR4SA&oe=6A78C4B4" style="display: block; width: min(100%, 360px); height: auto; max-height: 32vh; object-fit: contain; margin: 0 auto;">
+  <img alt="pacar CI-na" width="360" src="https://raw.githubusercontent.com/dumyboy001-alt/dummy/refs/heads/main/739335558_1219957991199454_207468399635384900_n.jpg" style="display: block; width: min(100%, 360px); height: auto; max-height: 32vh; object-fit: contain; margin: 0 auto;">
 
 type: "DynamicContainer" # don't touch this value
 value: 1000 # don't touch this value
