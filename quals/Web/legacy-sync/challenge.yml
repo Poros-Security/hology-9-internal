@@ -1,0 +1,18 @@
+name: "Legacy Sync"
+author: "Author"
+category: Web
+description: |
+  We released a new draft synchronization microservice for collaborative notes!
+  Can you inspect the application and find a way to read the secret flag on the server?
+
+value: 500
+type: dynamic
+
+flags:
+  - HOLOGY9{g3l0k_4d4_h4ck3r_nj1r_w3b_3z_k3kny4_9a8f2c}
+
+files:
+  - dist/participant-package.zip
+
+state: visible
+version: "0.1"
