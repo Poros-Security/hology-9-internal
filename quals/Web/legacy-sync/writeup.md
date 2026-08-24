@@ -43,7 +43,7 @@ Pertama, periksa struktur project dan file `package.json` untuk melihat dependen
 {
   "dependencies": {
     "express": "4.18.2",
-    "replicator": "1.0.1"
+    "replicator": "1.0.5"
   }
 }
 ```
@@ -233,15 +233,6 @@ print(res.json())
 ```
 
 **Flag:** `HOLOGY9{g3l0k_4d4_h4ck3r_nj1r_w3b_3z_k3kny4_9a8f2c}`
-
----
-
-## 🛠️ Root Cause & Remediasi
-
-| Komponen | Masalah | Perbaikan (Fix) |
-|---|---|---|
-| `src/utils/serializer.js` | Transform `[[Function]]` mengonstruksi fungsi arbitrer menggunakan `new Function()`. | Hapus transform `[[Function]]`. Jangan pernah men-deserialize executable code/function dari input client. |
-| `src/routes/draft.js` | Endpoint menerima input untrusted dan langsung mengeksekusi objek fungsi hasil deserialisasi. | Terapkan validasi tipe data yang ketat dan gunakan format pertukaran data standar seperti `JSON.parse()`. |
 
 ---
 
