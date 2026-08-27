@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "Acme Config Generator"
+author: "anakmamah"
+
+description: |
+  Acme Corp has released a new beta tool for generating internal system configurations.
+
+type: "DynamicContainer" # don't touch this value
+value: 1000 # don't touch this value
+
+provide: "./dist"
+
+container:
+  flagTemplate: "HOLOGY9{pr0t0typ3_p0llut10n_t0_rc3_g3m1nk_[TEAM_HASH]}"
+  containerImage: "{{.slug}}:latest"
+  memoryLimit: 1024
+  cpuCount: 2
+  storageLimit: 1024
+  exposePort: 3000
+  enableTrafficCapture: true
+
+scripts:
+  start: cd src && docker build -t {{.slug}} .

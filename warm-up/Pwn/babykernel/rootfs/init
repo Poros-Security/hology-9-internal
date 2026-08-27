@@ -1,0 +1,66 @@
+#!/bin/sh
+
+export PATH=/bin:/sbin:/usr/bin:/usr/sbin
+export TERM=dumb
+mount -t proc none /proc
+mount -t sysfs none /sys
+mount -t devtmpfs none /dev 2>/dev/null || mount -t tmpfs none /dev
+mkdir -p /dev/pts /tmp /home/ctf
+mount -t devpts devpts /dev/pts 2>/dev/null || true
+stty sane -echo rows 24 cols 80 < /dev/console > /dev/console 2>&1 || true
+stty sane -echo rows 24 cols 80 < /dev/ttyS0 > /dev/ttyS0 2>&1 || true
+
+echo 0 > /proc/sys/kernel/kptr_restrict 2>/dev/null || true
+echo 0 > /proc/sys/kernel/dmesg_restrict 2>/dev/null || true
+
+chmod 1777 /tmp
+chown root:root /flag 2>/dev/null || true
+chmod 0400 /flag 2>/dev/null || true
+
+if [ -f /qemu-net.ko ]; then
+    insmod /qemu-net.ko || echo "[init] failed to load /qemu-net.ko"
+else
+    echo "[init] missing /qemu-net.ko; networking disabled"
+fi
+
+NETIF=""
+for _ in 1 2 3 4 5; do
+    for iface in /sys/class/net/*; do
+        iface="${iface##*/}"
+        if [ "$iface" != "lo" ]; then
+            NETIF="$iface"
+            break
+        fi
+    done
+    [ -n "$NETIF" ] && break
+    sleep 1
+done
+
+if [ -n "$NETIF" ]; then
+    ifconfig lo up 2>/dev/null || true
+    ifconfig "$NETIF" 10.0.2.15 netmask 255.255.255.0 up 2>/dev/null || \
+        ip addr add 10.0.2.15/24 dev "$NETIF" 2>/dev/null || true
+    ip link set "$NETIF" up 2>/dev/null || true
+    route add default gw 10.0.2.2 "$NETIF" 2>/dev/null || \
+        ip route add default via 10.0.2.2 dev "$NETIF" 2>/dev/null || true
+    printf 'nameserver 10.0.2.3\n' > /etc/resolv.conf
+    echo "[init] network: $NETIF -> 10.0.2.15/24, gateway 10.0.2.2"
+else
+    echo "[init] no network interface found"
+fi
+
+insmod /hackitbraw.ko || echo "[init] failed to load /hackitbraw.ko"
+chmod 0666 /dev/hackitbraw 2>/dev/null || true
+
+echo
+echo "== babykernel =="
+echo "Device: /dev/hackitbraw"
+echo "Goal: exploit hackitbraw.ko and read /flag"
+echo
+
+if command -v su >/dev/null 2>&1; then
+    exec setsid cttyhack su ctf -c 'TERM=dumb /bin/sh'
+else
+    echo "[init] warning: busybox su missing; falling back to root shell"
+    exec setsid cttyhack env TERM=dumb /bin/sh
+fi

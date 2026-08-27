@@ -1,0 +1,6 @@
+Expected properties:
+- Architecture: amd64
+- Canary: disabled
+- NX: enabled
+- PIE: disabled
+- RELRO: no/partial RELRO depending on tool output

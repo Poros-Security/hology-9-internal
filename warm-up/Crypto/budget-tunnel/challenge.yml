@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "Budget Tunnel"
+author: "Jersyy"
+
+# support markdown & html tags
+description: |
+  The finance team bought a premium tunnel and immediately called it
+  infrastructure. It has branding, a budget, and somehow no accountability.
+
+  Standing near the invoice may void your warranty.
+
+type: "DynamicContainer" # don't touch this value
+value: 1000 # don't touch this value
+
+provide: "./dist"
+
+container:
+  flagTemplate: "HOLOGY9{g4Z_g4Z_subm1t_s3m0g4_ju4r4_[TEAM_HASH]}"
+  containerImage: "{{.slug}}:latest"
+  memoryLimit: 1024
+  cpuCount: 2
+  storageLimit: 1024
+  exposePort: 31341
+  enableTrafficCapture: true
+
+scripts:
+  start: cd src && docker build -t {{.slug}} .

@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "Her"
+author: "Jersyy"
+
+# support markdown & html tags
+description: |
+  She never told me her real name. Perhaps that was the point.
+
+  Before she disappeared, she left pieces of herself scattered across the internet. A name she chose, a city she almost called home, and one final story before she went silent.
+
+  Begin with the story below. Follow the traces she chose to leave behind and recover all three.
+
+  Link : https://medium.com/@personwhoyearn/her-b6c31068cdce
+
+  Flag format
+
+  HOLOGY9{alias_city_last_watch}
+
+  Example flag
+
+  HOLOGY9{violet_rome_spirited_away}
+
+type: "StaticAttachment" # don't touch this value
+value: 1000 # don't touch this value
+
+flags:
+  - "HOLOGY9{lilies_hangzhou_the_first_frost}"

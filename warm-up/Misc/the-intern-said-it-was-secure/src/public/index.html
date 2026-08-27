@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hack It Braw Assistant</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="sidebar" aria-label="Conversations">
+        <div class="brand-lockup">
+          <img src="/assets/chatbot.svg" alt="" width="64" height="64">
+          <div>
+            <p class="eyebrow">Workspace</p>
+            <h1>Hack It Braw Assistant</h1>
+          </div>
+        </div>
+
+        <button class="new-chat-button" id="clearButton" type="button">New chat</button>
+
+        <section class="conversation-list" aria-label="Recent conversations">
+          <h2>Recent</h2>
+          <button class="conversation-item active" type="button" data-page="general">General assistant</button>
+          <button class="conversation-item" type="button" data-page="notes-cleanup">Notes cleanup</button>
+          <button class="conversation-item" type="button" data-page="draft-response">Draft response</button>
+        </section>
+      </aside>
+
+      <section class="chat-panel" aria-label="Chatbot">
+        <header class="chat-header">
+          <div>
+            <p class="eyebrow">Online</p>
+            <h2>Assistant</h2>
+          </div>
+          <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false">Dark</button>
+        </header>
+
+        <section class="blocked-page" id="blockedPage" aria-live="polite" hidden>
+          <div class="blocked-content">
+            <p class="blocked-kicker" id="blockedKicker">Access denied</p>
+            <h2 id="blockedCode">403</h2>
+            <p class="blocked-title" id="blockedTitle">Forbidden</p>
+            <p class="blocked-copy" id="blockedCopy"></p>
+          </div>
+        </section>
+
+        <div class="messages" id="messages" aria-live="polite" aria-label="Conversation">
+          <article class="message bot">
+            <span class="avatar">AI</span>
+            <div class="bubble">
+              <p>Hello. How can I help today?</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="quick-prompts" aria-label="Quick prompts">
+          <button type="button" data-prompt="Write a short welcome email for a new community member.">Welcome email</button>
+          <button type="button" data-prompt="Summarize this note into three bullet points:">Summarize</button>
+          <button type="button" data-prompt="Help me rewrite this message in a clearer tone:">Rewrite</button>
+        </div>
+
+        <form class="composer" id="chatForm" autocomplete="off">
+          <label class="sr-only" for="promptInput">Prompt</label>
+          <textarea
+            id="promptInput"
+            name="prompt"
+            rows="3"
+            maxlength="1200"
+            placeholder="Type a prompt..."
+            required
+          ></textarea>
+          <div class="composer-actions">
+            <span id="charCount">0 / 1200</span>
+            <button class="send-button" type="submit">Send</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

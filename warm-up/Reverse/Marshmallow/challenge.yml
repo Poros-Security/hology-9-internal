@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "Marshmallow"
+author: "Avocado"
+
+# support markdown & html tags
+description: |
+  Someone toasted my module a little too hard and the top burned off.
+  It still remembers what the flag looks like, it just won't tell you.
+
+type: "StaticAttachment" # don't touch this value
+value: 1000 # don't touch this value
+
+flags:
+  - "HIBCHB26{h34d3rl3ss_pyc_st1ll_t04sts_th3_fl4g}"
+
+provide: "./dist"

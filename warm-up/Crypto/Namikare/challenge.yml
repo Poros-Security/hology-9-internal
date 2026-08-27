@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "Namikareeeeeeeeeee"
+author: "Ariq Ardian"
+
+# support markdown & html tags
+description: |
+  Too Lazzzzzzzzzzzzzzzzyyyyyyy making chall, so i just use this Archived Chall.
+
+  https://youtu.be/5xfNTyy-Xhk?si=ArNh94umYykENJvg
+
+type: "DynamicContainer" # don't touch this value
+value: 1000 # don't touch this value
+
+container:
+    flagTemplate: "HOLOGY9{this_chall_same_like_apbq_rsa_ii_but_i_modified_and_same_like_some_national_challenge_btw.._wth_is_this_chall_[TEAM_HASH]}"
+    containerImage: "{{.slug}}:latest"
+    memoryLimit: 1024
+    cpuCount: 2
+    storageLimit: 1024
+    exposePort: 2000
+    enableTrafficCapture: true
+
+provide: "./dist"
+scripts:
+    start: cd src && docker compose up -d --build

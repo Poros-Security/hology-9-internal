@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  web:
+    build: .
+    ports:
+      - "3814:3000"
+    environment:
+      GZCTF_FLAG: "HOLOGY9{fake_local_flag}"
+    restart: unless-stopped

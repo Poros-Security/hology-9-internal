@@ -1,0 +1,10 @@
+services:
+  budget-tunnel:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "${CTF_PORT:-31341}:${CTF_PORT:-31341}"
+    environment:
+      CTF_PORT: "31341"
+      GZCTF_FLAG: "HOLOGY9{g4Z_g4Z_subm1t_s3m0g4_ju4r4_local}"
+      PYTHONUNBUFFERED: "1"

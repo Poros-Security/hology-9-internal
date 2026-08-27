@@ -1,0 +1,76 @@
+import os
+
+# GZCTF injects a unique per-team flag through GZCTF_FLAG; the launcher uses FLAG.
+if "GZCTF_FLAG" in os.environ:
+    os.environ["FLAG"] = os.environ["GZCTF_FLAG"]
+
+import json
+from pathlib import Path
+
+import sandbox
+from web3 import Web3
+
+def set_balance(web3: Web3, account_address: str, amount: int):
+    res = web3.provider.make_request(
+        "anvil_setBalance",
+        [account_address, amount]
+    )
+    print(res)
+
+
+def deploy(web3: Web3, deployer_address: str, deployer_privateKey: str, player_address: str) -> str:
+    uri = web3.provider.endpoint_uri
+    contract_info = json.loads(Path("compiled/Setup.sol/Setup.json").read_text())
+    abi = contract_info["abi"]
+    bytecode = contract_info["bytecode"]["object"]
+
+
+    contract = web3.eth.contract(abi=abi, bytecode=bytecode)
+
+    construct_txn = contract.constructor().build_transaction(
+        {
+            "from": deployer_address,
+            "nonce": web3.eth.get_transaction_count(deployer_address),
+        }
+    )
+
+    # Gas estimation runs against genesis, while mining happens in block 1 and
+    # takes Setup's more expensive blockhash branch.
+    construct_txn['gas'] = 2_000_000
+
+    tx_create = web3.eth.account.sign_transaction(construct_txn, deployer_privateKey)
+    tx_hash = web3.eth.send_raw_transaction(tx_create.raw_transaction)
+
+    rcpt = web3.eth.wait_for_transaction_receipt(tx_hash)
+
+    if rcpt.status != 1 or not rcpt.contractAddress:
+        raise RuntimeError('deployment transaction failed')
+
+    set_balance(web3, player_address, Web3.to_wei(1, 'ether'))
+
+    return rcpt.contractAddress
+
+def pre_tx_hook(data, node_info):
+    """
+    Executed before a transaction is processed.
+    Returns:
+        - status: HTTP status code (e.g., 200 for success, 400 for error)
+        - msg: Message to be returned in the response in case of non 2xx status
+    """
+    return 200, ""
+
+def post_tx_hook(data, response, node_info):
+
+    """
+    Executed after a transaction is processed.
+    Returns:
+        - status: HTTP status code (e.g., 200 for success, 400 for error)
+        - msg: Message to be returned in the response in case of non 2xx status
+    """
+    return 200, ""
+
+app = sandbox.run_launcher(
+    deploy,
+    pre_tx_hook=pre_tx_hook,
+    post_tx_hook=post_tx_hook
+)

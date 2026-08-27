@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Waifu Love Calculator</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main class="card">
+    <div class="emoji">💖</div>
+    <h1>Waifu Love Calculator</h1>
+    <p class="tagline">Insert two people's initials. A perfect 100% match unlocks true love.</p>
+
+    <form id="love-form">
+      <label>
+        Person A initials
+        <input name="person_a" maxlength="2" minlength="2" pattern="[A-Za-z]{2}" placeholder="AB" required>
+      </label>
+      <label>
+        Person B initials
+        <input name="person_b" maxlength="2" minlength="2" pattern="[A-Za-z]{2}" placeholder="CD" required>
+      </label>
+      <button type="submit">Calculate Love</button>
+    </form>
+
+    <section id="result" class="hidden"></section>
+    <p class="hint">Rumor says the model was trained on one perfect couple and still remembers them.</p>
+  </main>
+
+  <script>
+    const form = document.getElementById('love-form');
+    const result = document.getElementById('result');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      result.classList.remove('hidden');
+      result.textContent = 'Calculating...';
+      const fd = new FormData(form);
+      const payload = Object.fromEntries(fd.entries());
+      const response = await fetch('/api/calculate', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(payload)
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        result.innerHTML = `<strong>Oops:</strong> ${data.error}`;
+        return;
+      }
+      if (data.match) {
+        result.innerHTML = `<h2>100% PERFECT MATCH</h2><code>${data.flag}</code>`;
+      } else {
+        result.innerHTML = `<h2>${data.rounded_percent}% compatible</h2><p>Not quite perfect. Try again.</p>`;
+      }
+      console.debug('raw model response', data);
+    });
+  </script>
+</body>
+</html>

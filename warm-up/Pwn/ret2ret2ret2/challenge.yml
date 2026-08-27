@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "ret2ret2ret2"
+author: "Suisayy"
+
+description: |
+  The service has a format string bug and a stack buffer overflow.
+  Leak libc, align the stack with return, and get your way to a shell.
+
+  The flag is written to /tmp/flag.
+
+type: "DynamicContainer" # don't touch this value
+value: 500
+
+provide: "./dist"
+
+container:
+  flagTemplate: "HIBCHB26{ret2ret2ret2_[TEAM_HASH]}"
+  containerImage: "{{.slug}}:latest"
+  memoryLimit: 512
+  cpuCount: 1
+  storageLimit: 512
+  exposePort: 9999
+  enableTrafficCapture: true
+
+scripts:
+  start: cd src && docker build -t {{.slug}} .

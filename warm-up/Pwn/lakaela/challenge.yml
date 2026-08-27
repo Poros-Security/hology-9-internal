@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "lakaela"
+author: "Suisayy"
+
+# support markdown & html tags
+description: |
+  Have you ever heard of House of Water technique?
+
+type: "DynamicContainer" # don't touch this value
+value: 1000 # don't touch this value
+
+provide: "./dist"
+
+container:
+  flagTemplate: "HIBCHB26{P3m4loe_f0rg3d_th3_w4t3r_h0us3_[TEAM_HASH]}"
+  containerImage: "{{.slug}}:latest"
+  memoryLimit: 1024
+  cpuCount: 2
+  storageLimit: 1024
+  exposePort: 31337
+  enableTrafficCapture: true
+
+scripts:
+  start: cd src && docker build -t {{.slug}} .

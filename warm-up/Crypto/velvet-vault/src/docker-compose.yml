@@ -1,0 +1,10 @@
+services:
+  velvet-vault:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "${CTF_PORT:-31342}:${CTF_PORT:-31342}"
+    environment:
+      CTF_PORT: "31342"
+      GZCTF_FLAG: "HOLOGY9{d1sc0_b4n4n4_p41d_r3nt_1n_p0k3r_ch1ps_l0c4l}"
+      PYTHONUNBUFFERED: "1"

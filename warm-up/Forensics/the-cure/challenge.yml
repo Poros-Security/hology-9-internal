@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "The Cure"
+author: "2byte"
+
+description: |
+  <b> WARNING !!! MALWARE INSIDE, ANALYZE WITH YOUR OWN RISKS </b>
+
+  Another fraction of you that I picture in my creation. I made this from something people often see as strange, but I found beauty in it—the same way in you.
+  Yet, strangely enough, someone still breaking in and tearing down everything I have built. Now that it has begun collapsing from its very roots, all that remains in the ashes are the questions I have to ask everyone else: can I recover you as mine again?
+
+  link : https://drive.google.com/file/d/1FLZsgkuvbLlZ9H-Co2DmxCNeGuJ5g-uH/view?usp=sharing
+  
+  sha256sum : 6ddb4c12a36ac34abfa3fb6fec081140316969a0a8cf4af0c50c76a1f1bc9c39
+
+  password : semoga_tidak_ada_yang_wansut
+
+type: "StaticAttachment"
+value: 1000
+
+flags:
+  - "HIBCHB26{maaf_ya_for_everything_that_i've_done_36c660c50c84a15f}"

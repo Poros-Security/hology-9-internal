@@ -1,0 +1,8 @@
+services:
+  anydroid:
+    build: .
+    restart: unless-stopped
+    environment:
+      GZCTF_FLAG: "${GZCTF_FLAG:-HOLOGY9_anydroid_local_test_flag}"
+    ports:
+      - "1134:1134"

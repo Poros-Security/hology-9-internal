@@ -1,0 +1,18 @@
+services:
+  lakaela:
+    build: .
+    restart: on-failure
+    ports:
+      - "31337:31337"
+    environment:
+      GZCTF_FLAG: "HIBCHB26{P3m4loe_f0rg3d_th3_w4t3r_h0us3_placeholder}"
+    security_opt:
+      - no-new-privileges:true
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: "512M"
+        reservations:
+          cpus: "0.25"
+          memory: "128M"

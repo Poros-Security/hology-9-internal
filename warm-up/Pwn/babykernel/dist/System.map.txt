@@ -1,0 +1,3 @@
+ffffffff810d3960 T commit_creds
+ffffffff810d3c10 T prepare_kernel_cred
+ffffffff82a5bc80 D init_cred

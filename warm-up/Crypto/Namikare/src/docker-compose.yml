@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  namikare:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: namikare
+
+    env_file:
+      - .env
+
+    ports:
+      - "2000:2000"
+
+    restart: unless-stopped
+
+    stdin_open: true
+    tty: true

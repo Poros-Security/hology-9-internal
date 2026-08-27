@@ -1,0 +1,14 @@
+{
+  "name": "config-generator",
+  "version": "1.0.0",
+  "description": "Acme Config Generator",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "ejs": "3.1.6",
+    "express": "^4.21.0",
+    "set-in": "^2.0.0"
+  }
+}

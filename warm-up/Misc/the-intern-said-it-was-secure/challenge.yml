@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "The Intern Said It Was Secure"
+author: "Jersyy"
+
+# support markdown & html tags
+description: |
+  Meet The Intern Said It Was Secure: a very normal chatbot built with the confidence of a team that definitely read at least one security blog post and then immediately ignored the difficult parts.
+
+  It answers questions, refuses suspicious requests, and has a few unfinished pages because the admin discovered that "403 Forbidden" is cheaper than building features.
+
+  No, asking nicely does not work. Yes, someone probably tried. No, the admin will not apologize.
+
+type: "DynamicContainer" # don't touch this value
+value: 1000 # don't touch this value
+
+provide: "./dist"
+
+container:
+  flagTemplate: "HOLOGY9{m1cr0w4v3_pr1nt3r_j0b_4ppr0v3d_by_s0up_[TEAM_HASH]}"
+  containerImage: "{{.slug}}:latest"
+  memoryLimit: 1024
+  cpuCount: 2
+  storageLimit: 1024
+  exposePort: 3000
+  enableTrafficCapture: true
+
+scripts:
+  start: cd src && docker build -t {{.slug}} .

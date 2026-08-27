@@ -1,0 +1,9 @@
+services:
+  waifu-love-calculator:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      GZCTF_FLAG: "HOLOGY9{local_dynamiccontainer_test}"
+      SECRET_A: "WA"
+      SECRET_B: "FU"

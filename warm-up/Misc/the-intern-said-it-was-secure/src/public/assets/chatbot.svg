@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">Chatbot avatar</title>
+  <desc id="desc">A square chatbot face with blue and green interface accents.</desc>
+  <rect width="160" height="160" rx="28" fill="#111827"/>
+  <path d="M28 48c0-11 9-20 20-20h64c11 0 20 9 20 20v50c0 11-9 20-20 20H91l-16 16-4-16H48c-11 0-20-9-20-20V48Z" fill="#1f2937" stroke="#60a5fa" stroke-width="6"/>
+  <circle cx="59" cy="72" r="10" fill="#34d399"/>
+  <circle cx="101" cy="72" r="10" fill="#60a5fa"/>
+  <path d="M58 99h44" fill="none" stroke="#e5e7eb" stroke-width="7" stroke-linecap="round"/>
+  <path d="M80 17v15" stroke="#60a5fa" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="80" cy="14" r="7" fill="#60a5fa"/>
+</svg>

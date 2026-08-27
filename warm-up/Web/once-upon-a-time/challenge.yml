@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "Once Upon a Time"
+author: "anakmamah"
+
+description: |
+  *ENTRY NUMBER 17*
+  *DARK DARKER YET DARKER*
+
+  Dr. Alphys left her terminal running. Can you extract the secret flag from the system?
+
+type: "DynamicContainer"
+value: 1000
+
+provide: "./dist"
+
+container:
+  flagTemplate: "HOLOGY9{tru3_l4b_lf1_p4th_w4lk3r_[TEAM_HASH]}"
+  containerImage: "{{.slug}}:latest"
+  memoryLimit: 1024
+  cpuCount: 2
+  storageLimit: 1024
+  exposePort: 80
+  enableTrafficCapture: true
+
+scripts:
+  start: docker build -t {{.slug}} ./src

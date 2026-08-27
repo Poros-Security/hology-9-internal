@@ -1,0 +1,16 @@
+services:
+  ret2ret2ret2:
+    build: .
+    restart: on-failure
+    ports:
+      - "9999:9999"
+    environment:
+      - GZCTF_FLAG=HIBCHB26{ret2ret2ret2_local_test_flag}
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: "256M"
+        reservations:
+          cpus: "0.25"
+          memory: "128M"
