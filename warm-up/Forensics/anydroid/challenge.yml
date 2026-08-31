@@ -14,13 +14,13 @@ type: "DynamicContainer" # don't touch this value
 value: 1000 # don't touch this value
 
 container:
-    flagTemplate: "HOLOGY9{4nydr0id_574nd5_f0r_4nyrun_4nd_4ndr0id_937_i7?_[TEAM_HASH]}"
-    containerImage: "{{.slug}}:latest"
-    memoryLimit: 1024
-    cpuCount: 2
-    storageLimit: 1024
-    exposePort: 1134
-    enableTrafficCapture: true
+  flagTemplate: "HOLOGY9{4nydr0id_574nd5_f0r_4nyrun_4nd_4ndr0id_937_i7?_[TEAM_HASH]}"
+  containerImage: "{{.slug}}:latest"
+  memoryLimit: 1024
+  cpuCount: 2
+  storageLimit: 1024
+  exposePort: 1134
+  enableTrafficCapture: true
 
 scripts:
-    start: cd src && docker compose up -d --build
+  start: cd src && docker compose up -d --build
