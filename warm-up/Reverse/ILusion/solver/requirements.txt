@@ -1,2 +1,0 @@
-dnfile>=0.15.0
-pycryptodome>=3.20.0
