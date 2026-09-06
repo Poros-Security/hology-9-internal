@@ -68,7 +68,7 @@ Syarat panjang 7 karakter. Menggunakan 6 persamaan matematika:
 Dekripsi 44-byte array dari `.data` (`DAT_00108f40`) menggunakan rumus:
 
 
-$$\text{Flag}[i] = \text{g\_flag\_data}[i] \oplus i \oplus \text{Password}[i \pmod 7]$$
+$$\text{Flag}[i] = \texttt{g\_flag\_data}[i] \oplus i \oplus \text{Password}[i \pmod 7]$$
 
 ---
 
