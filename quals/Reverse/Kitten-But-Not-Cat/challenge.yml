@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "Kitten But Not Cat"
+author: "FAZer0"
+
+# support markdown & html tags
+description: |
+  Perasaan loginnya udah bener tapi kok masih tetep eror ya, mending cari kucing deh.
+
+type: "StaticAttachment" # don't touch this value
+value: 1000 # don't touch this value
+
+flags:
+  - "HOLOGY9{r34L_c0R3_M3m0Ry_m4N1pUlaT1oN_2E9CE}"
+
+provide: "./dist"
