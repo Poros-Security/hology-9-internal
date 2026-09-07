@@ -1,0 +1,10 @@
+services:
+  wordlists-404:
+    build: .
+    restart: on-failure
+    ports:
+      - "6767:80"
+    environment:
+      GZCTF_FLAG: "${GZCTF_FLAG:-HOLOGY9{wH3n_yh?_mY_M1n3_Ku_7iB4_e6e67e40_local}}"
+      JWT_SECRET: "${JWT_SECRET:-by73W49ur1$$}"
+      DB_DRIVER: sqlite

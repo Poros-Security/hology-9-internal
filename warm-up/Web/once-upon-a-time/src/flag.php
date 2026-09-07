@@ -1,3 +1,0 @@
-<?php
-
-$SECRET_FLAG = "GZCTF_FLAG";

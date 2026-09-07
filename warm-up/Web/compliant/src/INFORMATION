@@ -1,0 +1,12 @@
+The compliance team built a document intake portal so secure it comes with a reviewer bot, a shiny upload form, and exactly the amount of confidence you expect from enterprise software.
+
+Upload your paperwork, submit it for review, and prove the audit was worth the invoice.
+
+Category: Web
+Difficulty: Medium
+
+Local deployment:
+
+    docker compose up -d --build
+
+The challenge reads the dynamic flag from GZCTF_FLAG. A local fallback is provided in docker-compose.yml for testing.

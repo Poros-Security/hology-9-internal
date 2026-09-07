@@ -1,0 +1,18 @@
+services:
+  ctf-xss-app:
+    build: .
+    ports:
+      - "7777:7777"
+    environment:
+      - GZCTF_FLAG=HOLOGY9{1nTro_2_w3Bh0ok_s4Ng_7uK4n6_m4nC1nG_local}
+      - BASE_URL=http://localhost:7777
+      - BOT_SECRET=b0T_53Cr3t_14377ec1
+      - USER_SECRET=u53R_S3cR37_0e115794
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - db-data:/app/db
+    restart: unless-stopped
+
+volumes:
+  db-data:
