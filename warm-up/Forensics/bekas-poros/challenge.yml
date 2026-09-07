@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
 
 name: "bekas poros"
-author: "POROS-Security"
+author: "2byte"
 
 description: |
   mamlas bikin chall warm-up, reuse aja yah. Kalo ada anak POROS yg udh solp ywdh.

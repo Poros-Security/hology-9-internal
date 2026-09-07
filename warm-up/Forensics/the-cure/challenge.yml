@@ -10,10 +10,12 @@ description: |
   Yet, strangely enough, someone still breaking in and tearing down everything I have built. Now that it has begun collapsing from its very roots, all that remains in the ashes are the questions I have to ask everyone else: can I recover you as mine again?
 
   link : https://drive.google.com/file/d/1FLZsgkuvbLlZ9H-Co2DmxCNeGuJ5g-uH/view?usp=sharing
-  
+
   sha256sum : 6ddb4c12a36ac34abfa3fb6fec081140316969a0a8cf4af0c50c76a1f1bc9c39
 
   password : semoga_tidak_ada_yang_wansut
+
+  Format Flag : HIBCHB26{}
 
 type: "StaticAttachment"
 value: 1000
