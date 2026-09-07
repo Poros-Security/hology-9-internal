@@ -15,7 +15,7 @@
 
 const http = require('http');
 
-const TARGET = process.env.TARGET || 'http://localhost:3000';
+const TARGET = process.env.TARGET || 'http://localhost:6767';
 
 // Option A: generate payload via serializer (needs replicator + serializer.js)
 let payload;

@@ -14,6 +14,6 @@ RUN npm run build
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-EXPOSE 3000
+EXPOSE 6767
 
 ENTRYPOINT ["/entrypoint.sh"]
