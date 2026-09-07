@@ -1,0 +1,62 @@
+[
+  {
+    "num": 1,
+    "question": "What's the victim's IP address?",
+    "format": "xx.xx.xx.xx",
+    "answer": "10.10.10.50"
+  },
+  {
+    "num": 2,
+    "question": "What's the attacker IP address?",
+    "format": "xx.xx.xx.xx",
+    "answer": "10.10.10.100"
+  },
+  {
+    "num": 3,
+    "question": "There are 3 tools that used by attacker, what are they? (order it alphabetically)",
+    "format": "abc,def,ghi",
+    "answer": "hping3,nmap,sqlmap"
+  },
+  {
+    "num": 4,
+    "question": "There is a vulnerable plugin exploited by the attacker, what's the name of the plugin?",
+    "format": "lowercase-letters",
+    "answer": "easy-quotes"
+  },
+  {
+    "num": 5,
+    "question": "What's the CVE ID of the vulnerable plugin?",
+    "format": "CVE-XXXX-XXXX",
+    "answer": "CVE-2025-26943"
+  },
+  {
+    "num": 6,
+    "question": "When exploitation of vulnerable plugin started?",
+    "format": "DD/MM/YYYY HH:MM:SS",
+    "answer": "12/03/2026 16:52:39"
+  },
+  {
+    "num": 7,
+    "question": "What's the username exfiltrated by the attacker?",
+    "format": "-",
+    "answer": "2byteFansClub"
+  },
+  {
+    "num": 8,
+    "question": "What's the password hash exfiltrated by the attacker?",
+    "format": "$algorithm$hash",
+    "answer": "$P$BDVrT8ijki8iH97aVCY25ZXJOSMtlL/"
+  },
+  {
+    "num": 9,
+    "question": "What's the password cracked by the attacker?",
+    "format": "-",
+    "answer": "dontkillmepleasexxx"
+  },
+  {
+    "num": 10,
+    "question": "When did the attacker successfully log in?",
+    "format": "DD/MM/YYYY HH:MM:SS",
+    "answer": "12/03/2026 16:56:00"
+  }
+]

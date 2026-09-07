@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "Velvet Vault"
+author: "Jersyy"
+
+# support markdown & html tags
+description: |
+  The casino opened a private lounge for people with expensive jackets and
+  terrible instincts.
+
+  It has velvet ropes, blinking lights, and the kind of confidence usually seen
+  right before someone asks legal to join the meeting.
+
+  No, the pit boss will not explain the rules twice.
+
+type: "DynamicContainer" # don't touch this value
+value: 1000 # don't touch this value
+
+provide: "./dist"
+
+container:
+    flagTemplate: "HOLOGY9{d1sc0_b4n4n4_p41d_r3nt_1n_p0k3r_ch1ps_[TEAM_HASH]}"
+    containerImage: "{{.slug}}:latest"
+    memoryLimit: 1024
+    cpuCount: 2
+    storageLimit: 1024
+    exposePort: 31342
+    enableTrafficCapture: true
+
+scripts:
+    start: cd src && docker build -t {{.slug}} .

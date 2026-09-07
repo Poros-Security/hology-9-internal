@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "Compliant"
+author: "Jersyy"
+
+# support markdown & html tags
+description: |
+  The compliance team built a document intake portal so secure it comes with a
+  reviewer bot, a shiny upload form, and exactly the amount of confidence you
+  expect from enterprise software.
+
+  The audit was scheduled for Monday, outsourced by Tuesday, and somehow marked
+  resolved before anyone learned what the buttons do.
+
+type: "DynamicContainer" # don't touch this value
+value: 1000 # don't touch this value
+
+provide: "./dist"
+
+container:
+  flagTemplate: "HOLOGY9{p4p3rcl1p_4ud1t_b0ught_4_y0gurt_l1c3ns3_[TEAM_HASH]}"
+  containerImage: "{{.slug}}:latest"
+  memoryLimit: 1024
+  cpuCount: 2
+  storageLimit: 1024
+  exposePort: 443
+  enableTrafficCapture: true
+
+scripts:
+  start: cd src && docker build -t {{.slug}} .

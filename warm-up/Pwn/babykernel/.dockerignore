@@ -1,0 +1,11 @@
+.git
+*.zip
+*.tar.gz
+dist/
+src/*.o
+src/*.ko
+src/*.mod
+src/*.mod.c
+src/Module.symvers
+src/modules.order
+solver/exploit

@@ -1,0 +1,12 @@
+services:
+  babykernel:
+    build: .
+    image: hibchb26/babykernel:latest
+    ports:
+      - "9999:9999"
+    environment:
+      GZCTF_FLAG: "HIBCHB26{local_test_flag}"
+      SESSION_TIMEOUT: "300"
+      QEMU_MEM: "128M"
+      USE_KVM: "0"
+    restart: unless-stopped

@@ -1,0 +1,13 @@
+name: mbg
+
+services:
+  mbg:
+    build: .
+    image: mbg:latest
+    ports:
+      - "7777:7777"
+    environment:
+      GZCTF_FLAG: "HOLOGY9{local_flag}"
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true

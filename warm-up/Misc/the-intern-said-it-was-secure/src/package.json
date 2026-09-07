@@ -1,0 +1,15 @@
+{
+  "name": "the-intern-said-it-was-secure",
+  "version": "1.0.0",
+  "description": "Chatbot web interface for The Intern Said It Was Secure.",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node --watch server.mjs",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {}
+}

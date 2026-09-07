@@ -1,0 +1,16 @@
+{
+  "name": "compliant",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "mkcert": "^3.2.0",
+    "puppeteer-core": "^24.36.1"
+  }
+}

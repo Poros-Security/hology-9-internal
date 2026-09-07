@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  launcher:
+    build:
+      context: .
+    ports:
+      - "${PUBLIC_PORT}:5000"
+    environment:
+      - FLAG=${FLAG}
+      - LAUNCHER_PORT=5000
+      - DISABLE_TICKET=true
+      - EVM_VERSION=${EVM_VERSION}
+      # - ANVIL_EXTRA_OPTIONS=${ANVIL_EXTRA_OPTIONS}
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"

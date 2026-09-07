@@ -1,0 +1,9 @@
+.agents
+.codex
+.env
+.env.deploy
+.env.local
+.git
+__pycache__
+*.tar
+solve.py

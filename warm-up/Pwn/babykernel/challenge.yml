@@ -1,0 +1,30 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "babykernel"
+author: "Suisayy"
+
+description: |
+  A tiny kernel module named hackitbraw.ko exposes /dev/hackitbraw.
+
+  Break the object, become root, and read the flag from /flag.
+
+  After connecting, wait for the VM to finish booting; the shell prompt can take
+  20-45 seconds to appear.
+
+type: "DynamicContainer"
+value: 500
+
+provide: "./dist"
+
+container:
+  flagTemplate: "HOLOGY09{babykernel_ret2usr_[TEAM_HASH]}"
+  containerImage: "{{.slug}}:latest"
+  memoryLimit: 1024
+  cpuCount: 2
+  storageLimit: 2048
+  exposePort: 9999
+  networkMode: "Open"
+  enableTrafficCapture: true
+
+scripts:
+  start: docker build -t {{.slug}} .

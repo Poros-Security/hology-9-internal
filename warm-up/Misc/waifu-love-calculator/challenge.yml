@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "Waifu Love Calculator"
+author: "Suisayy"
+
+# support markdown & html tags
+description: |
+  A tiny AI love calculator predicts compatibility from two people's two-letter initials.
+
+  The backend uses a real trained ML model, and only one hidden pair can reach
+  a perfect **100%** match. Recover the perfect pair and claim the flag!
+
+type: "DynamicContainer" # don't touch this value
+value: 1000 # don't touch this value
+
+provide: "./dist"
+
+container:
+  flagTemplate: "HOLOGY9{real_waifu_model_inversion_[TEAM_HASH]}"
+  containerImage: "{{.slug}}:latest"
+  memoryLimit: 512
+  cpuCount: 1
+  storageLimit: 512
+  exposePort: 5000
+  enableTrafficCapture: true
+  usePublicHttpRoute: true
+
+scripts:
+  start: cd src && docker build -t {{.slug}} .

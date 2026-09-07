@@ -1,0 +1,86 @@
+[
+  {
+    "num": 1,
+    "question": "What's the malware filename?",
+    "format": "-",
+    "answer": "Ķαѕρегśķу.apk"
+  },
+  {
+    "num": 2,
+    "question": "What's the malware SHA256 hash?",
+    "format": "(all lowercase)",
+    "answer": "f9e0682f3a0f5e6b7cc2d76ef1b196c4c3d2c43584b908743cd4bbeb15e94184"
+  },
+  {
+    "num": 3,
+    "question": "What kind of malware is this?",
+    "format": "(all lowercase)",
+    "answer": "banker"
+  },
+  {
+    "num": 4,
+    "question": "What's the package name of the malware?",
+    "format": "com.ariq.ardian",
+    "answer": "app.rxlalqzo.f2dmarq38gsu"
+  },
+  {
+    "num": 5,
+    "question": "What's the C2 url connected to the malware?",
+    "format": "http://<IP>:<PORT>",
+    "answer": "http://193.233.112.224:1136"
+  },
+  {
+    "num": 6,
+    "question": "What's the path used to setup connection in the victim?",
+    "format": "/abc",
+    "answer": "/mypx"
+  },
+  {
+    "num": 7,
+    "question": "What's the password used to establish the C2 connection?",
+    "format": "-",
+    "answer": "54f6b56110d72277851a809009d0a0a0"
+  },
+  {
+    "num": 8,
+    "question": "What port is used to socks proxy?",
+    "format": "6969",
+    "answer": "2028"
+  },
+  {
+    "num": 9,
+    "question": "What's the victim uid assigned by the malware?",
+    "format": "a1b2c3d4e5f6",
+    "answer": "801b7921c57e2976"
+  },
+  {
+    "num": 10,
+    "question": "What's the messaging app tracked by the malware?",
+    "format": "gapura",
+    "answer": "telegram"
+  },
+  {
+    "num": 11,
+    "question": "What's the filename of the recovered second-stage APK",
+    "format": "-",
+    "answer": "update.apk"
+  },
+  {
+    "num": 12,
+    "question": "What's SHA256 hash of the recovered second-stage APK",
+    "format": "(all lowercase)",
+    "answer": "25fa6eef5dfc103a5aa1bf8c5f462e0bfec4a209685175e43838cdc6ba59f2b6"
+  },
+  {
+    "num": 13,
+    "question": "What's package name of the recovered second-stage APK",
+    "format": "com.abi.zenc.turu",
+    "answer": "app.zqalusxwx.fv4iujmq4u.s8f9mw147lyt7f"
+  },
+  {
+    "num": 14,
+    "question": "What's the key and IV used to recover second-stage APK",
+    "format": "key:IV",
+    "answer": "1111111111111111111111111111111111111111111111111111111111111111:22222222222222222222222222222222"
+  }
+]

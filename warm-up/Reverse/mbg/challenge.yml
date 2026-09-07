@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "mbg"
+author: "2byte"
+
+# support markdown & html tags
+description: |
+  mbg = my bini gwehj
+
+type: "DynamicContainer" # don't touch this value
+value: 1000 # don't touch this value
+
+provide: "./dist"
+
+container:
+    flagTemplate: "HOLOGY9{53b3n3rny4_54y4_537uju_54m4_pr09r4m_MBG_74pi_k410_k3p4nj4n94nny4_my_bini_9w3hj_[TEAM_HASH]}"
+    containerImage: "{{.slug}}:latest"
+    memoryLimit: 1024
+    cpuCount: 2
+    storageLimit: 1024
+    exposePort: 7777
+    enableTrafficCapture: true
+
+scripts:
+    start: cd src && docker build -t {{.slug}} .

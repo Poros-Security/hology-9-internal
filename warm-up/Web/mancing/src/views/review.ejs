@@ -1,0 +1,45 @@
+<!-- views/review.ejs -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Review Surat - ID: <%= letter.id %></title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+    .review-box {
+      border: 2px solid #007bff;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px 5px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    #reject-button {
+      background: #dc3545;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="review-box">
+    <h2>Review Surat Izin #<%= letter.id %></h2>
+    <p><strong>Nama:</strong> <%= letter.name %></p>
+    <p><strong>Alasan:</strong></p>
+    <div><%- letter.reason %></div>
+    
+    <div style="margin-top: 20px;">
+      <button id="reject-button">❌ Reject</button>
+    </div>
+  </div>
+</body>
+</html>

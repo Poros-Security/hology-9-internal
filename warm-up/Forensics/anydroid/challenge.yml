@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "Anydroid"
+author: "2byte"
+
+# support markdown & html tags
+description: |
+  My friend just download an antivirus and VPN in his android device. But, he says the source is quite niche and also after install it his bank account got drained out.
+  I guess that's the price of being a larper, anyway lets take a look.
+
+  https://any.run/report/f9e0682f3a0f5e6b7cc2d76ef1b196c4c3d2c43584b908743cd4bbeb15e94184/560ba4f7-71d1-4ae2-993b-5b5e15549727
+
+type: "DynamicContainer" # don't touch this value
+value: 1000 # don't touch this value
+
+container:
+  flagTemplate: "HOLOGY9{4nydr0id_574nd5_f0r_4nyrun_4nd_4ndr0id_937_i7?_[TEAM_HASH]}"
+  containerImage: "{{.slug}}:latest"
+  memoryLimit: 1024
+  cpuCount: 2
+  storageLimit: 1024
+  exposePort: 1134
+  enableTrafficCapture: true
+
+scripts:
+  start: cd src && docker compose up -d --build

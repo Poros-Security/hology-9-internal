@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "sekre open"
+author: "2byte"
+
+# support markdown & html tags
+description: |
+  reuse dari freepass poros 🗿
+
+  format : freepass26{}
+
+type: "StaticContainer" # don't touch this value
+value: 1000 # don't touch this value
+
+flags:
+  - "freepass26{w45m_r3V3r53_ch411_N07_50_b14ckB0x}"
+
+container:
+    containerImage: "{{.slug}}:latest"
+    memoryLimit: 1024
+    cpuCount: 2
+    storageLimit: 1024
+    exposePort: 8080
+    enableTrafficCapture: false
+
+scripts:
+    start: cd src && docker build -t {{.slug}} .

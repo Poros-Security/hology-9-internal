@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "Jackpotto!!"
+author: "Ariq Ardian"
+
+description: |
+  The casino claims its fortune is impossible to predict. Prove it wrong.
+
+type: "DynamicContainer"
+value: 1000
+
+container:
+  flagTemplate: "HOLOGY9{ja-ja-ja-ja-ja-jaccccckkkkpottooooooo_[TEAM_HASH]}"
+  containerImage: "{{.slug}}:latest"
+  memoryLimit: 1024
+  cpuCount: 1
+  storageLimit: 1024
+  exposePort: 5000
+  enableTrafficCapture: true
+
+provide: "./dist"
+
+scripts:
+  start: cd src && docker compose -p {{.slug}} up --build -d
+  stop: cd src && docker compose -p {{.slug}} down --volumes
+  restart:
+    interval: 15m
+    execute: cd src && docker compose -p {{.slug}} restart

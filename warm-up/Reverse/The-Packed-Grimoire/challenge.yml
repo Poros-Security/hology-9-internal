@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "The Packed Grimoire"
+author: "Ariq Ardian"
+
+# support markdown & html tags
+description: |
+  In an age when knowledge was sealed behind arcane codes, a mysterious program known as The Packed Grimoire emerged. It’s said that this enchanted binary holds a spell that only reveals its truth to those who know the right incantation. Dare to unseal it, and prove your worth to the archive of forgotten flags.
+
+  reuse codex 2025 part 2 🗿
+  format flag : CODEX{}
+
+type: "StaticAttachment" # don't touch this value
+value: 1000 # don't touch this value
+
+flags:
+  - "CODEX{S1mPl3_fl4G_ch3ckEr_4nD_p4ck3Rs5S5s!!!0_o!!!}"
+
+provide: "./dist"

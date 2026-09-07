@@ -1,16 +1,17 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
 
-name: "pacar CIna"
+name: "wordlists-404"
 author: "2byte"
 
+# support markdown & html tags
 description: |
-  <img alt="pacar CI-na" width="360" src="https://raw.githubusercontent.com/dumyboy001-alt/dummy/refs/heads/main/739335558_1219957991199454_207468399635384900_n.jpg" style="display: block; width: min(100%, 360px); height: auto; max-height: 32vh; object-fit: contain; margin: 0 auto;">
+  Make your own
 
 type: "DynamicContainer" # don't touch this value
 value: 1000 # don't touch this value
 
 container:
-  flagTemplate: "HOLOGY9{info_aja_web_ub_banyak_pake_ci_[TEAM_HASH]}"
+  flagTemplate: "HOLOGY9{wH3n_yh?_mY_M1n3_Ku_7iB4_e6e67e40_[TEAM_HASH]}"
   containerImage: "{{.slug}}:latest"
   memoryLimit: 512
   cpuCount: 2
@@ -19,4 +20,4 @@ container:
   enableTrafficCapture: false
 
 scripts:
-  start: cd src && docker compose up -d --build
+  start: cd src && docker build -t {{.slug}} .

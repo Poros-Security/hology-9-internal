@@ -1,0 +1,11 @@
+version: '3'
+services:
+  sekre-open:
+    build: .
+    container_name: sekre-open
+    ports:
+      - "8898:8080"
+    volumes:
+      - ./server.wasm:/app/server.wasm
+    restart: always
+    command: ["wasmedge", "--dir", "/:/", "/app/server.wasm"]

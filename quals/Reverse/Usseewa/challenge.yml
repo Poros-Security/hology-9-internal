@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "Usseewa"
+author: "Ariq Ardian"
+
+# support markdown & html tags
+description: |
+  A simple flag checker. Good luck.
+
+type: "StaticAttachment" # don't touch this value
+value: 1000 # don't touch this value
+
+flags:
+  - "HOLOGY9{i_dont_have_idea_to_generate_flagg_so_this_the_flag}"
+
+provide: "./dist"

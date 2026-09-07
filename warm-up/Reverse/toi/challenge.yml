@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "toi"
+author: "2byte"
+
+# support markdown & html tags
+description: |
+  reuse codex 2025 🗿
+  format flag : CODEX{}
+
+type: "StaticAttachment" # don't touch this value
+value: 1000 # don't touch this value
+
+flags:
+  - "CODEX{y44KaLi_b4aNgg_mAb44_Dik445iHH_cH4LL_iot_h3h3h3h}"
+
+provide: "./dist"

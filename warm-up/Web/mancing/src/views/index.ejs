@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistem Surat Izin</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h1 { color: #333; }
+    .user-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 10px;
+      background: #f8f9fa;
+      border-radius: 4px;
+    }
+    .logout-btn {
+      background: #dc3545;
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+    .logout-btn:hover { background: #c82333; }
+    form { margin: 20px 0; }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    button {
+      background: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover { background: #0056b3; }
+    .letter {
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 4px;
+    }
+    .status {
+      font-weight: bold;
+      color: #ff6b6b;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📝 Sistem Surat Izin</h1>
+    
+    <div class="user-info">
+      <span>👤 Logged in as: <strong><%= username %></strong></span>
+      <form method="POST" action="/logout" style="margin: 0;">
+        <button type="submit" class="logout-btn">Logout</button>
+      </form>
+    </div>
+    
+    <p>Ajukan surat izin Anda. Dosen akan mereview semua surat yang masuk.</p>
+    
+    <form method="POST" action="/submit">
+      <input type="text" name="name" placeholder="Nama Anda" required>
+      <textarea name="reason" rows="5" placeholder="Alasan izin" required></textarea>
+      <button type="submit">Ajukan Surat</button>
+    </form>
+
+    <h2>Daftar Surat Anda</h2>
+    <% if (letters.length === 0) { %>
+      <p>Anda belum mengajukan surat.</p>
+    <% } else { %>
+      <% letters.forEach(letter => { %>
+                <div class="letter">
+          <h3><%= letter.name %></h3>
+          <p><strong>Alasan:</strong> <%- letter.reason %></p>
+          <p class="status">Status: <%= letter.status %></p>
+          <small><%= new Date(letter.created_at).toLocaleString('id-ID') %></small>
+        </div>
+      <% }); %>
+    <% } %>
+  </div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+services:
+  the-intern-said-it-was-secure:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "${HOST_PORT:-3000}:3000"
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+      GZCTF_FLAG: "HOLOGY9{m1cr0w4v3_pr1nt3r_j0b_4ppr0v3d_by_s0up_l0c4l}"

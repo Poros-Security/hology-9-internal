@@ -1,0 +1,9 @@
+services:
+  compliant:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "8443:443"
+    environment:
+      GZCTF_FLAG: "HOLOGY9{p4p3rcl1p_4ud1t_b0ught_4_y0gurt_l1c3ns3_l0c4l}"
+    shm_size: 512m
