@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "Bersama Kuli Membangun Negeri"
+author: "2byte"
+
+description: |
+  <b> WARNING !!! MALWARE INSIDE, ANALYZE WITH YOUR OWN RISKS </b>
+
+  Our company just hired a third party offensive teams to test the knowledge of our blue teams.
+  The malware that has been deployed seems simple but hard to trackin down.
+  We collect the evidence of the memory's server, maybe you can help us and become one of our lifesaver.
+
+  <b> PASSWORD : semoga_banyak_unintended_biar_jd_tambahan_materi_di_skripsi_saya_hehe </b>
+
+  SHA-256 archive : 2b9640366d3cf2d32282bcdbbbc22081256dcab56c56a77dcef20685a05b41e8
+
+  SHA-256 lime : 09cd4b4fa9c9e61c309d6119b41dcb557ef2702b9283a7a5f6ec84a804a268fe
+
+  Link : https://drive.google.com/file/d/1Y9K58qlXiCiTjTMFMa-jqdHRIKVhVJs1/view?usp=sharing
+
+  Alternate Link : https://drive.google.com/file/d/1l5Mm_PQwM0W64NkzCoKnCPegDiPycxDA/view?usp=sharing
+
+type: "StaticAttachment"
+value: 1000
+
+flags:
+  - "HOLOGY9{how_to_call_2byte_is_actually_second_byte_not_two_byte}"
