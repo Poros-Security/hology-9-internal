@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "What Sort of Ending Are You Wishing For?"
+author: "Ariq Ardian"
+
+# support markdown & html tags
+description: |
+  Something about these primes feels a little too similar.
+
+  https://youtu.be/F9sWMsUNDw0?si=2FIjlkSyT9ikd-0P
+
+type: "DynamicContainer" # don't touch this value
+value: 1000 # don't touch this value
+
+container:
+    flagTemplate: "HOLOGY9{https://youtu.be/0i36akjf5Lw?si=PLaStx19vI5Mw8Ei_[TEAM_HASH]}"
+    containerImage: "{{.slug}}:latest"
+    memoryLimit: 1024
+    cpuCount: 2
+    storageLimit: 1024
+    exposePort: 2000
+    enableTrafficCapture: true
+
+provide: "./dist"
+scripts:
+    start: cd src && docker compose up -d --build

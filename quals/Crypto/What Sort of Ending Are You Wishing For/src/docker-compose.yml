@@ -1,0 +1,9 @@
+services:
+  chall:
+    build: .
+    container_name: pell-rsa
+    ports:
+      - "2000:2000"
+    environment:
+      GZCTF_FLAG: "HOLOGY9{https://youtu.be/0i36akjf5Lw?si=PLaStx19vI5Mw8Ei_[TEAM_HASH]}"
+    restart: unless-stopped
