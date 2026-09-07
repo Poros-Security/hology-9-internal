@@ -1,0 +1,27 @@
+{
+  "name": "draft-sync",
+  "version": "1.2.3",
+  "description": "Internal draft synchronization microservice",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "vite",
+    "build": "vite build",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "axios": "1.7.3",
+    "express": "4.18.2",
+    "framer-motion": "11.11.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "replicator": "1.0.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "4.3.2",
+    "vite": "5.4.10"
+  }
+}

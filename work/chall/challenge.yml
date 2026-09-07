@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "Legacy Sync"
+author: "Author"
+
+# support markdown & html tags
+description: |
+  We released a new draft synchronization microservice for collaborative notes!
+  Can you inspect the application and find a way to read the secret flag on the server?
+
+type: "DynamicContainer" # don't touch this value
+value: 1000 # don't touch this value
+
+container:
+    flagTemplate: "HOLOGY9{g3l0k_4d4_h4ck3r_nj1r_w3b_3z_k3kny4_[TEAM_HASH]}"
+    containerImage: "{{.slug}}:latest"
+    memoryLimit: 1024
+    cpuCount: 2
+    storageLimit: 1024
+    exposePort: 6767
+    enableTrafficCapture: true
+
+provide: "./dist"
+scripts:
+    start: cd challenge && docker compose up -d --build
+
