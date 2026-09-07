@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
 
 name: "pacar CIna"
-author: "POROS-Security"
+author: "2byte"
 
 description: |
   <img alt="pacar CI-na" width="360" src="https://raw.githubusercontent.com/dumyboy001-alt/dummy/refs/heads/main/739335558_1219957991199454_207468399635384900_n.jpg" style="display: block; width: min(100%, 360px); height: auto; max-height: 32vh; object-fit: contain; margin: 0 auto;">
