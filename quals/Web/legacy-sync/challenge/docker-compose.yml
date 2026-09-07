@@ -7,4 +7,4 @@ services:
       - "3000:3000"
     environment:
       PORT: 3000
-      FLAG: "HOLOGY9{g3l0k_4d4_h4ck3r_nj1r_w3b_3z_k3kny4_9a8f2c}"
+      FLAG: "HOLOGY9{g3l0k_4d4_h4ck3r_nj1r_w3b_3z_k3kny4_9a8f2c_[TEAM_HASH]}"
