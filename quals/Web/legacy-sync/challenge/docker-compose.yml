@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - "6767:6767"
     environment:
-      PORT: 3000
-      FLAG: "HOLOGY9{g3l0k_4d4_h4ck3r_nj1r_w3b_3z_k3kny4_9a8f2c}"
+      PORT: 6767
+      FLAG: "HOLOGY9{dummy_flag_for_local_testing}"
