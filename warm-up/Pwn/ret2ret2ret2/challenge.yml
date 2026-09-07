@@ -15,7 +15,7 @@ value: 500
 provide: "./dist"
 
 container:
-  flagTemplate: "HIBCHB26{ret2ret2ret2_[TEAM_HASH]}"
+  flagTemplate: "HOLOGY09{ret2ret2ret2_[TEAM_HASH]}"
   containerImage: "{{.slug}}:latest"
   memoryLimit: 512
   cpuCount: 1

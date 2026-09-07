@@ -12,7 +12,7 @@ value: 500
 provide: "./dist"
 
 container:
-  flagTemplate: "HIBCHB26{A_Thousand_Times_A_Thousand_Times_A_Thousand_Times}"
+  flagTemplate: "HOLOGY09{A_Thousand_Times_A_Thousand_Times_A_Thousand_Times}"
   containerImage: "{{.slug}}:latest"
   memoryLimit: 512
   cpuCount: 1

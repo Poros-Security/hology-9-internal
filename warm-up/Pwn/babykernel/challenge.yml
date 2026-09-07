@@ -17,7 +17,7 @@ value: 500
 provide: "./dist"
 
 container:
-  flagTemplate: "HIBCHB26{babykernel_ret2usr_[TEAM_HASH]}"
+  flagTemplate: "HOLOGY09{babykernel_ret2usr_[TEAM_HASH]}"
   containerImage: "{{.slug}}:latest"
   memoryLimit: 1024
   cpuCount: 2
