@@ -1,14 +1,11 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
-
-name: "Audit Passed!"
+name: "Karaoke Receipt"
 author: "Jersyy"
 
-# support markdown & html tags
 description: |
-  Enterprise crypto. Audited by vibes. Shipped by Friday.
+  Karaoke night got audited. Keep the receipt.
 
-type: "StaticAttachment" # don't touch this value
-value: 1000 # don't touch this value
+type: "StaticAttachment"
+value: 1000
 
 flags:
   - "HOLOGY9{0c4a758aa9987dc6b12ed6f0e6fb9a14}"

@@ -97,8 +97,6 @@ def recover(composite, smooth_limit):
             rng.randrange(2, composite - 2),
         )
 
-        # The point defines a curve y^2 = x^3 + b.  For a = 0 curves, the
-        # addition law below does not need b after the base point is chosen.
         _curve_shift = (
             base_point[1] * base_point[1]
             - base_point[0] * base_point[0] * base_point[0]
@@ -114,21 +112,21 @@ def recover(composite, smooth_limit):
 
 def main():
     values = parse()
-    composite = values["public_modulus"]
-    public_power = values["public_power"]
-    sealed_text = values["sealed_text"]
-    smooth_limit = values["small_factor_ceiling"]
+    composite = values["teapot"]
+    button = values["button"]
+    fortune = values["fortune"]
+    smooth_limit = values["noodles"]
 
     hidden_factor = recover(composite, smooth_limit)
     sibling_factor = composite // hidden_factor
-    private_totient = (hidden_factor - 1) * (sibling_factor - 1)
-    private_power = pow(public_power, -1, private_totient)
+    totient = (hidden_factor - 1) * (sibling_factor - 1)
+    handle = pow(button, -1, totient)
 
     key = RSA.construct(
-        (composite, public_power, private_power, hidden_factor, sibling_factor)
+        (composite, button, handle, hidden_factor, sibling_factor)
     )
-    sealed_bytes = long_to_bytes(sealed_text, key.size_in_bytes())
-    flag = PKCS1_OAEP.new(key).decrypt(sealed_bytes)
+    wrapped = long_to_bytes(fortune, key.size_in_bytes())
+    flag = PKCS1_OAEP.new(key).decrypt(wrapped)
 
     print(f"factor = {hidden_factor}")
     print(f"flag = {flag.decode()}")

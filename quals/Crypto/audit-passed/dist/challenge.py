@@ -6,10 +6,10 @@ from Crypto.Hash import SHA256
 from Crypto.Util.number import getPrime
 
 
-LIMB_WIDTHS = [48, 48, 48, 48, 48]
-FOG_LIMIT = 5 << 185
-STEP_POWERS = list(range(0, 192, 2))
-DOMAIN_TAG = b"dual-shadow-ring-v1"
+SIZES = [48, 48, 48, 48, 48]
+CONFETTI = 5 << 185
+PLAYLIST = list(range(0, 192, 2))
+STAMP = b"dual-shadow-ring-v1"
 
 
 def feed(source):
@@ -20,88 +20,68 @@ def feed(source):
 
 
 def ring(source):
-    modulus_value = 1
-    byte_source = feed(source)
-    for width in LIMB_WIDTHS:
-        modulus_value *= getPrime(width, randfunc=byte_source)
-    return modulus_value
+    stage = 1
+    stream = feed(source)
+    for width in SIZES:
+        stage *= getPrime(width, randfunc=stream)
+    return stage
 
 
-def blur(source):
-    return source.randrange(-FOG_LIMIT + 1, FOG_LIMIT)
+def drama(source):
+    return source.randrange(-CONFETTI + 1, CONFETTI)
 
 
-def project(symbol, bright_key, shade_key, modulus_value, source):
-    clean_value = symbol * bright_key + symbol * symbol * shade_key
-    return (clean_value + blur(source)) % modulus_value
+def pose(item, lamp, curtain, stage, source):
+    result = item * lamp + item * item * curtain
+    return (result + drama(source)) % stage
 
 
-def pack(value, modulus_value):
-    width = (modulus_value.bit_length() + 7) // 8
+def pack(value, stage):
+    width = (stage.bit_length() + 7) // 8
     return value.to_bytes(width, "big")
 
 
-def seal(secret_text, bright_key, shade_key, modulus_value, source):
-    material = (
-        pack(bright_key, modulus_value)
-        + pack(shade_key, modulus_value)
-        + DOMAIN_TAG
-    )
-    stream_key = SHA256.new(material).digest()
-    nonce = feed(source)(12)
-    box = AES.new(stream_key, AES.MODE_GCM, nonce=nonce)
-    ciphertext, tag = box.encrypt_and_digest(secret_text)
-    return nonce, tag, ciphertext
+def seal(prize, lamp, curtain, stage, source):
+    material = pack(lamp, stage) + pack(curtain, stage) + STAMP
+    key = SHA256.new(material).digest()
+    ticket = feed(source)(12)
+    box = AES.new(key, AES.MODE_GCM, nonce=ticket)
+    parcel, sticker = box.encrypt_and_digest(prize)
+    return ticket, sticker, parcel
 
 
-def transcript(secret_text):
+def transcript(prize):
     source = random.Random(int.from_bytes(os.urandom(24), "big"))
-    modulus_value = ring(source)
-    bright_key = source.randrange(1, modulus_value)
-    shade_key = source.randrange(1, modulus_value)
-    pivot_symbol = modulus_value // 2
+    stage = ring(source)
+    lamp = source.randrange(1, stage)
+    curtain = source.randrange(1, stage)
+    lobby = stage // 2
 
-    center_sample = project(
-        pivot_symbol, bright_key, shade_key, modulus_value, source
-    )
-    forward_samples = []
-    backward_samples = []
-    for power in STEP_POWERS:
+    receipt = pose(lobby, lamp, curtain, stage, source)
+    sunny = []
+    rainy = []
+    for power in PLAYLIST:
         stride = 1 << power
-        forward_samples.append(
-            project(
-                pivot_symbol + stride,
-                bright_key,
-                shade_key,
-                modulus_value,
-                source,
-            )
+        sunny.append(
+            pose(lobby + stride, lamp, curtain, stage, source)
         )
-        backward_samples.append(
-            project(
-                pivot_symbol - stride,
-                bright_key,
-                shade_key,
-                modulus_value,
-                source,
-            )
+        rainy.append(
+            pose(lobby - stride, lamp, curtain, stage, source)
         )
 
-    nonce, tag, ciphertext = seal(
-        secret_text, bright_key, shade_key, modulus_value, source
-    )
+    ticket, sticker, parcel = seal(prize, lamp, curtain, stage, source)
 
     return {
-        "modulus_value": modulus_value,
-        "fog_limit": FOG_LIMIT,
-        "pivot_symbol": pivot_symbol,
-        "step_powers": STEP_POWERS,
-        "center_sample": center_sample,
-        "forward_samples": forward_samples,
-        "backward_samples": backward_samples,
-        "nonce": nonce.hex(),
-        "tag": tag.hex(),
-        "ciphertext": ciphertext.hex(),
+        "karaoke": stage,
+        "confetti": CONFETTI,
+        "lobby": lobby,
+        "playlist": PLAYLIST,
+        "receipt": receipt,
+        "sunny": sunny,
+        "rainy": rainy,
+        "ticket": ticket.hex(),
+        "sticker": sticker.hex(),
+        "parcel": parcel.hex(),
     }
 
 
@@ -113,8 +93,8 @@ def emit(label, value):
 
 
 def main():
-    secret_text = os.environ.get("FLAG", "HOLOGY9{redacted}").encode()
-    for label, value in transcript(secret_text).items():
+    prize = os.environ.get("FLAG", "HOLOGY9{redacted}").encode()
+    for label, value in transcript(prize).items():
         emit(label, value)
 
 

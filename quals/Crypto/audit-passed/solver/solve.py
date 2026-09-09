@@ -5,7 +5,7 @@ from Crypto.Cipher import AES
 from Crypto.Hash import SHA256
 
 
-DOMAIN_TAG = b"dual-shadow-ring-v1"
+STAMP = b"dual-shadow-ring-v1"
 
 
 def parse():
@@ -20,25 +20,25 @@ def parse():
     return values
 
 
-def centered(value, modulus_value):
-    value %= modulus_value
-    if value > modulus_value // 2:
-        value -= modulus_value
+def centered(value, stage):
+    value %= stage
+    if value > stage // 2:
+        value -= stage
     return value
 
 
-def windows(center_value, radius, modulus_value):
-    center_value %= modulus_value
+def windows(center_value, radius, stage):
+    center_value %= stage
     low = center_value - radius
     high = center_value + radius
     if low < 0:
-        return [(0, high), (modulus_value + low, modulus_value - 1)]
-    if high >= modulus_value:
-        return [(low, modulus_value - 1), (0, high - modulus_value)]
+        return [(0, high), (stage + low, stage - 1)]
+    if high >= stage:
+        return [(low, stage - 1), (0, high - stage)]
     return [(low, high)]
 
 
-def refine(ranges, multiplier, target_value, radius, modulus_value):
+def refine(ranges, multiplier, target_value, radius, stage):
     next_ranges = []
 
     for low_secret, high_secret in ranges:
@@ -46,14 +46,14 @@ def refine(ranges, multiplier, target_value, radius, modulus_value):
         high_product = multiplier * high_secret
 
         for low_residue, high_residue in windows(
-            target_value, radius, modulus_value
+            target_value, radius, stage
         ):
-            wrap_low = (low_product - high_residue + modulus_value - 1) // modulus_value
-            wrap_high = (high_product - low_residue) // modulus_value
+            wrap_low = (low_product - high_residue + stage - 1) // stage
+            wrap_high = (high_product - low_residue) // stage
 
             for wrap_count in range(wrap_low, wrap_high + 1):
-                low_number = wrap_count * modulus_value + low_residue
-                high_number = wrap_count * modulus_value + high_residue
+                low_number = wrap_count * stage + low_residue
+                high_number = wrap_count * stage + high_residue
                 refined_low = max(
                     low_secret, (low_number + multiplier - 1) // multiplier
                 )
@@ -71,11 +71,11 @@ def refine(ranges, multiplier, target_value, radius, modulus_value):
     return merged
 
 
-def solve(equations, radius, modulus_value):
-    ranges = [(0, modulus_value - 1)]
+def solve(equations, radius, stage):
+    ranges = [(0, stage - 1)]
     for multiplier, target_value in equations:
         ranges = refine(
-            ranges, multiplier, target_value, radius, modulus_value
+            ranges, multiplier, target_value, radius, stage
         )
         if not ranges:
             raise RuntimeError("all candidates were eliminated")
@@ -87,64 +87,60 @@ def solve(equations, radius, modulus_value):
 
 
 def recover(values):
-    modulus_value = values["modulus_value"]
-    fog_limit = values["fog_limit"]
-    pivot_symbol = values["pivot_symbol"]
-    center_sample = values["center_sample"]
+    stage = values["karaoke"]
+    confetti = values["confetti"]
+    lobby = values["lobby"]
+    receipt = values["receipt"]
 
-    shade_equations = []
-    for power, forward_item, backward_item in zip(
-        values["step_powers"], values["forward_samples"], values["backward_samples"]
+    curtain_rows = []
+    for power, sunny_item, rainy_item in zip(
+        values["playlist"], values["sunny"], values["rainy"]
     ):
         stride = 1 << power
-        target_value = (forward_item + backward_item - 2 * center_sample) % modulus_value
-        shade_equations.append((2 * stride * stride, target_value))
+        target_value = (sunny_item + rainy_item - 2 * receipt) % stage
+        curtain_rows.append((2 * stride * stride, target_value))
 
-    shade_key = solve(shade_equations, 4 * fog_limit, modulus_value)
+    curtain = solve(curtain_rows, 4 * confetti, stage)
 
-    bright_equations = []
-    for power, forward_item, backward_item in zip(
-        values["step_powers"], values["forward_samples"], values["backward_samples"]
+    lamp_rows = []
+    for power, sunny_item, rainy_item in zip(
+        values["playlist"], values["sunny"], values["rainy"]
     ):
         stride = 1 << power
         target_value = (
-            forward_item
-            - backward_item
-            - 4 * pivot_symbol * stride * shade_key
-        ) % modulus_value
-        bright_equations.append((2 * stride, target_value))
+            sunny_item
+            - rainy_item
+            - 4 * lobby * stride * curtain
+        ) % stage
+        lamp_rows.append((2 * stride, target_value))
 
-    bright_key = solve(bright_equations, 2 * fog_limit, modulus_value)
-    return bright_key, shade_key
+    lamp = solve(lamp_rows, 2 * confetti, stage)
+    return lamp, curtain
 
 
-def pack(value, modulus_value):
-    width = (modulus_value.bit_length() + 7) // 8
+def pack(value, stage):
+    width = (stage.bit_length() + 7) // 8
     return value.to_bytes(width, "big")
 
 
-def unseal(values, bright_key, shade_key):
-    modulus_value = values["modulus_value"]
-    material = (
-        pack(bright_key, modulus_value)
-        + pack(shade_key, modulus_value)
-        + DOMAIN_TAG
-    )
-    stream_key = SHA256.new(material).digest()
-    box = AES.new(stream_key, AES.MODE_GCM, nonce=bytes.fromhex(values["nonce"]))
+def unseal(values, lamp, curtain):
+    stage = values["karaoke"]
+    material = pack(lamp, stage) + pack(curtain, stage) + STAMP
+    key = SHA256.new(material).digest()
+    box = AES.new(key, AES.MODE_GCM, nonce=bytes.fromhex(values["ticket"]))
     return box.decrypt_and_verify(
-        bytes.fromhex(values["ciphertext"]),
-        bytes.fromhex(values["tag"]),
+        bytes.fromhex(values["parcel"]),
+        bytes.fromhex(values["sticker"]),
     )
 
 
 def main():
     values = parse()
-    bright_key, shade_key = recover(values)
-    flag = unseal(values, bright_key, shade_key)
+    lamp, curtain = recover(values)
+    flag = unseal(values, lamp, curtain)
 
-    print(f"bright_key = {bright_key}")
-    print(f"shade_key = {shade_key}")
+    print(f"lamp = {lamp}")
+    print(f"curtain = {curtain}")
     print(f"flag = {flag.decode()}")
 
 
