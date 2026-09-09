@@ -1,11 +1,11 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
 
 name: "三棱锁"
-author: "jersyy"
+author: "Jersyy"
 
 # support markdown & html tags
 description: |
-  Some tasteful handmade RSA, because apparently audited key generation was too mainstream. You get the source and the output. Surely the modulus is just sitting there being normal.
+  handmade RSA is cool!
 
 type: "StaticAttachment" # don't touch this value
 value: 1000 # don't touch this value
