@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "三棱锁"
+author: "jersyy"
+
+# support markdown & html tags
+description: |
+  Some tasteful handmade RSA, because apparently audited key generation was too mainstream. You get the source and the output. Surely the modulus is just sitting there being normal.
+
+type: "StaticAttachment" # don't touch this value
+value: 1000 # don't touch this value
+
+flags:
+  - "HOLOGY9{6a13f7376abb4f93cbf42fd8e2f1dd9c}"
+
+provide: "./dist"

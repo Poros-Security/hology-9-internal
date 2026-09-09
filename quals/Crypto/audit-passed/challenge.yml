@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "Audit Passed"
+author: "jersyy"
+
+# support markdown & html tags
+description: |
+  Enterprise crypto. Audited by vibes. Shipped by Friday.
+
+type: "StaticAttachment" # don't touch this value
+value: 1000 # don't touch this value
+
+flags:
+  - "HOLOGY9{0c4a758aa9987dc6b12ed6f0e6fb9a14}"
+
+provide: "./dist"
