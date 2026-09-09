@@ -1,0 +1,13 @@
+name: "Receipt"
+author: "Jersyy"
+
+description: |
+  Karaoke night got audited. Keep the receipt.
+
+type: "StaticAttachment"
+value: 1000
+
+flags:
+  - "HOLOGY9{0c4a758aa9987dc6b12ed6f0e6fb9a14}"
+
+provide: "./dist"

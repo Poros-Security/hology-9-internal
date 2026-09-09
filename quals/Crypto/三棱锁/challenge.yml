@@ -1,0 +1,13 @@
+name: "三棱锁"
+author: "Jersyy"
+
+description: |
+  handmade RSA is cool!
+
+type: "StaticAttachment"
+value: 1000
+
+flags:
+  - "HOLOGY9{6a13f7376abb4f93cbf42fd8e2f1dd9c}"
+
+provide: "./dist"
