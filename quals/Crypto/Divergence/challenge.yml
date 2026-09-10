@@ -1,0 +1,11 @@
+name: Divergence
+author: Hology9
+description: |
+  Something diverged while loading a language model.
+  Can you recover the missing material and finish the message?
+type: StaticAttachment
+value: 500
+flags:
+  - HOLOGY9{d1vergence_p1ckl3_rce}
+provide:
+  - ./dist

@@ -1,0 +1,6 @@
+=== DIVERGENCE ===
+nltk = 3.9.4
+nonce = RElWRVJHRU5DRQ==
+ciphertext = Hi4ngIj6BFtxfB59F9p2SJXXRt02RyFP5ixtO580
+material = REDACTED
+model = model.pkl
