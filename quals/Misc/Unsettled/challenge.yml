@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "Unsettled"
+author: "Ariq Ardian"
+
+description: |
+  The books are closed, the rewards are paid, and the balance looks right. Or does it?
+
+type: "DynamicContainer"
+value: 1000
+
+container:
+  flagTemplate: "HOLOGY9{https://www.facebook.com/share/p/1BZZtHEry6/?_[TEAM_HASH]}"
+  containerImage: "{{.slug}}:latest"
+  memoryLimit: 1024
+  cpuCount: 1
+  storageLimit: 1024
+  exposePort: 5000
+  enableTrafficCapture: true
+
+provide: "./dist"
+
+scripts:
+  start: cd src && docker compose -p {{.slug}} up --build -d
+  stop: cd src && docker compose -p {{.slug}} down --volumes
+  restart:
+    interval: 15m
+    execute: cd src && docker compose -p {{.slug}} restart

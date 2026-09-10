@@ -1,0 +1,9 @@
+[profile.default]
+src = "contracts"
+test = "test"
+out = "out"
+solc = "0.8.24"
+auto_detect_solc = false
+evm_version = "shanghai"
+bytecode_hash = "none"
+cbor_metadata = false
