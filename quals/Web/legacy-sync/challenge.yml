@@ -22,5 +22,5 @@ container:
 
 provide: "./dist"
 scripts:
-    start: cd challenge && docker compose up -d --build
+    start: cd src && docker build -t {{.slug}} .
 
