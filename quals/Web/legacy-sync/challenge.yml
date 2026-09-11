@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
 
 name: "Legacy Sync"
-author: "Author"
+author: "RFB"
 
 # support markdown & html tags
 description: |
