@@ -1,0 +1,38 @@
+<%- include('_top', { title: 'Daftar Servis' }) %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <a href="/jobs/new" class="btn btn-primary btn-xs pull-right"><span class="glyphicon glyphicon-plus"></span> Servis Baru</a>
+    <h3 class="panel-title">Daftar Servis</h3>
+  </div>
+  <% if (!jobs.length) { %>
+  <div class="panel-body">Belum ada servis. <a href="/jobs/new">Daftarkan servis pertama</a>.</div>
+  <% } else { %>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Plat</th>
+        <th>Motor</th>
+        <th>Keluhan</th>
+        <th>Status</th>
+        <th>Tgl Masuk</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% jobs.forEach(j => { %>
+      <tr>
+        <td><%= j.id %></td>
+        <td class="text-nowrap"><%= j.plate %></td>
+        <td><%= j.model %></td>
+        <td><%= j.complaint %></td>
+        <td><span class="label label-<%= badges[j.status] %>"><%= j.status %></span></td>
+        <td class="text-nowrap"><%= j.created_at %></td>
+        <td class="text-right"><a href="/jobs/<%= j.id %>" class="btn btn-default btn-xs">Detail</a></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <% } %>
+</div>
+<%- include('_bottom') %>

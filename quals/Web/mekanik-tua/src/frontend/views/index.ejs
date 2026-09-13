@@ -1,0 +1,74 @@
+<%- include('_top', { title: 'Beranda' }) %>
+</div>
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <h1>Bengkel Mekanik Tua</h1>
+        <p>Bengkel motor di Tlogomas, Malang. Buka sejak 1987.</p>
+        <p>
+          <a class="btn btn-primary btn-lg" href="/login">Cek Status Servis</a>
+          <a class="btn btn-default btn-lg" href="/register">Daftar Akun</a>
+        </p>
+      </div>
+      <div class="col-md-5">
+        <img src="/img/bengkel.jpg" class="img-responsive img-rounded" alt="Mekanik sedang servis motor">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+<div class="row">
+  <div class="col-md-8">
+    <h3>Daftar Harga Jasa</h3>
+    <table class="table table-bordered table-striped">
+      <thead><tr><th>Jasa</th><th>Bebek / Matic</th><th>Sport</th></tr></thead>
+      <tbody>
+        <tr><td>Servis ringan</td><td>Rp 35.000</td><td>Rp 50.000</td></tr>
+        <tr><td>Servis lengkap / tune up</td><td>Rp 60.000</td><td>Rp 90.000</td></tr>
+        <tr><td>Ganti oli</td><td>Rp 10.000</td><td>Rp 15.000</td></tr>
+        <tr><td>Servis CVT</td><td>Rp 40.000</td><td>-</td></tr>
+        <tr><td>Ganti kampas rem</td><td>Rp 20.000</td><td>Rp 25.000</td></tr>
+        <tr><td>Kelistrikan</td><td>Rp 30.000</td><td>Rp 40.000</td></tr>
+        <tr><td>Ganti ban (jasa)</td><td>Rp 15.000</td><td>Rp 20.000</td></tr>
+        <tr><td>Turun mesin</td><td colspan="2">Tergantung kerusakan</td></tr>
+      </tbody>
+    </table>
+    <h3>Foto Bengkel</h3>
+    <div class="row">
+      <div class="col-sm-4"><a href="/img/depan.jpg" class="thumbnail foto" style="background-image:url(/img/depan.jpg)" title="Tampak depan bengkel"></a></div>
+      <div class="col-sm-4"><a href="/img/mekanik.jpg" class="thumbnail foto" style="background-image:url(/img/mekanik.jpg)" title="Mekanik sedang bekerja"></a></div>
+      <div class="col-sm-4"><a href="/img/sparepart.jpg" class="thumbnail foto" style="background-image:url(/img/sparepart.jpg)" title="Etalase sparepart"></a></div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">Jam Buka</div>
+      <table class="table table-condensed">
+        <tr><td>Senin - Jumat</td><td class="text-right">08.00 - 17.00</td></tr>
+        <tr><td>Sabtu</td><td class="text-right">08.00 - 15.00</td></tr>
+        <tr><td>Minggu &amp; libur nasional</td><td class="text-right">Tutup</td></tr>
+      </table>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">Alamat &amp; Kontak</div>
+      <table class="table table-condensed">
+        <tr><td>Alamat</td><td>Jl. Raya Tlogomas No. 88, Malang</td></tr>
+        <tr><td>Telp</td><td>(0341) 551-234</td></tr>
+        <tr><td>WA</td><td>0812-3456-7890</td></tr>
+      </table>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">Cek Status Servis</div>
+      <div class="panel-body">
+        <ol>
+          <li>Daftar akun pakai nomor HP yang dicatat mekanik.</li>
+          <li>Login, buka Daftar Servis.</li>
+          <li>Status <span class="label label-success">selesai</span> berarti motor bisa diambil.</li>
+        </ol>
+        <a href="/login" class="btn btn-default btn-block">Login</a>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('_bottom') %>

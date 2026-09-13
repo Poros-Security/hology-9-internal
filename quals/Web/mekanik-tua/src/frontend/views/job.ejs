@@ -1,0 +1,49 @@
+<%- include('_top', { title: 'Servis #' + job.id }) %>
+<ol class="breadcrumb">
+  <li><a href="/jobs">Daftar Servis</a></li>
+  <li class="active">Servis #<%= job.id %></li>
+</ol>
+<div class="row">
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h3 class="panel-title">Servis #<%= job.id %> &middot; <%= job.plate %></h3></div>
+      <table class="table">
+        <tr><th class="col-sm-3">Motor</th><td><%= job.model %> (<%= job.year %>)</td></tr>
+        <tr><th>Plat</th><td><%= job.plate %></td></tr>
+        <tr><th>Keluhan</th><td><%= job.complaint %></td></tr>
+      </table>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading"><h3 class="panel-title">Catatan Mekanik</h3></div>
+      <% if (!notes.length) { %>
+      <div class="panel-body text-muted">Belum ada catatan.</div>
+      <% } else { %>
+      <table class="table table-striped">
+        <thead><tr><th>Waktu</th><th>Mekanik</th><th>Catatan</th></tr></thead>
+        <tbody>
+          <% notes.forEach(n => { %>
+          <tr>
+            <td class="text-nowrap"><%= n.created_at %></td>
+            <td class="text-nowrap"><%= n.author %></td>
+            <td><%= n.body %></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <% } %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h3 class="panel-title">Status</h3></div>
+      <div class="panel-body text-center">
+        <span class="label label-<%= badges[job.status] %>" style="font-size:16px"><%= job.status %></span>
+      </div>
+      <table class="table table-condensed">
+        <tr><td>Masuk</td><td class="text-right"><%= job.created_at %></td></tr>
+        <tr><td>Update terakhir</td><td class="text-right"><%= job.updated_at %></td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+<%- include('_bottom') %>

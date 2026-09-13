@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "Mekanik Tua"
+author: "yesver"
+
+# support markdown & html tags
+description: |
+  Bengkel Mekanik Tua has been fixing motorbikes in Malang since 1987. Last year they finally got a web app, so customers would stop phoning to ask whether their bike was ready.
+
+type: "DynamicContainer" # don't touch this value
+value: 1000 # don't touch this value
+
+container:
+    flagTemplate: "HOLOGY9{mekanik_tua_667d023b29[TEAM_HASH]18f5493820}"
+    containerImage: "{{.slug}}:latest"
+    memoryLimit: 512
+    cpuCount: 2
+    storageLimit: 512
+    exposePort: 80
+    enableTrafficCapture: false
+
+provide: "./dist"
+scripts:
+    start: cd src && docker build -t {{.slug}} .

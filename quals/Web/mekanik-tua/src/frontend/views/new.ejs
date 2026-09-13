@@ -1,0 +1,60 @@
+<%- include('_top', { title: 'Servis Baru' }) %>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <ol class="breadcrumb">
+      <li><a href="/jobs">Daftar Servis</a></li>
+      <li class="active">Servis Baru</li>
+    </ol>
+    <div class="panel panel-default">
+      <div class="panel-heading"><h3 class="panel-title">Daftarkan Servis Baru</h3></div>
+      <div class="panel-body">
+        <% if (error) { %><div class="alert alert-danger"><%= error %></div><% } %>
+        <form method="post" action="/jobs" class="form-horizontal">
+          <div class="form-group">
+            <label class="col-sm-3 control-label" for="vehicle_id">Motor</label>
+            <div class="col-sm-9">
+              <select class="form-control" id="vehicle_id" name="vehicle_id">
+                <option value="">Motor baru</option>
+                <% vehicles.forEach(v => { %>
+                <option value="<%= v.id %>"><%= v.plate %> - <%= v.model %></option>
+                <% }) %>
+              </select>
+            </div>
+          </div>
+          <div class="well well-sm" id="motor-baru">
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="plate">Plat Nomor</label>
+              <div class="col-sm-5"><input type="text" class="form-control" id="plate" name="plate" placeholder="N 1234 ABC"></div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="model">Model</label>
+              <div class="col-sm-5"><input type="text" class="form-control" id="model" name="model" placeholder="Honda Beat"></div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="year">Tahun</label>
+              <div class="col-sm-3"><input type="number" class="form-control" id="year" name="year" min="1970" max="2030"></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label" for="complaint">Keluhan</label>
+            <div class="col-sm-9">
+              <textarea class="form-control" id="complaint" name="complaint" rows="5" required></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+              <button type="submit" class="btn btn-primary">Kirim</button>
+              <a href="/jobs" class="btn btn-default">Batal</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+var sel = document.getElementById('vehicle_id'), well = document.getElementById('motor-baru')
+sel.onchange = function () { well.style.display = sel.value ? 'none' : '' }
+sel.onchange()
+</script>
+<%- include('_bottom') %>
