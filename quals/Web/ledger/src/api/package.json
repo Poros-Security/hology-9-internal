@@ -1,0 +1,17 @@
+{
+  "name": "ledger",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@fastify/cookie": "11.0.2",
+    "@fastify/middie": "9.3.3",
+    "@fastify/multipart": "9.2.1",
+    "@fastify/static": "8.2.0",
+    "better-sqlite3": "11.10.0",
+    "convict": "6.2.4",
+    "fastify": "5.12.4"
+  }
+}

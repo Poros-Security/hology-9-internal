@@ -1,0 +1,6 @@
+src/api/node_modules
+src/ui/node_modules
+src/ui/dist
+src/api/public
+*.db
+.DS_Store

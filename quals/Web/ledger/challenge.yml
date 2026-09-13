@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "Ledger"
+author: "yesver"
+
+# support markdown & html tags
+description: |
+  Ledger is the invoice approval tool at PT Nusantara Cipta Mandiri. You have an employee account: `rina.w` / `ledger2026`
+
+type: "DynamicContainer" # don't touch this value
+value: 1000 # don't touch this value
+
+container:
+    flagTemplate: "HOLOGY9{ledger_e792d8da3b[TEAM_HASH]385b734c7a}"
+    containerImage: "{{.slug}}:latest"
+    memoryLimit: 512
+    cpuCount: 2
+    storageLimit: 512
+    exposePort: 3000
+    enableTrafficCapture: false
+
+scripts:
+    start: cd src && docker build -t {{.slug}} .
