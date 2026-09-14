@@ -28,4 +28,4 @@ container:
   enableTrafficCapture: true
 
 scripts:
-  start: cd src && docker compose up -d --build
+  start: cd src && docker build -t {{.slug}} .
