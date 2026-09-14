@@ -32,6 +32,7 @@ WORKDIR /var/www/html
 
 # Install CodeIgniter 4.7.3 (VULNERABLE — fixed in 4.7.4)
 RUN composer config -g process-timeout 1800 \
+    && composer config -g policy.advisories.block false \
     && for i in 1 2 3 4 5; do \
         if composer create-project codeigniter4/appstarter:4.7.3 . --no-interaction --no-dev \
             && composer require codeigniter4/framework:4.7.3 --no-interaction; then \
