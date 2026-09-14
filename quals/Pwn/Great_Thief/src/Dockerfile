@@ -8,6 +8,7 @@ RUN mkdir /home/ctf/chall/src
 
 COPY ./chall.c /home/ctf/chall/src
 COPY ./run.sh /home/ctf/chall/src
+COPY ./flag.txt /home/ctf/chall/src
 
 WORKDIR /home/ctf/chall/src
 
