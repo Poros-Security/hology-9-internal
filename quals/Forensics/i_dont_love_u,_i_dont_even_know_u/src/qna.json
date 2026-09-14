@@ -1,0 +1,62 @@
+[
+   {
+    "num": 1,
+    "question": "What's the current name of the encrypted file?",
+    "format": "-",
+    "answer": "$RQED0TU.enc"
+  },
+  {
+    "num": 2,
+    "question": "What's the algorithm used to encrypt the file?",
+    "format": "XXX-XXX",
+    "answer": "AES-CBC"
+  },
+  {
+    "num": 3,
+    "question": "When was the suspicious activity happened? (in UTC)",
+    "format": "DD-MM-YYYY_hh:mm:ss",
+    "answer": "11-9-2026_05:47:42"
+  },
+  {
+    "num": 4,
+    "question": "What's the suspicious script's target directory?",
+    "format": "C:\\...\\...",
+    "answer": "C:\\Users\\MJ\\Documents\\letters"
+  },
+  {
+    "num": 5,
+    "question": "What file extension was targeted by the suspicious script?",
+    "format": ".xxx",
+    "answer": ".txt"
+  },
+  {
+    "num": 6,
+    "question": "What Windows registry config was used by the suspicious script?",
+    "format": "(exact value name)",
+    "answer": "MachineGuid"
+  },
+  {
+    "num": 7,
+    "question": "What's the value of that registry config?",
+    "format": "-",
+    "answer": "75f5f2a5-e21d-4ff0-affe-a5ee925aad80"
+  },
+  {
+    "num": 8,
+    "question": "What's the string used for the key?",
+    "format": "-",
+    "answer": "peter_parker"
+  },
+  {
+    "num": 9,
+    "question": "What is the orginal path of the deleted file?",
+    "format": "C:\\...\\...",
+    "answer": "C:\\Users\\MJ\\Documents\\letters\\first_letter.txt"
+  },
+  {
+    "num": 10,
+    "question": "What secret message was recovered from the encrypted artifact?",
+    "format": "(all uppercase, no spaces)",
+    "answer": "IALWAYSLOVEU"
+  }
+]
