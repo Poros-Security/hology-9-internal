@@ -10,9 +10,9 @@ from threading import Lock
 import socketserver
 
 HOST = os.getenv("CTF_HOST", "0.0.0.0")
-PORT = int(os.getenv("CTF_PORT", "6113"))
+PORT = int(os.getenv("CTF_PORT", "2234"))
 
-_timeout_env = os.getenv("CTF_TIMEOUT", "3600").strip()
+_timeout_env = os.getenv("CTF_TIMEOUT", "60").strip()
 TIMEOUT = float(_timeout_env) if _timeout_env else None
 
 RATE_LIMIT = int(os.getenv("CTF_RATE_LIMIT", "10"))

@@ -3,9 +3,9 @@
 name: "i dont love you, i dont even know you"
 author: "bluellz"
 
+# support markdown & html tags
 description: |
-
- A brand new day.
+  A brand new day.
 
   <b> PASSWORD : izin_compe </b>
 
@@ -24,8 +24,8 @@ container:
   memoryLimit: 1024
   cpuCount: 2
   storageLimit: 1024
-  exposePort: 6113
-  enableTrafficCapture: false
+  exposePort: 2234
+  enableTrafficCapture: true
 
 scripts:
-  start: cd src && docker build -t {{.slug}} .
+  start: cd src && docker compose up -d --build
