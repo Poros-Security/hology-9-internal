@@ -3,5 +3,4 @@ WORKDIR /app
 RUN groupadd -r ctf && useradd -r -g ctf -d /app -s /usr/sbin/nologin ctf
 COPY --chown=ctf:ctf server.py qna.json ./
 USER ctf
-EXPOSE 6113
 CMD ["python3", "server.py"]
