@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "i dont love you, i dont even know you"
+author: "bluellz"
+
+description: |
+
+ A brand new day.
+
+  <b> PASSWORD : izin_compe </b>
+
+  SHA-256 : 3BE948F2810C15FE631F4204A3BE54B39CCCEFC7EE73D4D7A12392AB0C929E0B 
+
+  Link : https://drive.google.com/file/d/1zy1pkn1CZWGXJCHq7Imc07cWcBbzuc0M/view?usp=sharing
+
+  Alternate Link : https://drive.google.com/file/d/19pH4TozwQkPit0gzf9BlzNF7Ctd-1GII/view?usp=sharing
+
+type: "StaticAttachment"
+value: 1000
+
+flags:
+  - "HOLOGY9{do_u_think_mj_will_remember_him?}"
