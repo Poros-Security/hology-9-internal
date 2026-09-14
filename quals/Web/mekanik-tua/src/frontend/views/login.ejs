@@ -1,0 +1,24 @@
+<%- include('_top', { title: 'Login' }) %>
+<div class="row">
+  <div class="col-sm-4 col-sm-offset-4">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h3 class="panel-title">Login</h3></div>
+      <div class="panel-body">
+        <% if (error) { %><div class="alert alert-danger"><%= error %></div><% } %>
+        <form method="post" action="/login">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" required autofocus>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+      </div>
+      <div class="panel-footer small">Belum punya akun? <a href="/register">Daftar di sini</a></div>
+    </div>
+  </div>
+</div>
+<%- include('_bottom') %>

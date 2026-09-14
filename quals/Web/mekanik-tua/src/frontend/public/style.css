@@ -1,0 +1,15 @@
+body { display: flex; flex-direction: column; min-height: 100vh; background: #f5f5f5; }
+body > .container > :first-child { margin-top: 20px; }
+body > .container:last-of-type { margin-bottom: 40px; }
+.navbar-static-top { margin-bottom: 0; }
+.navbar-brand { font-weight: bold; }
+.jumbotron { margin-bottom: 10px; background: #fff; border-bottom: 1px solid #e5e5e5; }
+.jumbotron h1 { margin-top: 0; }
+.col-md-8 > h3:first-child { margin-top: 0; }
+.panel, .well, .breadcrumb { background: #fff; }
+.panel ol { margin-bottom: 15px; padding-left: 20px; }
+.well .form-group:last-child { margin-bottom: 0; }
+.table td, .table th { vertical-align: middle !important; }
+.foto { height: 160px; background-size: cover; background-position: center; }
+footer { margin-top: auto; padding: 20px 0; background: #f5f5f5; border-top: 1px solid #e5e5e5; }
+footer p { margin: 0; }

@@ -1,0 +1,50 @@
+<%- include('_top', { title: 'Profil' }) %>
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h3 class="panel-title">Akun</h3></div>
+      <table class="table">
+        <tr><th class="col-sm-4">Username</th><td><%= user.username %></td></tr>
+        <tr><th>No. HP</th><td><%= user.phone %></td></tr>
+        <tr><th>Terdaftar</th><td><%= user.created_at %></td></tr>
+      </table>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading"><h3 class="panel-title">Motor Terdaftar</h3></div>
+      <% if (!vehicles.length) { %>
+      <div class="panel-body text-muted">Belum ada. Motor ditambahkan waktu <a href="/jobs/new">daftar servis</a>.</div>
+      <% } else { %>
+      <table class="table table-striped">
+        <thead><tr><th>Plat</th><th>Model</th><th>Tahun</th></tr></thead>
+        <tbody>
+          <% vehicles.forEach(v => { %>
+          <tr><td><%= v.plate %></td><td><%= v.model %></td><td><%= v.year %></td></tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <% } %>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h3 class="panel-title">Ganti Password</h3></div>
+      <div class="panel-body">
+        <% if (msg) { %><div class="alert alert-<%= msg.type %>"><%= msg.text %></div><% } %>
+        <form method="post" action="/profile/password" class="form-horizontal">
+          <div class="form-group">
+            <label class="col-sm-4 control-label" for="current">Password Lama</label>
+            <div class="col-sm-8"><input type="password" class="form-control" id="current" name="current" required></div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label" for="password">Password Baru</label>
+            <div class="col-sm-8"><input type="password" class="form-control" id="password" name="password" required minlength="8"></div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-8"><button type="submit" class="btn btn-primary">Simpan</button></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('_bottom') %>
