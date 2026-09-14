@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "Jarvis, Throw the match and blame supports"
+author: "ghoti"
+
+description: |
+  Customer's house got broken into last week. Legal is now VERY interested in whether the intruder used a certain thing that a certain someone warned about a certain amount of times.
+
+  <b> PASSWORD : hololive_apanya_hology_bang </b>
+
+  SHA-256 : 3da0e8ef55704a31baad2c00bcbc921302c866addd46fafd1cadccb0a093ab3c
+
+  Link : https://drive.google.com/file/d/1NUVpC0VbkRuqImj7EanYKnRC_8d-JC6S/view?usp=sharing
+
+  Alternate Link : https://drive.google.com/file/d/1i7dO1mAzMvhE0zmNq37FxnLZYt-tNuUs/view?usp=sharing
+
+type: "StaticAttachment"
+value: 1000
+
+flags:
+  - "HOLOGY9{j4rvi5_d31373_7h3_b0dyc4m_f007493_AtSYwAZ25A1z0a8E}"
