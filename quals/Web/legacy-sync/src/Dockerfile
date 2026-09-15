@@ -5,15 +5,15 @@ WORKDIR /app
 COPY package.json ./
 COPY package-lock.json ./
 COPY vite.config.js ./
-COPY index.html ./
 COPY src ./src
+COPY dist ./dist
 
-RUN npm install --quiet
-RUN npm run build
+RUN npm install --omit=dev --quiet
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
+ENV PORT=6767
 EXPOSE 6767
 
 ENTRYPOINT ["/entrypoint.sh"]
