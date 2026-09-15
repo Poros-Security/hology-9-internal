@@ -1,10 +1,10 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
 
 name: "SuiDrone"
-author: "Endra Anugrah"
+author: "Suisayy"
 
 description: |
-  Bro I lost my controller and now my drone just move in a predefined location, I need you to help me get it to the center.
+  Bro I lost my controller and now my drone just move in predefined locations. I need you to help me get it to the center.
 
   Start your instance from GZCTF, then download the Linux client and run it against the instance address:
 
