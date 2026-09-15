@@ -6,6 +6,10 @@ import time
 from pymavlink import mavutil
 
 
+class DroneRestarted(Exception):
+    pass
+
+
 def load_points(path):
     with open(path, encoding="utf-8-sig") as file:
         return [tuple(map(float, row)) for row in csv.reader(
@@ -33,12 +37,18 @@ def main():
         drone.mav.heartbeat_send(6, 8, 0, 0, 4)
     system, component = drone.target_system, drone.target_component
 
+    boot_time = None
+
     def position():
+        nonlocal boot_time
         p = drone.recv_match(type="LOCAL_POSITION_NED", blocking=True, timeout=3)
         if p is None:
             raise SystemExit("Telemetry stopped; check the game's status.")
         while (newer := drone.recv_match(type="LOCAL_POSITION_NED", blocking=False)) is not None:
             p = newer
+        if boot_time is not None and p.time_boot_ms < boot_time:
+            raise DroneRestarted
+        boot_time = p.time_boot_ms
         return (p.x, p.y, p.z), math.hypot(p.vx, p.vy, p.vz)
 
     def send(point):
@@ -54,17 +64,26 @@ def main():
                 return
         raise SystemExit("Point not reached. Check the route for walls.")
 
-    try:
+    def begin():
         drone.mav.command_long_send(system, component, 400, 0, 1, 0, 0, 0, 0, 0, 0)
         drone.mav.set_mode_send(system, 1, 6)  # OFFBOARD
-        fly(position()[0])  # Stop patrol first.
-        for index, point in enumerate(points, 1):
-            print(f"Point {index}/{len(points)}: {point}", flush=True)
-            for target in subdivide(position()[0], point):
-                fly(target)
-        for _ in range(30):  # Keep sending the final point for six seconds.
-            send(points[-1])
-            time.sleep(.2)
+
+    try:
+        while True:
+            try:
+                begin()
+                fly(position()[0])  # Stop patrol first.
+                for index, point in enumerate(points, 1):
+                    print(f"Point {index}/{len(points)}: {point}", flush=True)
+                    for target in subdivide(position()[0], point):
+                        fly(target)
+                for _ in range(30):  # Keep sending the final point for six seconds.
+                    send(points[-1])
+                    time.sleep(.2)
+                break
+            except DroneRestarted:
+                print("Drone reset detected; restarting route.", flush=True)
+                boot_time = None
         print("Done. Check SuiDrone for the completion result.")
     finally:
         drone.mav.set_mode_send(system, 1, 4)  # HOLD, including on Ctrl+C.
