@@ -16,7 +16,7 @@ value: 1000
 provide: "./dist"
 
 container:
-  flagTemplate: "HOLOGY9{suidrone_[TEAM_HASH]}"
+  flagTemplate: "HOLOGY9{M4Vl1nk_1nJ3ct10n_4tt4cK_S0rry_1f_1t5_4_b1T_G1MM1cKy_[TEAM_HASH]}"
   containerImage: "{{.slug}}:latest"
   memoryLimit: 768
   cpuCount: 1
