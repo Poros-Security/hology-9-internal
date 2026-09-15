@@ -44,7 +44,7 @@ app.use((req, res) => {
   res.status(404).json({ error: 'Not found' });
 });
 
-const PORT = Number(process.env.PORT || 3000);
+const PORT = Number(process.env.PORT || 6767);
 
 if (require.main === module) {
   app.listen(PORT, '0.0.0.0', () => {
