@@ -1,0 +1,14 @@
+services:
+  verifier:
+    build: .
+    restart: on-failure
+    init: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    pids_limit: 64
+    mem_limit: 768m
+    cpus: 1
+    ports:
+      - "${PUBLIC_PORT:-8787}:8787"
+    environment:
+      GZCTF_FLAG: ${GZCTF_FLAG:-HOLOGY9{suidrone_local_dynamic_test}}

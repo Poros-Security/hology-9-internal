@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "SuiDrone"
+author: "Endra Anugrah"
+
+description: |
+  Bro I lost my controller and now my drone just move in a predefined location, I need you to help me get it to the center.
+
+  Start your instance from GZCTF, then download the Linux client and run it against the instance address:
+
+  `./suidrone --server http://INSTANCE_IP:PORT --allow-insecure-http`
+
+type: "DynamicContainer"
+value: 1000
+
+provide: "./dist"
+
+container:
+  flagTemplate: "HOLOGY9{suidrone_[TEAM_HASH]}"
+  containerImage: "{{.slug}}:latest"
+  memoryLimit: 768
+  cpuCount: 1
+  storageLimit: 512
+  exposePort: 8787
+  enableTrafficCapture: false
+
+scripts:
+  start: cd src && docker build -t {{.slug}} .

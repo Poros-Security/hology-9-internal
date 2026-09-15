@@ -1,0 +1,20 @@
+[workspace]
+members = ["crates/sim", "crates/completion"]
+resolver = "2"
+
+[workspace.package]
+version = "0.8.0"
+edition = "2024"
+license = "MIT"
+
+[workspace.dependencies]
+suidrone-sim = { path = "crates/sim" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+glam = { version = "0.30", features = ["serde"] }
+base64 = "0.22"
+sha2 = "0.10"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
