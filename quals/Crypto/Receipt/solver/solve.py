@@ -1,5 +1,6 @@
 from pathlib import Path
 import ast
+import sys
 
 from Crypto.Cipher import AES
 from Crypto.Hash import SHA256
@@ -8,8 +9,11 @@ from Crypto.Hash import SHA256
 STAMP = b"dual-shadow-ring-v1"
 
 
-def parse():
-    output_path = Path(__file__).resolve().parents[1] / "dist" / "output.txt"
+def parse(output_path=None):
+    if output_path is None:
+        output_path = Path(__file__).resolve().parents[1] / "public" / "output.txt"
+    else:
+        output_path = Path(output_path)
     values = {}
     for raw_line in output_path.read_text().splitlines():
         line = raw_line.strip()
@@ -135,7 +139,7 @@ def unseal(values, lamp, curtain):
 
 
 def main():
-    values = parse()
+    values = parse(sys.argv[1] if len(sys.argv) > 1 else None)
     lamp, curtain = recover(values)
     flag = unseal(values, lamp, curtain)
 

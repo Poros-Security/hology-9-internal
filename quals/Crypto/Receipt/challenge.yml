@@ -4,10 +4,19 @@ author: "Jersyy"
 description: |
   Karaoke night got audited. Keep the receipt.
 
-type: "StaticAttachment"
+type: "DynamicContainer"
 value: 1000
 
-flags:
-  - "HOLOGY9{0c4a758aa9987dc6b12ed6f0e6fb9a14}"
+container:
+  flagTemplate: "HOLOGY9{m4k4s1h_ud4h_c0b41n_ch4ll_s4y4_g4s_subm1t_[TEAM_HASH]}"
+  containerImage: "{{.slug}}:latest"
+  memoryLimit: 512
+  cpuCount: 1
+  storageLimit: 512
+  exposePort: 8000
+  enableTrafficCapture: false
 
 provide: "./dist"
+
+scripts:
+  start: cd src && docker build -t {{.slug}} .

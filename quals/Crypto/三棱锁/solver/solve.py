@@ -1,6 +1,7 @@
 from pathlib import Path
 import math
 import random
+import sys
 
 from Crypto.Cipher import PKCS1_OAEP
 from Crypto.PublicKey import RSA
@@ -13,8 +14,11 @@ class FactorFound(Exception):
         self.divisor = divisor
 
 
-def parse():
-    output_path = Path(__file__).resolve().parents[1] / "dist" / "output.txt"
+def parse(output_path=None):
+    if output_path is None:
+        output_path = Path(__file__).resolve().parents[1] / "public" / "output.txt"
+    else:
+        output_path = Path(output_path)
     values = {}
     for raw_line in output_path.read_text().splitlines():
         line = raw_line.strip()
@@ -111,7 +115,7 @@ def recover(composite, smooth_limit):
 
 
 def main():
-    values = parse()
+    values = parse(sys.argv[1] if len(sys.argv) > 1 else None)
     composite = values["teapot"]
     button = values["button"]
     fortune = values["fortune"]
