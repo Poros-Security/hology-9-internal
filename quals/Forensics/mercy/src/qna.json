@@ -1,86 +1,242 @@
 [
-   {
+  {
     "num": 1,
-    "question": "Dengan aplikasi apa TA dan victim berkomunikasi?",
-    "format": "Brone",
-    "answer": "Ultraviewer"
+    "question": "What application did the threat actor (TA) and the victim use to communicate?",
+    "format": "ApplicationName",
+    "answer": "UltraViewer"
   },
   {
     "num": 2,
-    "question": "Kapan mereka pertama kali terhubung?",
-    "format": "placeholder",
-    "answer": "-"
+    "question": "When did they first establish a connection?",
+    "format": "YYYY-MM-DD HH:MM:SS UTC",
+    "answer": "2026-09-17 03:18:42 UTC"
   },
   {
     "num": 3,
-    "question": "Apa session ID dari TA?",
-    "format": "placeholder",
-    "answer": "-"
+    "question": "What was the TA's session ID?",
+    "format": "SessionID",
+    "answer": "23547568"
   },
   {
     "num": 4,
-    "question": "Apa session ID dari victim?",
-    "format": "placeholder",
-    "answer": "-"
+    "question": "What was the victim's session ID?",
+    "format": "SessionID",
+    "answer": "132232897"
   },
   {
     "num": 5,
-    "question": "Apa hostname TA?",
-    "format": "placeholder",
-    "answer": "-"
+    "question": "What was the TA's hostname?",
+    "format": "Hostname",
+    "answer": "BYUDA"
   },
   {
     "num": 6,
-    "question": "Apa hostname victim?",
-    "format": "placeholder",
-    "answer": "-"
+    "question": "What was the victim's hostname?",
+    "format": "Hostname",
+    "answer": "DESKTOP-2BUA8Q6"
   },
   {
     "num": 7,
-    "question": "Apa alamat IP dari TA?",
-    "format": "placeholder",
-    "answer": "-"
+    "question": "What was the TA's IP address?",
+    "format": "IPv4Address",
+    "answer": "157.85.221.74"
   },
   {
     "num": 8,
-    "question": "Berapa lama mereka terhubung?",
-    "format": "placeholder",
-    "answer": "-"
+    "question": "How long did their first session last?",
+    "format": "MM:SS",
+    "answer": "15:01"
   },
   {
     "num": 9,
-    "question": "Kapan TA pertama kali mengirim pesan?",
-    "format": "placeholder",
-    "answer": "-"
+    "question": "When did the TA send the first message?",
+    "format": "YYYY-MM-DD HH:MM:SS UTC",
+    "answer": "2026-09-17 08:20:43 UTC"
   },
   {
     "num": 10,
-    "question": "TA mengirim file untuk testing, apa nama filenya?",
-    "format": "placeholder",
-    "answer": "-"
+    "question": "The TA sent a file for testing. What was the full path of the received file?",
+    "format": "FullPath",
+    "answer": "C:\\Users\\akira\\Pictures\\oor.jpg"
   },
   {
     "num": 11,
-    "question": "File tersebut terdeteksi sebagai ancaman, apa aplikasi yang mendeteksinya?",
-    "format": "placeholder",
-    "answer": "-"
+    "question": "The file was detected as a threat. Which application detected it?",
+    "format": "ApplicationName",
+    "answer": "Bitdefender"
   },
   {
     "num": 12,
-    "question": "Bitdefender mengklasifikasikan file testing tersebut sebagai apa?",
-    "format": "placeholder",
-    "answer": "-"
+    "question": "What was the threat name assigned to the file?",
+    "format": "ThreatName",
+    "answer": "Dump:Generic.ShellCode.Donut.Marte.4.FFFFFFFE"
   },
   {
     "num": 13,
-    "question": "Apa marker yang digunakan untuk menyembunyikan shellcode?",
-    "format": "placeholder",
-    "answer": "-"
+    "question": "When was the file quarantined?",
+    "format": "YYYY-MM-DD HH:MM:SS UTC",
+    "answer": "2026-09-17 08:22:53 UTC"
   },
   {
     "num": 14,
-    "question": "SHA256 dari decrypted shellcode?",
-    "format": "placeholder",
-    "answer": "-"
+    "question": "What was the SHA-256 hash of the file?",
+    "format": "SHA256",
+    "answer": "ad1fe3388792904a376a2049571f237464cd758b3d47f6d65a467dc590075753"
+  },
+  {
+    "num": 15,
+    "question": "Afterward, the TA disabled the feature that was blocking the file. What was the feature name and its status?",
+    "format": "FeatureName,Status",
+    "answer": "Bitdefender Antivirus,SECURITY_PRODUCT_STATE_SNOOZED"
+  },
+  {
+    "num": 16,
+    "question": "When was the feature disabled?",
+    "format": "YYYY-MM-DD HH:MM:SS UTC",
+    "answer": "2026-09-17 08:25:34 UTC"
+  },
+  {
+    "num": 17,
+    "question": "The TA then sent the same file again to a different location. What was its full path?",
+    "format": "FullPath",
+    "answer": "C:\\Users\\akira\\Downloads\\oor.jpg"
+  },
+  {
+    "num": 18,
+    "question": "What was the full path of the second file sent by the TA?",
+    "format": "FullPath",
+    "answer": "C:\\Users\\akira\\Downloads\\bytedefender.exe"
+  },
+  {
+    "num": 19,
+    "question": "What was its SHA-256 hash?",
+    "format": "SHA256",
+    "answer": "9caebd989f8cda9cca296c8eacb6c591d1219b94cb90cd2a7fdc805938bf12c9"
+  },
+  {
+    "num": 20,
+    "question": "When did the TA execute the file?",
+    "format": "YYYY-MM-DD HH:MM:SS UTC",
+    "answer": "2026-09-17 08:30:22 UTC"
+  },
+  {
+    "num": 21,
+    "question": "The executable was only partially executed because it was blocked by the antivirus. When was the execution blocked?",
+    "format": "YYYY-MM-DD HH:MM:SS UTC",
+    "answer": "2026-09-17 08:30:30 UTC"
+  },
+  {
+    "num": 22,
+    "question": "What was the malware's decryption key?",
+    "format": "DecryptionKey",
+    "answer": "in_another_life"
+  },
+  {
+    "num": 23,
+    "question": "What was the full path of the file that was encrypted?",
+    "format": "FullPath",
+    "answer": "C:\\Users\\akira\\Documents\\Judge\\Pengumuman-Hasil-Penyisihan-Gemas-and-thicc-2026.pdf.qill"
+  },
+  {
+    "num": 24,
+    "question": "What secret word can be recovered from the encrypted file?",
+    "format": "SecretWord",
+    "answer": "semoga_bisa_final_nanti_bisa_ketemu_dosen_tua"
+  },
+  {
+    "num": 25,
+    "question": "Which MITRE ATT&CK technique did the TA use to conceal the shellcode?",
+    "format": "TXXXX.XXX",
+    "answer": "T1027.003"
+  },
+  {
+    "num": 26,
+    "question": "What identifiers were used to extract the shellcode?",
+    "format": "START-END",
+    "answer": "HOL3_B-HOL3_E"
+  },
+  {
+    "num": 27,
+    "question": "What tool was used to generate the shellcode?",
+    "format": "ToolName",
+    "answer": "Donut"
+  },
+  {
+    "num": 28,
+    "question": "Since you know it is Donut shellcode, what is the SHA-256 hash of the actual payload embedded in the shellcode?",
+    "format": "SHA256",
+    "answer": "d2a0551f4c381af686a5efea22e92a602be0d878ac1c75d0b9a402ad42be14eb"
+  },
+  {
+    "num": 29,
+    "question": "How many files were dropped by the shellcode?",
+    "format": "Integer",
+    "answer": "36"
+  },
+  {
+    "num": 30,
+    "question": "What was the destination path of the dropped files?",
+    "format": "DirectoryPath",
+    "answer": "C:\\Users\\akira\\AppData\\Local\\Temp\\"
+  },
+  {
+    "num": 31,
+    "question": "The TA manually dropped a file onto the victim's system. What was its full path?",
+    "format": "FullPath",
+    "answer": "C:\\Users\\akira\\AppData\\Local\\Temp\\avacadabra.dll"
+  },
+  {
+    "num": 32,
+    "question": "The TA used a persistence technique. What is its MITRE ATT&CK technique ID?",
+    "format": "TXXXX.XXX",
+    "answer": "T1546.011"
+  },
+  {
+    "num": 33,
+    "question": "What tool did the TA use to create the persistence material?",
+    "format": "ToolName",
+    "answer": "Compatibility Administrator"
+  },
+  {
+    "num": 34,
+    "question": "What compatibility fix did the TA abuse?",
+    "format": "CompatibilityFix",
+    "answer": "InjectDll"
+  },
+  {
+    "num": 35,
+    "question": "What application was targeted by the compatibility fix?",
+    "format": "ApplicationName",
+    "answer": "PuTTY"
+  },
+  {
+    "num": 36,
+    "question": "What was the full path of the .sdb file?",
+    "format": "FullPath",
+    "answer": "C:\\Program Files\\PuTTY\\puttys.sdb"
+  },
+  {
+    "num": 37,
+    "question": "When was the SDB successfully installed?",
+    "format": "YYYY-MM-DD HH:MM:SS UTC",
+    "answer": "2026-09-17 08:42:29 UTC"
+  },
+  {
+    "num": 38,
+    "question": "What registry key has been modified to install that SDB?",
+    "format": "HKLM\\...\\...\\...",
+    "answer": "HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Custom\\putty.exe"
+  },
+  {
+    "num": 39,
+    "question": "What tool did the TA use to generate the malicious DLL?",
+    "format": "ToolName",
+    "answer": "MSFVenom"
+  },
+  {
+    "num": 40,
+    "question": "What IP address and port were configured for the TA's persistence payload?",
+    "format": "IP:PORT",
+    "answer": "192.168.1.2:9999"
   }
 ]

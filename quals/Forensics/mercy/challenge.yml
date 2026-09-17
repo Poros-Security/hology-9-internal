@@ -19,13 +19,11 @@ description: |
 
     Link : https://drive.google.com/file/d/1qQvUaI5geF5owWxIUDSXGeiGu0wm7zjT/view?usp=sharing
 
-    Alternative Link :
-
 type: "DynamicContainer" # don't touch this value
 value: 1000 # don't touch this value
 
 container:
-  flagTemplate: "HOLOGY9{last_drop_lore_of_2byte_kah?_atau_ada_lg_next_year?_[TEAM_HASH]}"
+  flagTemplate: "HOLOGY9{first_time_megang_hology_mff_gugup_hope_you_learn_something_[TEAM_HASH]}"
   containerImage: "{{.slug}}:latest"
   memoryLimit: 1024
   cpuCount: 2
