@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="TaskForge workspace">
+  <title>Workspace — TaskForge</title>
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body class="dashboard-page">
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-top">
+        <a class="brand" href="/dashboard.html">
+          <span class="brand-mark">T</span>
+          <span>TaskForge</span>
+        </a>
+        <button id="nav-toggle" class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      </div>
+
+      <nav class="side-nav" aria-label="Workspace navigation">
+        <a class="side-nav-link active" href="/dashboard.html"><span>Home</span></a>
+        <a class="side-nav-link" href="#projects"><span>Projects</span></a>
+        <a class="side-nav-link" href="#profile"><span>Profile</span></a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="account">
+          <div class="avatar" id="sidebar-avatar">T</div>
+          <div class="account-copy">
+            <strong id="sidebar-username">Loading</strong>
+            <span id="sidebar-role">—</span>
+          </div>
+        </div>
+        <button id="sign-out" class="side-action" type="button">Sign out</button>
+      </div>
+    </aside>
+
+    <main class="dashboard-main">
+      <header class="dashboard-header">
+        <div>
+          <p class="eyebrow">WORKSPACE</p>
+          <h1 id="greeting">Good to see you.</h1>
+          <p class="header-subtitle">Here’s what’s happening across your projects.</p>
+        </div>
+        <button id="refresh-button" class="button button-light" type="button">
+          <span class="refresh-label">Refresh</span>
+        </button>
+      </header>
+
+      <section class="overview-grid" aria-label="Workspace overview">
+        <article class="stat">
+          <span>Projects</span>
+          <strong id="project-count">—</strong>
+        </article>
+        <article class="stat">
+          <span>Tasks</span>
+          <strong id="task-count">—</strong>
+        </article>
+        <article class="stat stat-wide">
+          <span>Workspace</span>
+          <strong>Active</strong>
+          <small id="stat-synced">Waiting for data</small>
+        </article>
+      </section>
+
+      <section id="projects" class="content-section">
+        <div class="section-toolbar">
+          <div>
+            <p class="eyebrow">PROJECTS</p>
+            <h2>Your projects</h2>
+          </div>
+          <span id="project-status" class="toolbar-note"></span>
+        </div>
+
+        <div id="project-list" class="project-list" aria-live="polite">
+          <div class="loading-block">Loading projects…</div>
+        </div>
+      </section>
+
+      <section id="profile" class="content-section profile-section">
+        <div class="section-toolbar">
+          <div>
+            <p class="eyebrow">PROFILE</p>
+            <h2>Your profile</h2>
+          </div>
+        </div>
+
+        <form id="profile-form" class="profile-form">
+          <div class="profile-meta">
+            <div class="profile-avatar" id="profile-avatar">T</div>
+            <div>
+              <strong id="profile-username">—</strong>
+              <span id="profile-role">—</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="bio">Bio</label>
+            <textarea id="bio" name="bio" rows="4" maxlength="500" placeholder="Tell your team a little about yourself."></textarea>
+          </div>
+          <div class="profile-actions">
+            <span id="profile-message" class="form-message" role="status" hidden></span>
+            <button id="profile-submit" class="button button-dark" type="submit">Save changes</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <script src="/app.js"></script>
+  <script src="/dashboard.js"></script>
+</body>
+</html>

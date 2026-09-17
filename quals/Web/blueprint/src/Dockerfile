@@ -1,22 +1,35 @@
-FROM python:3.9-alpine
+FROM node:20-bookworm-slim
 
-RUN apk update && apk add socat
+ENV PORT=8011 \
+    NODE_ENV=production \
+    DB_HOST=127.0.0.1 \
+    DB_PORT=5432 \
+    DB_NAME=taskforge \
+    DB_USER=taskforge \
+    DB_PASSWORD=taskforge
 
-RUN adduser -D -u 1001 -s /bin/bash ctf
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends postgresql postgresql-contrib gosu tini ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir /home/ctf/chall
+RUN useradd -r -u 1001 -s /usr/sbin/nologin appuser
 
-COPY ./requirements.txt /home/ctf/chall
-RUN pip3 install -r /home/ctf/chall/requirements.txt
+WORKDIR /opt/app
+COPY ./api/package.json ./
+RUN npm install --omit=dev \
+    && npm cache clean --force
 
-RUN mkdir /home/ctf/chall/src
+COPY ./api ./src/api
+COPY ./ui ./src/ui
+COPY ./entrypoint.sh ./entrypoint.sh
 
-COPY ./chall.py /home/ctf/chall/src
-COPY ./run.sh /home/ctf/chall/src
+RUN mkdir -p /opt/app/secret /run/postgresql \
+    && chown -R postgres:postgres /var/lib/postgresql /run/postgresql \
+    && chown -R root:root /opt/app \
+    && chmod -R 555 /opt/app \
+    && chmod 755 /opt/app/secret \
+    && chmod 555 /opt/app/entrypoint.sh /opt/app/src/api/scripts/maintenance.sh
 
-RUN chown -R root:root /home/ctf/chall
-RUN chmod -R 555 /home/ctf/chall
-USER ctf
-WORKDIR /home/ctf/chall/src
+EXPOSE 8011
 
-CMD ["./run.sh"]
+ENTRYPOINT ["tini", "--", "/opt/app/entrypoint.sh"]

@@ -1,9 +1,13 @@
 services:
-  example:
-    build: .
+  blueprint:
+    build:
+      context: .
+      dockerfile: src/docker/Dockerfile
     restart: on-failure
     ports:
-      - 8011:8011
+      - "8011:8011"
+    environment:
+      GZCTF_FLAG: "HOLOGY9{local_compose_flag}"
     deploy:
       resources:
         limits:
