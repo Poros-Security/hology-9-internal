@@ -1,42 +1,137 @@
 import base64
 import hashlib
 import os
+
 from nltk.parse.transitionparser import TransitionParser
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import pad
 
-# Author version: this is the real flag used to generate the transcript.
-FLAG = os.environ.get("FLAG", "HOLOGY9{d1vergence_p1ckl3_rce}").encode()
 
-# The original generator keeps this material outside the transcript.
-VAULT_SEED = b'divergence-static-vault-v1'
+FLAG = os.environ.get(
+    "FLAG",
+    "HOLOGY9{d1v3rg3nc3_unsafe_d3s3r14l1z4t10n}"
+).encode()
+
+
+VAULT_SEED = bytes([
+    100, 105, 118, 101, 114, 103, 101, 110, 99, 101,
+    45, 115, 116, 97, 116, 105, 99, 45, 118, 97,
+    117, 108, 116, 118, 49
+])
+
 
 PICKLE_ARMED = False
+
 
 def arm():
     global PICKLE_ARMED
     PICKLE_ARMED = True
 
+
 def reveal_material():
     if not PICKLE_ARMED:
         raise RuntimeError("material is unavailable")
-    print("DIVERGENCE_MATERIAL=" + base64.b64encode(VAULT_SEED).decode())
 
-def derive_key():
-    return hashlib.sha256(VAULT_SEED).digest()
+    print(
+        "DIVERGENCE_MATERIAL="
+        + base64.b64encode(VAULT_SEED).decode()
+    )
+
+
+def _stage_one():
+    return hashlib.sha256(
+        VAULT_SEED + bytes.fromhex("91274413")
+    ).digest()
+
+
+def _stage_two():
+    first = _stage_one()
+
+    return hashlib.sha256(
+        first + bytes.fromhex("6319A702")
+    ).digest()
+
+
+def _stage_three():
+    first = _stage_one()
+    second = _stage_two()
+
+    return hashlib.sha256(
+        second[5:27]
+        + first[11:29]
+        + bytes.fromhex("D1A7")
+    ).digest()
+
+
+def _derive_key():
+    first = _stage_one()
+    second = _stage_two()
+    third = _stage_three()
+
+    material = (
+        third[3:29]
+        + second[7:23]
+        + first[13:19]
+    )
+
+    return hashlib.sha256(material).digest()
+
+
+def _derive_iv():
+    first = _stage_one()
+    second = _stage_two()
+    third = _stage_three()
+
+    material = (
+        first[4:16]
+        + third[18:26]
+        + second[0:4]
+    )
+
+    return hashlib.sha256(material).digest()[:16]
+
+
+def _encrypt():
+    key = _derive_key()
+    iv = _derive_iv()
+
+    cipher = AES.new(
+        key,
+        AES.MODE_CBC,
+        iv
+    )
+
+    return cipher.encrypt(
+        pad(
+            FLAG,
+            AES.block_size
+        )
+    )
+
 
 def make_output():
-    nonce = b"DIVERGENCE"
-    stream = hashlib.sha256(derive_key() + nonce).digest()
-    ciphertext = bytes(a ^ b for a, b in zip(FLAG, (stream * 4)[:len(FLAG)]))
+    ciphertext = _encrypt()
+
     print("=== DIVERGENCE ===")
     print("nltk = 3.9.4")
-    print("nonce = " + base64.b64encode(nonce).decode())
-    print("ciphertext = " + base64.b64encode(ciphertext).decode())
+    print(
+        "ciphertext = "
+        + base64.b64encode(ciphertext).decode()
+    )
     print("material = REDACTED")
     print("model = model.pkl")
 
+
 def main():
     make_output()
-    TransitionParser("arc-standard").parse([], "model.pkl")
+
+    TransitionParser(
+        "arc-standard"
+    ).parse(
+        [],
+        "model.pkl"
+    )
+
 
 if __name__ == "__main__":
     main()
