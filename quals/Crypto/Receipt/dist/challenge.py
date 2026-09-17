@@ -93,11 +93,7 @@ def emit(label, value):
 
 
 def main():
-    prize = (
-        os.environ.get("GZCTF_FLAG")
-        or os.environ.get("FLAG")
-        or "HOLOGY9{redacted}"
-    ).encode()
+    prize = os.environ.get("FLAG", "HOLOGY9{redacted}").encode()
     for label, value in transcript(prize).items():
         emit(label, value)
 

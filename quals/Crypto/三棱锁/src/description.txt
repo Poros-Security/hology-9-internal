@@ -1,3 +1,0 @@
-三棱锁
-
-Some tasteful handmade RSA, because apparently audited key generation was too mainstream. You get the source and the output. Surely the modulus is just sitting there being normal.

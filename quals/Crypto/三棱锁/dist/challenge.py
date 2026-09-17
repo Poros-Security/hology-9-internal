@@ -113,11 +113,7 @@ def box(secret_text):
 
 
 def main():
-    secret_text = (
-        os.environ.get("GZCTF_FLAG")
-        or os.environ.get("FLAG")
-        or "HOLOGY9{redacted}"
-    ).encode()
+    secret_text = os.environ.get("FLAG", "HOLOGY9{redacted}").encode()
     values = box(secret_text)
     for label, value in values.items():
         if isinstance(value, int):

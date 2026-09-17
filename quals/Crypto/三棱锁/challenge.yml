@@ -2,21 +2,12 @@ name: "三棱锁"
 author: "Jersyy"
 
 description: |
-  Some tasteful handmade RSA, because apparently audited key generation was too mainstream. You get the source and the output. Surely the modulus is just sitting there being normal.
+  handmade RSA is cool!
 
-type: "DynamicContainer"
+type: "StaticAttachment"
 value: 1000
 
-container:
-  flagTemplate: "HOLOGY9{k3r3n_k4mu_b4ng_4y0_d1subm1t_[TEAM_HASH]}"
-  containerImage: "{{.slug}}:latest"
-  memoryLimit: 512
-  cpuCount: 1
-  storageLimit: 512
-  exposePort: 8001
-  enableTrafficCapture: false
+flags:
+  - "HOLOGY9{6a13f7376abb4f93cbf42fd8e2f1dd9c}"
 
 provide: "./dist"
-
-scripts:
-  start: cd src && docker build -t {{.slug}} .
