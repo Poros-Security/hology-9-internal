@@ -23,4 +23,4 @@ container:
   enableTrafficCapture: false
  
 scripts:
-  start: cd src && docker build -t {{.slug}}:latest .
+  start: docker build -t {{.slug}}:latest .
