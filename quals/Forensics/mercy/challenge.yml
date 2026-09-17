@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "mercy"
+author: "2byte"
+
+# support markdown & html tags
+description: |
+    <b> MALWAREEEEE INSIDEEEEEE. PLEASE BE FKIN AWARE ABOUT WHAT YOU DO WHILE ANALYZING THIS. </b>
+
+    in another life, you were there with me.
+    takin out every piece of me, wether it's destroyin me, keepin me alive, or just to stay connected as we are.
+    afterall, in this realism the only thing that i constantly do is picturing you within this.
+
+    Password : 26da07a56fa3ea005a213233cb98a7bd
+
+    SHA256 :
+
+    Link :
+
+    Alternative Link :
+
+type: "DynamicContainer" # don't touch this value
+value: 1000 # don't touch this value
+
+container:
+  flagTemplate: "HOLOGY9{last_drop_lore_of_2byte_kah?_atau_ada_lg_next_year?_[TEAM_HASH]}"
+  containerImage: "{{.slug}}:latest"
+  memoryLimit: 1024
+  cpuCount: 2
+  storageLimit: 1024
+  exposePort: 1311
+  enableTrafficCapture: true
+
+scripts:
+  start: cd src && docker compose up -d --build

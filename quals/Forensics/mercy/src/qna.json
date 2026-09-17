@@ -1,0 +1,75 @@
+[
+   {
+    "num": 1,
+    "question": "Dengan aplikasi apa TA dan victim berkomunikasi?",
+    "format": "Brone",
+    "answer": "Ultraviewer"
+  },
+  {
+    "num": 2,
+    "question": "Kapan mereka pertama kali terhubung?",
+    "format": "placeholder",
+    "answer": "-"
+  },
+  {
+    "num": 3,
+    "question": "Apa session ID dari TA?",
+    "format": "placeholder",
+    "answer": "-"
+  },
+  {
+    "num": 4,
+    "question": "Apa session ID dari victim?",
+    "format": "placeholder",
+    "answer": "-"
+  },
+  {
+    "num": 5,
+    "question": "Apa hostname TA?",
+    "format": "placeholder",
+    "answer": "-"
+  },
+  {
+    "num": 6,
+    "question": "Apa hostname victim?",
+    "format": "placeholder",
+    "answer": "-"
+  },
+  {
+    "num": 7,
+    "question": "Apa alamat IP dari TA?",
+    "format": "placeholder",
+    "answer": "-"
+  },
+  {
+    "num": 8,
+    "question": "Berapa lama mereka terhubung?",
+    "format": "placeholder",
+    "answer": "-"
+  },
+  {
+    "num": 9,
+    "question": "Kapan TA pertama kali mengirim pesan?",
+    "format": "placeholder",
+    "answer": "-"
+  },
+  {
+    "num": 10,
+    "question": "TA mengirim file untuk testing, apa nama filenya?",
+    "format": "placeholder",
+    "answer": "-"
+  },
+  {
+    "num": 11,
+    "question": "File tersebut terdeteksi sebagai ancaman, apa aplikasi yang mendeteksinya?",
+    "format": "placeholder",
+    "answer": "-"
+  },
+  {
+    "num": 12,
+    "question": "",
+    "format": "placeholder",
+    "answer": "-"
+  }
+
+]

@@ -1,0 +1,8 @@
+services:
+  mercy:
+    build: .
+    restart: unless-stopped
+    environment:
+      GZCTF_FLAG: "${GZCTF_FLAG:-HOLOGY9_local_test_flag}"
+    ports:
+      - "1311:1311"
