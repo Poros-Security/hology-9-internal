@@ -1,7 +1,10 @@
 services:
   example:
+    image: great-thief
     build: .
     restart: on-failure
+    environment:
+      GZCTF_FLAG: "${GZCTF_FLAG:-}"
     ports:
       - 8011:8011
     deploy:

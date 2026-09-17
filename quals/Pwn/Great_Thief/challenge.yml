@@ -13,7 +13,7 @@ value: 1000 # don't touch this value
 provide: "./dist"
 
 container:
-  flagTemplate: "HOLOGY9{r3kom3nd4s1_A1_w4nshut_PWN_d0ng}"
+  flagTemplate: "HOLOGY9{great-thief_[TEAM_HASH]}"
   containerImage: "{{.slug}}:latest"
   memoryLimit: 512
   cpuCount: 3

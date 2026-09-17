@@ -1,24 +1,19 @@
-FROM alpine:3.19
+FROM debian:trixie-slim
 
-RUN apk update && apk add --no-cache socat gcc musl-dev coreutils
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends socat \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN adduser -D -u 1001 -s /bin/sh ctf
-RUN mkdir /home/ctf/chall
-RUN mkdir /home/ctf/chall/src
+RUN useradd -m -u 1001 -s /bin/sh ctf
+RUN mkdir -p /home/ctf/chall/src
 
-COPY ./chall.c /home/ctf/chall/src
-COPY ./run.sh /home/ctf/chall/src
-COPY ./flag.txt /home/ctf/chall/src
+COPY ./chall /home/ctf/chall/src/chall
+COPY ./run.sh /home/ctf/chall/src/run.sh
 
-WORKDIR /home/ctf/chall/src
+RUN chown -R root:ctf /home/ctf/chall \
+    && chmod 550 /home/ctf/chall/src \
+    && chmod 550 /home/ctf/chall/src/chall \
+    && chmod 550 /home/ctf/chall/src/run.sh
 
-RUN gcc chall.c -o chall     -fno-stack-protector     -no-pie     -z norelro     -z noexecstack     -w
-
-RUN rm chall.c
-RUN chown -R root:root /home/ctf/chall
-RUN chmod -R 555 /home/ctf/chall
-RUN chmod 555 /home/ctf/chall/src/chall
-
-USER ctf
 WORKDIR /home/ctf/chall/src
 CMD ["./run.sh"]
