@@ -67,9 +67,20 @@
   },
   {
     "num": 12,
-    "question": "",
+    "question": "Bitdefender mengklasifikasikan file testing tersebut sebagai apa?",
+    "format": "placeholder",
+    "answer": "-"
+  },
+  {
+    "num": 13,
+    "question": "Apa marker yang digunakan untuk menyembunyikan shellcode?",
+    "format": "placeholder",
+    "answer": "-"
+  },
+  {
+    "num": 14,
+    "question": "SHA256 dari decrypted shellcode?",
     "format": "placeholder",
     "answer": "-"
   }
-
 ]
