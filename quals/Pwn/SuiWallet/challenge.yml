@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "SuiWallet"
+author: "Suisayy"
+
+description: |
+  Trying out new stuff here, try getting a shell from this wallet app!
+
+type: "DynamicContainer"
+value: 1000
+
+provide: "./dist"
+
+container:
+  flagTemplate: "HOLOGY9{Tru5T_N0_W4ll3T_W1th_4_5T4le_5es510n_H0pe_y0u_3nj0y3d_Th3_Ch4ll3ng3_[TEAM_HASH]}"
+  containerImage: "{{.slug}}:latest"
+  memoryLimit: 1024
+  cpuCount: 2
+  storageLimit: 1024
+  exposePort: 9999
+  enableTrafficCapture: false
+
+scripts:
+  start: cd src && docker build -t {{.slug}}:latest .
