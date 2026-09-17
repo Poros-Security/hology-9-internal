@@ -1,0 +1,14 @@
+services:
+  betweentwoworlds:
+    build: .
+    restart: on-failure
+    ports:
+      - "1111:1111"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: "256M"
+        reservations:
+          cpus: "0.25"
+          memory: "128M"
