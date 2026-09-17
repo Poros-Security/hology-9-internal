@@ -2,7 +2,10 @@ from sage.all import *
 from pwn import *
 from subprocess import check_output
 from math import isqrt
+from time import time
 import re, sys
+
+time_start=time()
 
 def flat(B):
     s="[\n"+"\n".join("["+" ".join(map(str,r))+"]" for r in B.rows())+"\n]\n"
@@ -119,7 +122,7 @@ def solve(N,e,z):
         if p:return p
     raise Exception("factor not recovered")
 
-io=process(["python3","chall.py"])
+io=remote("38.147.122.175", 32852)
 
 io.recvuntil(b"N = "); N=ZZ(io.recvline())
 io.recvuntil(b"e = "); e=ZZ(io.recvline())
@@ -130,3 +133,5 @@ p=solve(N,e,z)
 log.success(f"p = {p}")
 io.sendline(str(p).encode())
 io.interactive()
+
+print(f"Solved in {time() - time_start:2f} s")
