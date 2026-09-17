@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sign in to TaskForge">
+  <title>Sign in — TaskForge</title>
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body class="auth-page">
+  <main class="auth-layout">
+    <section class="auth-aside">
+      <a class="brand" href="/">
+        <span class="brand-mark">T</span>
+        <span>TaskForge</span>
+      </a>
+      <div class="auth-aside-copy">
+        <p class="eyebrow">WORKSPACE</p>
+        <h1>Keep the work close.</h1>
+        <p>Sign in to access your projects, tasks, and workspace details.</p>
+      </div>
+      <span class="auth-aside-foot">Project workspace</span>
+    </section>
+
+    <section class="auth-content">
+      <div class="auth-card">
+        <div class="auth-heading">
+          <p class="eyebrow">WELCOME BACK</p>
+          <h2>Sign in</h2>
+          <p>Use your workspace credentials to continue.</p>
+        </div>
+
+        <form id="login-form" class="form-stack" novalidate>
+          <div class="field">
+            <label for="username">Username</label>
+            <input id="username" name="username" type="text" autocomplete="username" required>
+          </div>
+          <div class="field">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" autocomplete="current-password" required>
+          </div>
+          <div id="login-error" class="form-message form-message-error" role="alert" hidden></div>
+          <button id="login-submit" class="button button-dark button-wide" type="submit">
+            <span class="button-label">Sign in</span>
+            <span class="button-loading" hidden>Signing in…</span>
+          </button>
+        </form>
+
+        <a class="back-link" href="/">← Back to TaskForge</a>
+      </div>
+    </section>
+  </main>
+  <script src="/app.js"></script>
+  <script src="/login.js"></script>
+</body>
+</html>

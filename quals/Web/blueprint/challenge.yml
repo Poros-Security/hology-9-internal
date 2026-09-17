@@ -3,19 +3,21 @@
 name: "blueprint"
 author: "zenc"
 
-# support markdown & html tags
 description: |
-  i had this blueprint
+  TaskForge just migrated from REST to GraphQL. The team was in a hurry and
+  might have left a few "legacy" or "ops-only" things lying around before
+  going live.
 
-type: "DynamicContainer" # don't touch this value
-value: 1000 # don't touch this value
+
+type: "DynamicContainer"
+value: 1000
 
 provide: "./dist"
 
 container:
-  flagTemplate: "HOLOGY9{3z_9raphqL_h0loo_[TEAM_HASH]}"
+  flagTemplate: "HOLOGY9{3z_9raphqL_1ntr0sp3ct10n_h0loo[TEAM_HASH]}"
   containerImage: "{{.slug}}:latest"
-  memoryLimit: 512
+  memoryLimit: 256
   cpuCount: 1
   storageLimit: 512
   exposePort: 8011
