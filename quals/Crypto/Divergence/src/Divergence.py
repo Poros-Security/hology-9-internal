@@ -4,7 +4,7 @@ import os
 from nltk.parse.transitionparser import TransitionParser
 
 # Author version: this is the real flag used to generate the transcript.
-FLAG = os.environ.get("FLAG", "HOLOGY9{d1vergence_p1ckl3_rce}").encode()
+FLAG = os.environ.get("FLAG", "HOLOGY9{d1v3rg3nc3_unsafe_d3s3r14l1z4t10n}").encode()
 
 # The original generator keeps this material outside the transcript.
 VAULT_SEED = b'divergence-static-vault-v1'

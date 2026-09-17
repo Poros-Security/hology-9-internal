@@ -1,17 +1,11 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
-
-name: "Divergence"
-author: "Eris"
-
-# support markdown & html tags
-description:  |
+name: Divergence
+author: Hology9
+description: |
   Something diverged while loading a language model.
   Can you recover the missing material and finish the message?
-
-type: "StaticAttachment" # don't touch this value
-value: 1000 # don't touch this value
-
+type: StaticAttachment
+value: 1000
 flags:
-  - "HOLOGY9{d1vergence_p1ckl3_rce}"
-
-provide: "./dist"
+  - HOLOGY9{d1vergence_p1ckl3_rce}
+provide:
+  - ./dist
