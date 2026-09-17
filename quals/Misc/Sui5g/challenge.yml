@@ -17,7 +17,5 @@ container:
   exposePort: 1337
   enableTrafficCapture: true
 
-provide: "./dist"
-
 scripts:
   start: cd src && docker build -t {{.slug}}:latest .
