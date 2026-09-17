@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+ 
+name: "Between Two Worlds"
+author: "off5e7"
+ 
+description: |
+  Heard the new hype from those rust folks...
+ 
+type: "StaticContainer"
+value: 1000
+ 
+provide: "./dist"
+ 
+flags:
+  - "HOLOGY9{b3tw33n_C_n_Rust_7678900}"
+ 
+container:
+  containerImage: "{{.slug}}:latest"
+  memoryLimit: 1024
+  cpuCount: 2
+  storageLimit: 1024
+  exposePort: 1111
+  enableTrafficCapture: false
+ 
+scripts:
+  start: cd src && docker build -t {{.slug}}:latest .
