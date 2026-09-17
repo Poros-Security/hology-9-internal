@@ -1,0 +1,8 @@
+[package]
+name = "author-solver"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+crc32fast = "1.4.2"
+stellar-gif = { path = "../../tauri-stellar/crates/stellar-gif" }

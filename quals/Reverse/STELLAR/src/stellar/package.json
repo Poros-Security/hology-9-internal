@@ -1,0 +1,16 @@
+{
+  "name": "stellar-archive",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 1420",
+    "build": "tsc && vite build",
+    "tauri": "tauri"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "2.8.4",
+    "typescript": "5.8.3",
+    "vite": "7.1.5"
+  }
+}

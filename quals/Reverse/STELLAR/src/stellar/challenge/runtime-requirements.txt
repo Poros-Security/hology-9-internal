@@ -1,0 +1,10 @@
+Reference runtime: Ubuntu 24.04.4 LTS, x86-64
+
+Install the normal dynamically linked Tauri/WebKitGTK runtime stack with:
+
+    sudo apt-get update
+    sudo apt-get install -y libwebkit2gtk-4.1-0 libgtk-3-0t64 libappindicator3-1 librsvg2-2 libxdo3
+
+No network connection is used by STELLAR. Package versions and machine data are
+not decoder inputs; the release's dynamic section is the authoritative list of
+shared-library requirements.

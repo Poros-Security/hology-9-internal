@@ -1,0 +1,11 @@
+[package]
+name = "stellar-gif"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+crc32fast = "1.4.2"

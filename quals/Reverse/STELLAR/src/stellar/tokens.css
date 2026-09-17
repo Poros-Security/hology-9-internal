@@ -1,0 +1,56 @@
+:root {
+  --color-paper: oklch(12% 0.035 264);
+  --color-paper-2: oklch(17% 0.052 264);
+  --color-paper-3: oklch(22% 0.07 260);
+  --color-ink: oklch(97% 0.014 238);
+  --color-ink-2: oklch(82% 0.04 240);
+  --color-muted: oklch(68% 0.045 245);
+  --color-rule: oklch(36% 0.075 257);
+  --color-rule-soft: oklch(27% 0.06 259);
+  --color-accent: oklch(63% 0.205 253);
+  --color-accent-2: oklch(82% 0.125 229);
+  --color-accent-soft: oklch(25% 0.1 255);
+  --color-accent-ink: oklch(98% 0.008 240);
+  --color-rose: oklch(66% 0.185 8);
+  --color-focus: oklch(87% 0.145 222);
+  --color-error: oklch(69% 0.18 17);
+  --color-success: oklch(79% 0.13 166);
+  --color-shadow: oklch(4% 0.02 264 / 62%);
+  --color-overlay: oklch(8% 0.04 264 / 78%);
+
+  --font-display: "STELLAR Archivo", "STELLAR Noto Sans JP", sans-serif;
+  --font-body: "STELLAR Archivo", "STELLAR Noto Sans JP", sans-serif;
+  --font-mono: "DejaVu Sans Mono", "Liberation Mono", monospace;
+
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.75rem;
+  --text-2xl: 2.5rem;
+  --text-display-s: clamp(2.8rem, 7vw, 5.75rem);
+  --text-display: clamp(2.8rem, 9vw, 7rem);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-short: 140ms;
+  --dur-medium: 240ms;
+  --dur-long: 420ms;
+
+  --rule-thin: 1px;
+  --rule-strong: 2px;
+  --radius-control: 999px;
+  --radius-panel: 0.75rem;
+  --radius-image: 0.25rem;
+}

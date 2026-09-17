@@ -1,0 +1,1 @@
+import"./styles/base.css";import"./styles/layout.css";import"./styles/player.css";import"./styles/midnight.css";import{mountApp}from"./app";const root=document.querySelector<HTMLDivElement>("#app")!;root.replaceChildren();mountApp(root);

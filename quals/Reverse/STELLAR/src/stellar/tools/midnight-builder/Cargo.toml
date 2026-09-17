@@ -1,0 +1,10 @@
+[package]
+name = "midnight-builder"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+stellar-gif = { path = "../../tauri-stellar/crates/stellar-gif" }
+gif = "0.13.1"
+crc32fast = "1.4.2"
+fontdue = "0.9.3"

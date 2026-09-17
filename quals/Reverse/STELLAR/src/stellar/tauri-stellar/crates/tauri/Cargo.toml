@@ -1,0 +1,18 @@
+[package]
+name = "tauri"
+version = "2.8.5-stellar.1"
+edition = "2021"
+license = "Apache-2.0 OR MIT"
+description = "Pinned Tauri 2.8.5 with the STELLAR Native GIF asset pipeline"
+
+[features]
+default = ["wry", "compression"]
+wry = ["tauri-upstream/wry"]
+compression = ["tauri-upstream/compression"]
+devtools = ["tauri-upstream/devtools"]
+custom-protocol = ["tauri-upstream/custom-protocol"]
+
+[dependencies]
+tauri-upstream = { package = "tauri", version = "=2.8.5", default-features = false }
+stellar-gif = { path = "../stellar-gif" }
+crc32fast = "1.5"

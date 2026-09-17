@@ -1,0 +1,302 @@
+diff --git a/src/builtins/builtins-array.cc b/src/builtins/builtins-array.cc
+index 60dc193..39182a3 100644
+--- a/src/builtins/builtins-array.cc
++++ b/src/builtins/builtins-array.cc
+@@ -8,6 +8,7 @@
+ #include "src/codegen/code-factory.h"
+ #include "src/common/assert-scope.h"
+ #include "src/debug/debug.h"
++#include "src/execution/execution.h"
+ #include "src/execution/isolate.h"
+ #include "src/execution/protectors-inl.h"
+ #include "src/handles/global-handles-inl.h"
+@@ -58,6 +59,15 @@ inline bool HasOnlySimpleElements(Isolate* isolate,
+   return true;
+ }
+ 
++bool IsSuiDoubleArray(Tagged<JSArray> array) {
++  ElementsKind kind = array->GetElementsKind();
++  return kind == PACKED_DOUBLE_ELEMENTS || kind == HOLEY_DOUBLE_ELEMENTS;
++}
++
++Handle<String> SuiString(Isolate* isolate, const char* s) {
++  return isolate->factory()->NewStringFromAsciiChecked(s);
++}
++
+ // This method may transition the elements kind of the JSArray once, to make
+ // sure that all elements provided as arguments in the specified range can be
+ // added without further elements kinds transitions.
+@@ -263,6 +273,202 @@ V8_WARN_UNUSED_RESULT Maybe<bool> TryFastArrayFill(
+ }
+ }  // namespace
+ 
++// -----------------------------------------------------------------------------
++// SuiCar vendor telemetry surface.
++//
++// These builtins intentionally live next to the Array implementation.  The
++// dashboard runtime is a small embedded SDK, not a second JavaScript object
++// model; keeping the code here also makes the elements-kind assumptions easy
++// to audit when the challenge is rebuilt.
++
++BUILTIN(SuiArrayPack) {
++  HandleScope scope(isolate);
++
++  Handle<Object> input = args.atOrUndefined(isolate, 1);
++  if (!IsJSArray(*input)) return ReadOnlyRoots(isolate).undefined_value();
++
++  Handle<JSArray> source = Handle<JSArray>::cast(input);
++  uint32_t length = 0;
++  CHECK(Object::ToArrayLength(source->length(), &length));
++  if (length > static_cast<uint32_t>(FixedDoubleArray::kMaxLength)) {
++    return ReadOnlyRoots(isolate).undefined_value();
++  }
++
++  if (length == 0) {
++    return *isolate->factory()->NewJSArray(PACKED_DOUBLE_ELEMENTS, 0, 0);
++  }
++
++  Handle<FixedArrayBase> storage =
++      isolate->factory()->NewFixedDoubleArray(static_cast<int>(length));
++  Handle<JSArray> result = isolate->factory()->NewJSArrayWithElements(
++      storage, PACKED_DOUBLE_ELEMENTS, static_cast<int>(length));
++  Handle<FixedDoubleArray> doubles = Handle<FixedDoubleArray>::cast(storage);
++
++  for (uint32_t i = 0; i < length; ++i) {
++    Handle<Object> value;
++    ASSIGN_RETURN_FAILURE_ON_EXCEPTION(
++        isolate, value, Object::GetElement(isolate, source, i));
++    if (!IsNumber(*value)) return ReadOnlyRoots(isolate).undefined_value();
++    doubles->set(static_cast<int>(i), Object::Number(*value));
++  }
++
++  return *result;
++}
++
++BUILTIN(SuiArrayKind) {
++  HandleScope scope(isolate);
++
++  Handle<Object> obj = args.atOrUndefined(isolate, 1);
++  if (!IsJSArray(*obj)) return *SuiString(isolate, "not-array");
++
++  Handle<JSArray> array = Handle<JSArray>::cast(obj);
++  ElementsKind kind = array->GetElementsKind();
++  if (kind == PACKED_DOUBLE_ELEMENTS || kind == HOLEY_DOUBLE_ELEMENTS) {
++    return *SuiString(isolate, "telemetry-double");
++  }
++  if (kind == PACKED_ELEMENTS || kind == HOLEY_ELEMENTS) {
++    return *SuiString(isolate, "telemetry-object");
++  }
++  if (kind == PACKED_SMI_ELEMENTS || kind == HOLEY_SMI_ELEMENTS) {
++    return *SuiString(isolate, "telemetry-smi");
++  }
++  return *SuiString(isolate, "telemetry-other");
++}
++
++BUILTIN(SuiArrayFastMap) {
++  HandleScope scope(isolate);
++
++  Handle<Object> samples_obj = args.atOrUndefined(isolate, 1);
++  Handle<Object> callback_obj = args.atOrUndefined(isolate, 2);
++  Handle<Object> index_obj = args.atOrUndefined(isolate, 3);
++  Handle<Object> value_obj = args.atOrUndefined(isolate, 4);
++
++  if (!IsJSArray(*samples_obj) || !IsCallable(*callback_obj)) {
++    return ReadOnlyRoots(isolate).undefined_value();
++  }
++
++  Handle<JSArray> samples = Handle<JSArray>::cast(samples_obj);
++  if (!IsSuiDoubleArray(*samples)) {
++    return ReadOnlyRoots(isolate).undefined_value();
++  }
++
++  Handle<Object> converted_index;
++  ASSIGN_RETURN_FAILURE_ON_EXCEPTION(
++      isolate, converted_index, Object::ToInt32(isolate, index_obj));
++  int32_t index = 0;
++  CHECK(Object::ToInt32(*converted_index, &index));
++
++  Handle<Object> receiver = isolate->factory()->undefined_value();
++  MaybeHandle<Object> maybe_result =
++      Execution::Call(isolate, callback_obj, receiver, 0, nullptr);
++  if (maybe_result.is_null()) return ReadOnlyRoots(isolate).exception();
++
++  // The callback is allowed to transition |samples| to PACKED_ELEMENTS.  The
++  // old vendor code only checked the kind before entering JavaScript and then
++  // reused the result as a FixedDoubleArray.  The unchecked cast is the
++  // challenge primitive: in a release build the access below is also allowed
++  // to walk past the backing store when a player supplies an out-of-range
++  // telemetry index.
++  Tagged<FixedDoubleArray> elements =
++      FixedDoubleArray::cast(samples->elements());
++  double previous = elements->get_scalar(index);
++
++  if (!IsUndefined(*value_obj, isolate)) {
++    if (!IsNumber(*value_obj)) return ReadOnlyRoots(isolate).undefined_value();
++    elements->set(index, Object::Number(*value_obj));
++    // Returning the original number avoids an allocation after the raw write.
++    return *value_obj;
++  }
++
++  return *isolate->factory()->NewNumber(previous);
++}
++
++BUILTIN(SuiTeleMakeFrame) {
++  HandleScope scope(isolate);
++
++  Handle<Object> samples = args.atOrUndefined(isolate, 1);
++  Handle<JSObject> frame = isolate->factory()->NewJSObject(
++      isolate->object_function(), AllocationType::kYoung);
++
++  JSObject::AddProperty(isolate, frame, SuiString(isolate, "samples"),
++                        samples, NONE);
++  JSObject::AddProperty(isolate, frame, SuiString(isolate, "model"),
++                        SuiString(isolate, "SuiCar-Stellar"), NONE);
++  JSObject::AddProperty(isolate, frame, SuiString(isolate, "mode"),
++                        SuiString(isolate, "star-drive"), NONE);
++  return *frame;
++}
++
++BUILTIN(SuiTeleCalibrate) {
++  HandleScope scope(isolate);
++
++  Handle<Object> frame_obj = args.atOrUndefined(isolate, 1);
++  Handle<Object> callback_obj = args.atOrUndefined(isolate, 2);
++  if (!IsJSReceiver(*frame_obj) || !IsCallable(*callback_obj)) {
++    return ReadOnlyRoots(isolate).undefined_value();
++  }
++
++  Handle<JSReceiver> frame = Handle<JSReceiver>::cast(frame_obj);
++  Handle<Object> samples_obj;
++  ASSIGN_RETURN_FAILURE_ON_EXCEPTION(
++      isolate, samples_obj,
++      JSReceiver::GetProperty(isolate, frame, SuiString(isolate, "samples")));
++  if (!IsJSArray(*samples_obj)) {
++    return ReadOnlyRoots(isolate).undefined_value();
++  }
++
++  Handle<JSArray> samples = Handle<JSArray>::cast(samples_obj);
++  if (!IsSuiDoubleArray(*samples)) {
++    return ReadOnlyRoots(isolate).undefined_value();
++  }
++
++  uint32_t old_len = 0;
++  CHECK(Object::ToArrayLength(samples->length(), &old_len));
++  if (old_len == 0) return *frame_obj;
++
++  Handle<Object> receiver = isolate->factory()->undefined_value();
++  MaybeHandle<Object> maybe_result =
++      Execution::Call(isolate, callback_obj, receiver, 0, nullptr);
++  if (maybe_result.is_null()) return ReadOnlyRoots(isolate).exception();
++
++  // Intentional reentrancy bug.  The callback can change the elements kind
++  // from a double backing store to a tagged FixedArray.  This stale cast is
++  // the only kind check in the path and is deliberately not repeated here.
++  Tagged<FixedDoubleArray> elements =
++      FixedDoubleArray::cast(samples->elements());
++  elements->set(0, 13.37);
++
++  return *frame_obj;
++}
++
++BUILTIN(SuiTeleRenderFrame) {
++  HandleScope scope(isolate);
++  Handle<Object> frame = args.atOrUndefined(isolate, 1);
++  if (!IsJSReceiver(*frame)) return ReadOnlyRoots(isolate).undefined_value();
++  return *SuiString(isolate, "[SuiTele frame rendered]");
++}
++
++BUILTIN(SuiTeleExportFrame) {
++  HandleScope scope(isolate);
++  return *SuiString(isolate, "[SuiTele frame exported]");
++}
++
++BUILTIN(SuiDashRender) {
++  HandleScope scope(isolate);
++
++  Handle<Object> callback_obj = args.atOrUndefined(isolate, 1);
++  if (!IsCallable(*callback_obj)) {
++    return ReadOnlyRoots(isolate).undefined_value();
++  }
++
++  Handle<Object> receiver = isolate->factory()->undefined_value();
++  MaybeHandle<Object> maybe_result =
++      Execution::Call(isolate, callback_obj, receiver, 0, nullptr);
++  if (maybe_result.is_null()) return ReadOnlyRoots(isolate).exception();
++
++  return *SuiString(isolate, "dashboard-ok");
++}
++
+ BUILTIN(ArrayPrototypeFill) {
+   HandleScope scope(isolate);
+ 
+diff --git a/src/builtins/builtins-definitions.h b/src/builtins/builtins-definitions.h
+index 8cdba0d..0352696 100644
+--- a/src/builtins/builtins-definitions.h
++++ b/src/builtins/builtins-definitions.h
+@@ -357,6 +357,15 @@ namespace internal {
+   TFJ(ReturnReceiver, kJSArgcReceiverSlots, kReceiver)                         \
+                                                                                \
+   /* Array */                                                                  \
++  /* SuiCar vendor telemetry builtins. */                                     \
++  CPP(SuiArrayPack)                                                            \
++  CPP(SuiArrayKind)                                                            \
++  CPP(SuiArrayFastMap)                                                         \
++  CPP(SuiTeleMakeFrame)                                                        \
++  CPP(SuiTeleCalibrate)                                                        \
++  CPP(SuiTeleRenderFrame)                                                      \
++  CPP(SuiTeleExportFrame)                                                      \
++  CPP(SuiDashRender)                                                           \
+   TFC(ArrayConstructor, JSTrampoline)                                          \
+   TFC(ArrayConstructorImpl, ArrayConstructor)                                  \
+   TFC(ArrayNoArgumentConstructor_PackedSmi_DontOverride,                       \
+diff --git a/src/init/bootstrapper.cc b/src/init/bootstrapper.cc
+index e31e486..91ca40b 100644
+--- a/src/init/bootstrapper.cc
++++ b/src/init/bootstrapper.cc
+@@ -2399,6 +2399,46 @@ void Genesis::InitializeGlobal(Handle<JSGlobalObject> global_object,
+ 
+   Handle<JSObject> global(native_context()->global_object(), isolate());
+ 
++  {  // -- S u i A r r a y
++    Handle<String> name = factory->InternalizeUtf8String("SuiArray");
++    Handle<JSObject> obj = factory->NewJSObject(
++        isolate_->object_function(), AllocationType::kOld);
++    JSObject::AddProperty(isolate_, global, name, obj, DONT_ENUM);
++
++    SimpleInstallFunction(isolate_, obj, "pack", Builtin::kSuiArrayPack, 1,
++                          false);
++    SimpleInstallFunction(isolate_, obj, "kind", Builtin::kSuiArrayKind, 1,
++                          false);
++    SimpleInstallFunction(isolate_, obj, "fastMap",
++                          Builtin::kSuiArrayFastMap, 4, false);
++  }
++
++  {  // -- S u i T e l e
++    Handle<String> name = factory->InternalizeUtf8String("SuiTele");
++    Handle<JSObject> obj = factory->NewJSObject(
++        isolate_->object_function(), AllocationType::kOld);
++    JSObject::AddProperty(isolate_, global, name, obj, DONT_ENUM);
++
++    SimpleInstallFunction(isolate_, obj, "makeFrame",
++                          Builtin::kSuiTeleMakeFrame, 1, false);
++    SimpleInstallFunction(isolate_, obj, "calibrate",
++                          Builtin::kSuiTeleCalibrate, 2, false);
++    SimpleInstallFunction(isolate_, obj, "renderFrame",
++                          Builtin::kSuiTeleRenderFrame, 1, false);
++    SimpleInstallFunction(isolate_, obj, "exportFrame",
++                          Builtin::kSuiTeleExportFrame, 1, false);
++  }
++
++  {  // -- S u i D a s h
++    Handle<String> name = factory->InternalizeUtf8String("SuiDash");
++    Handle<JSObject> obj = factory->NewJSObject(
++        isolate_->object_function(), AllocationType::kOld);
++    JSObject::AddProperty(isolate_, global, name, obj, DONT_ENUM);
++
++    SimpleInstallFunction(isolate_, obj, "render", Builtin::kSuiDashRender, 1,
++                          false);
++  }
++
+   {  // --- F u n c t i o n ---
+     Handle<JSFunction> prototype = empty_function;
+     Handle<JSFunction> function_fun =

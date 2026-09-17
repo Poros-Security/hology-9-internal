@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "Sui5G"
+author: "Suisayy"
+description: |
+  day 1 bikin chall telecom, dapatkan flag di vault premium
+
+type: "DynamicContainer"
+value: 1000
+
+container:
+  flagTemplate: "HOLOGY9{G1mMickY_Fr33_Surf1ng_1n_F4k3_5G_N3tw0Rks_[TEAM_HASH]}"
+  containerImage: "{{.slug}}:latest"
+  memoryLimit: 256
+  cpuCount: 1
+  storageLimit: 256
+  exposePort: 1337
+  enableTrafficCapture: true
+
+provide: "./dist"
+
+scripts:
+  start: cd src && docker build -t {{.slug}}:latest .

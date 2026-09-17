@@ -1,0 +1,2 @@
+import type{StellarAnimation}from"../lib/stellar-container";
+export function frameInspector(a:StellarAnimation){const e=document.createElement("div");e.className="frame-table";e.innerHTML=`<div class="tr head"><span>FRAME</span><span>DELAY</span><span>RECTANGLE</span><span>DISPOSAL</span></div>${a.frames.map((f,i)=>`<div class="tr"><span>${String(i).padStart(2,"0")}</span><span>${f.delay*10} ms</span><span>${f.left},${f.top} · ${f.width}×${f.height}</span><span>${["UNSPECIFIED","KEEP","BACKGROUND","PREVIOUS"][f.disposal]??f.disposal}</span></div>`).join("")}`;return e}

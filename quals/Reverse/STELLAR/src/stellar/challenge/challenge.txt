@@ -1,0 +1,18 @@
+STELLAR
+
+A fan-made desktop archive was recovered from an old development machine.
+
+Its author refused to let WebKitGTK handle the archive's animations. Every GIF
+was sealed into the application and opened by a custom native asset pipeline
+immediately before playback.
+
+The gallery still works. One animation ends on a frame that looks like noise.
+
+The final catalog annotation reads:
+
+    "Nothing in this archive is stored the way it appears."
+
+Recover what that frame is supposed to show.
+
+Reference runtime: Ubuntu 22.04+ x86-64 with GTK 3 and WebKitGTK 4.1.
+The application is fully local and does not require network access.

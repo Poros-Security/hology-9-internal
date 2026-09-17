@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Bluerose
+Comment=A chessboard that remembers both hands
+Exec=bluerose
+Icon=bluerose
+Categories=Game;BoardGame;
+Terminal=false

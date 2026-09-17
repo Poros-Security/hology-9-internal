@@ -1,0 +1,7 @@
+*
+!Dockerfile
+!challenge.py
+!policy.py
+!tickets.py
+!flag.txt
+!xinetd.conf

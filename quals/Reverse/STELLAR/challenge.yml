@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "STELLAR"
+author: "Suisayy"
+
+description: |
+  Just finished building my Suisei fanpage site using Tauri, and while at it I modified some parts of Tauri so that it can display GIFs better! 
+
+type: "StaticAttachment"
+value: 1000
+
+flags:
+  - "HOLOGY9{st4rs_d0nt_sh1ne_until_y0u_press_play}"
+
+provide: "./dist"

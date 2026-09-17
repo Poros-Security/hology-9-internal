@@ -1,0 +1,18 @@
+[workspace]
+resolver = "2"
+members = [
+  "tauri-stellar/crates/stellar-gif",
+  "tools/midnight-builder",
+  "tools/author-solver",
+  "tools/animation-tester",
+]
+exclude = ["src-tauri", "tauri-stellar/crates/tauri"]
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = "symbols"
+debug = false
+incremental = false

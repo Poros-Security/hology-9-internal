@@ -1,0 +1,1 @@
+export function starBackground(){const node=document.createElement("div");node.className="archive-field";node.setAttribute("aria-hidden","true");node.innerHTML="<i></i><i></i><i></i><i></i><i></i>";return node}

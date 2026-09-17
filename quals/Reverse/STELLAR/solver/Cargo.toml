@@ -1,0 +1,12 @@
+[package]
+name = "stellar-qualifier-solver"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "stellar-solver"
+path = "main.rs"
+
+[dependencies]
+crc32fast = "1.5.0"
+stellar-gif = { path = "../src/stellar/tauri-stellar/crates/stellar-gif" }

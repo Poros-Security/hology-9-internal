@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "Bluerose"
+author: "Suisayy"
+
+description: |
+  Some flowers bloom only after the correct sequence of moves.
+
+type: "StaticAttachment"
+value: 1000
+
+flags:
+  - "HOLOGY9{D1d_N0T_kn0w_Th3r3_w4s_4_Fl4g_1n_th3r3_h3h3h3_H0pefully_N0t_t00_h4rd_0r_34sy}"
+
+provide: "./dist"

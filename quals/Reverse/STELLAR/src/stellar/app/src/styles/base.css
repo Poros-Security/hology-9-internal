@@ -1,0 +1,26 @@
+/* Hallmark · pre-emit critique: P5 H5 E4 S5 R5 V4 */
+/* Hallmark · genre: atmospheric editorial · macrostructure: Photographic / Long Document / Catalogue · design-system: design.md · designed-as-app */
+@import "../../../tokens.css";
+
+@font-face{font-family:"STELLAR Archivo";src:url("../assets/fonts/Archivo-Variable.ttf") format("truetype");font-style:normal;font-weight:100 900;font-stretch:62% 125%;font-display:swap}
+@font-face{font-family:"STELLAR Noto Sans JP";src:url("../assets/fonts/NotoSansJP-Variable.ttf") format("truetype");font-style:normal;font-weight:100 900;font-display:swap}
+
+*{box-sizing:border-box}
+html,body{margin:0;min-width:320px;min-height:100%;overflow-x:clip;background:var(--color-paper)}
+html{scroll-behavior:smooth}
+body{color:var(--color-ink);font-family:var(--font-body);font-size:var(--text-md);font-synthesis:none;text-rendering:optimizeLegibility}
+button,input,select{font:inherit}button,a{-webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}
+img,canvas{max-width:100%}figure,h1,h2,h3,p,dl,dd{margin-block-start:0}
+h1,h2,h3{min-width:0;overflow-wrap:anywhere;color:var(--color-ink);font-family:var(--font-display);font-style:normal;font-variation-settings:"wdth" 112}
+p{color:var(--color-ink-2);line-height:1.7}
+code{font-family:var(--font-mono)}
+:focus-visible{outline:2px solid var(--color-focus);outline-offset:4px}
+::selection{color:var(--color-accent-ink);background:var(--color-accent)}
+.archive-field{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;opacity:.65}
+.archive-field::before{position:absolute;inset:-20% -15% auto auto;width:42rem;height:42rem;content:"";border:var(--rule-thin) solid var(--color-rule-soft);border-radius:50%}
+.archive-field i{position:absolute;width:2px;height:2px;background:var(--color-accent-2)}
+.archive-field i:nth-child(1){inset:14% auto auto 7%}.archive-field i:nth-child(2){inset:9% 18% auto auto}.archive-field i:nth-child(3){inset:48% auto auto 52%}.archive-field i:nth-child(4){inset:auto 9% 18% auto}.archive-field i:nth-child(5){inset:auto auto 27% 12%}
+.text-link,.source-link{display:inline-flex;min-height:44px;align-items:center;color:var(--color-accent-2);font-weight:700;white-space:nowrap}
+.jp-name{color:var(--color-accent-2);font-weight:700;letter-spacing:.12em}
+.section-label{color:var(--color-accent-2);font-size:var(--text-sm);font-weight:700}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important}}

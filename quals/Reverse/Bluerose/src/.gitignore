@@ -1,0 +1,10 @@
+.tools/
+build/
+bluerose
+bluerose-unstripped
+bluerose-static
+bluerose-static-unstripped
+bluerose-obfuscated
+bluerose-obfuscated-unstripped
+bluerose-obfuscated-static
+Bluerose-x86_64.AppImage

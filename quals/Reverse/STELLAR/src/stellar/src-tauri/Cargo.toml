@@ -1,0 +1,32 @@
+[package]
+name = "stellar-app"
+version = "1.0.0"
+description = "STELLAR — A Hoshimachi Suisei Fan Archive"
+edition = "2021"
+rust-version = "1.88"
+
+[lib]
+name = "stellar_app_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[[bin]]
+name = "STELLAR"
+path = "src/main.rs"
+
+[features]
+custom-protocol = ["tauri/custom-protocol"]
+
+[build-dependencies]
+tauri-build = { version = "=2.4.1", features = [] }
+
+[dependencies]
+tauri = { path = "../tauri-stellar/crates/tauri", features = [] }
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = "symbols"
+debug = false
+incremental = false

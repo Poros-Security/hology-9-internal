@@ -1,1 +1,2 @@
 Reverse/Usseewa/dist/TheEndingFixed.exe filter=lfs diff=lfs merge=lfs -text
+Reverse/STELLAR/dist/STELLAR.AppImage filter=lfs diff=lfs merge=lfs -text

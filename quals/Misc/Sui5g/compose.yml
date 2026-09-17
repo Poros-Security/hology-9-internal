@@ -1,0 +1,19 @@
+services:
+  sui5g:
+    build: ./src
+    ports:
+      - "127.0.0.1:${SUI5G_PORT:-1337}:1337"
+    environment:
+      GZCTF_FLAG: "${GZCTF_FLAG:-}"
+    restart: unless-stopped
+    read_only: true
+    cap_drop:
+      - ALL
+    cap_add:
+      - SETUID
+      - SETGID
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 256m
+    cpus: 1
+    pids_limit: 96
