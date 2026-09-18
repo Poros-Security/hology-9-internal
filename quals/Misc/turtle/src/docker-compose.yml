@@ -3,7 +3,7 @@ services:
     build: .
     restart: on-failure
     ports:
-      - 8011:8011
+      - 8013:8013
     deploy:
       resources:
         limits:
