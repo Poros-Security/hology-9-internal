@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "turtle"
+author: "zenc"
+
+# support markdown & html tags
+description: |
+  carut marut politik di sebuah desa terpencil cukup menarik perhatian. cari informasi yang diperlukan dengan satu-satunya bukti yang ada!
+
+type: "DynamicContainer" # don't touch this value
+value: 1000 # don't touch this value
+
+provide: "./dist"
+
+container:
+  flagTemplate: "HOLOGY9{7xQ_91mK_4pZ8_2rL_[TEAM_HASH]}"
+  containerImage: "{{.slug}}:latest"
+  memoryLimit: 512
+  cpuCount: 1
+  storageLimit: 512
+  exposePort: 8011
+  enableTrafficCapture: false
+
+scripts:
+  start: cd src && docker build -t {{.slug}} .
