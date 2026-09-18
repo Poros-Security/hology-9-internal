@@ -4,15 +4,15 @@ name: "blueprint"
 author: "zenc"
 
 description: |
-  TaskForge just migrated from REST to GraphQL. The team was in a hurry and
-  might have left a few "legacy" or "ops-only" things lying around before
-  going live.
+  TaskForge just migrated from REST to GraphQL. The team was in a hurry and might have left a few "legacy" or "ops-only" things lying around before going live.
+
+  `Tidak perlu fuzzing challenge ini`
 
 
 type: "DynamicContainer"
 value: 1000
 
-provide: "./dist"
+provide: ""
 
 container:
   flagTemplate: "HOLOGY9{3z_9raphqL_1ntr0sp3ct10n_h0loo[TEAM_HASH]}"
