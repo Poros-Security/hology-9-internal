@@ -18,7 +18,7 @@ container:
   memoryLimit: 512
   cpuCount: 1
   storageLimit: 512
-  exposePort: 8011
+  exposePort: 8013
   enableTrafficCapture: false
 
 scripts:
