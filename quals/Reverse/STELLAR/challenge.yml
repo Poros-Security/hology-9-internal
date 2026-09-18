@@ -4,12 +4,16 @@ name: "STELLAR"
 author: "Suisayy"
 
 description: |
-  Just finished building my Suisei fanpage site using Tauri, and while at it I modified some parts of Tauri so that it can display GIFs better! 
+  Just finished building my Suisei fanpage site using Tauri, and while at it I modified some parts of Tauri so that it can display GIFs better!
+
+  Download the Linux x86-64 player here:
+  https://drive.google.com/file/d/12xvhLq-Me5X3WUVnIha8N3vHx-p11Ibb/view?usp=sharing
+
+  SHA-256:
+  42f063adbe313b2b323b343e85af26ab6c74696f1f9eca52ff17c27c567b1b4e
 
 type: "StaticAttachment"
 value: 1000
 
 flags:
   - "HOLOGY9{st4rs_d0nt_sh1ne_until_y0u_press_play}"
-
-provide: "./dist"
