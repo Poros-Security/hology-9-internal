@@ -30,13 +30,6 @@ index 60dc193..39182a3 100644
  }
  }  // namespace
  
-+// -----------------------------------------------------------------------------
-+// SuiCar vendor telemetry surface.
-+//
-+// These builtins intentionally live next to the Array implementation.  The
-+// dashboard runtime is a small embedded SDK, not a second JavaScript object
-+// model; keeping the code here also makes the elements-kind assumptions easy
-+// to audit when the challenge is rebuilt.
 +
 +BUILTIN(SuiArrayPack) {
 +  HandleScope scope(isolate);
@@ -120,12 +113,6 @@ index 60dc193..39182a3 100644
 +      Execution::Call(isolate, callback_obj, receiver, 0, nullptr);
 +  if (maybe_result.is_null()) return ReadOnlyRoots(isolate).exception();
 +
-+  // The callback is allowed to transition |samples| to PACKED_ELEMENTS.  The
-+  // old vendor code only checked the kind before entering JavaScript and then
-+  // reused the result as a FixedDoubleArray.  The unchecked cast is the
-+  // challenge primitive: in a release build the access below is also allowed
-+  // to walk past the backing store when a player supplies an out-of-range
-+  // telemetry index.
 +  Tagged<FixedDoubleArray> elements =
 +      FixedDoubleArray::cast(samples->elements());
 +  double previous = elements->get_scalar(index);
@@ -133,7 +120,6 @@ index 60dc193..39182a3 100644
 +  if (!IsUndefined(*value_obj, isolate)) {
 +    if (!IsNumber(*value_obj)) return ReadOnlyRoots(isolate).undefined_value();
 +    elements->set(index, Object::Number(*value_obj));
-+    // Returning the original number avoids an allocation after the raw write.
 +    return *value_obj;
 +  }
 +
@@ -188,9 +174,6 @@ index 60dc193..39182a3 100644
 +      Execution::Call(isolate, callback_obj, receiver, 0, nullptr);
 +  if (maybe_result.is_null()) return ReadOnlyRoots(isolate).exception();
 +
-+  // Intentional reentrancy bug.  The callback can change the elements kind
-+  // from a double backing store to a tagged FixedArray.  This stale cast is
-+  // the only kind check in the path and is deliberately not repeated here.
 +  Tagged<FixedDoubleArray> elements =
 +      FixedDoubleArray::cast(samples->elements());
 +  elements->set(0, 13.37);
