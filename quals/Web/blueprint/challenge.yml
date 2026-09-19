@@ -12,8 +12,6 @@ description: |
 type: "DynamicContainer"
 value: 1000
 
-provide: ""
-
 container:
   flagTemplate: "HOLOGY9{3z_9raphqL_1ntr0sp3ct10n_h0loo[TEAM_HASH]}"
   containerImage: "{{.slug}}:latest"
