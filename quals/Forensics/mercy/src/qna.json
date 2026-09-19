@@ -7,7 +7,7 @@
   },
   {
     "num": 2,
-    "question": "When did they first establish a connection?",
+    "question": "When did they first establish a connection? (In WIB with 12 hour formats)",
     "format": "YYYY-MM-DD HH:MM:SS",
     "answer": "2026-09-17 03:18:42"
   },
