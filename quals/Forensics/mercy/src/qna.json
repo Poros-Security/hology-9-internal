@@ -8,8 +8,8 @@
   {
     "num": 2,
     "question": "When did they first establish a connection?",
-    "format": "YYYY-MM-DD HH:MM:SS UTC",
-    "answer": "2026-09-17 03:18:42 UTC"
+    "format": "YYYY-MM-DD HH:MM:SS",
+    "answer": "2026-09-17 03:18:42"
   },
   {
     "num": 3,
