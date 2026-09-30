@@ -1,0 +1,12 @@
+services:
+  filekeeper:
+    build: .
+    restart: on-failure
+    ports:
+      - "9001:9001"
+    tmpfs:
+      - /tmp:size=10M
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 128m
+    cpus: 1.0
