@@ -1,0 +1,13 @@
+name: "Olivia"
+author: "Jersyy"
+
+description: |
+  Olivia only
+
+type: "StaticAttachment"
+value: 1000
+
+flags:
+  - "HOLOGY9{a80a2f9d71c1e23f0b9c47f49cf5c6a1}"
+
+provide: "./dist"
