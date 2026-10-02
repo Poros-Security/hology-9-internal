@@ -7,9 +7,7 @@ description: |
   Ledger handles expense reports for the finance team. There's a search box
   for looking up old reports, nothing fancy, but maybe worth a closer look.
 
-  Connect: http://{{ .host }}:{{ .port }}/
-
-  Demo account: finance / finance123
+  Demo account: `finance` / `finance123`
 
 type: "DynamicContainer"
 value: 1000
