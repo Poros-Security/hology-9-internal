@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ledger - Sign in</title>
+<link rel="stylesheet" href="/app.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="brand"><span class="mark"></span> Ledger</div>
+    <div class="links">
+      <a href="#">Expenses</a>
+      <a href="#">Reports</a>
+      <a href="#">Reconciliation</a>
+    </div>
+    <div class="right">Finance team</div>
+  </nav>
+
+  <main class="shell">
+    <div class="card auth">
+      <span class="eyebrow"><span class="dot"></span> Finance access</span>
+      <h2>Sign in to Ledger</h2>
+      <p class="lead">Review and search expense reports for the finance team.</p>
+      <form id="login-form">
+        <label>Username<input type="text" name="username" autocomplete="username" required></label>
+        <label>Password<input type="password" name="password" autocomplete="current-password" required></label>
+        <button type="submit">Sign in</button>
+      </form>
+      <p id="error" class="error"></p>
+    </div>
+  </main>
+
+  <script src="/login.js"></script>
+</body>
+</html>

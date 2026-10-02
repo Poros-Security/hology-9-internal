@@ -1,0 +1,18 @@
+services:
+  reconciliation:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: on-failure
+    ports:
+      - "8013:8013"
+    environment:
+      GZCTF_FLAG: "HOLOGY9{local_compose_flag}"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: "256M"
+        reservations:
+          cpus: "0.25"
+          memory: "128M"
