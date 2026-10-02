@@ -5,7 +5,9 @@ author: "Ariq Ardian"
 
 # support markdown & html tags
 description: |
-  RSA with a strange quotient.
+  RSA with a strange quotient. 
+  
+  [be Patient the challenge takes little longer to generate nums (╥﹏╥) ]
 
 type: "DynamicContainer" # don't touch this value
 value: 1000 # don't touch this value
