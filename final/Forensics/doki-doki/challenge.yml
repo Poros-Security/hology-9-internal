@@ -16,6 +16,9 @@ description: |
 
   Link : https://drive.google.com/file/d/1WF0pYMj6sgNiec33YPoXy4k0b8keLO6N/view?usp=sharing
 
+scoreCurve: CTFd
+difficulty: 50
+minScoreRate: 0.20
 type: "StaticAttachment"
 value: 1000
 
