@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'">
+  <title>Suigotchi</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="pet-game">
+    <header class="game-header">
+      <div class="wordmark">
+        <span class="wordmark-star" aria-hidden="true">✦</span>
+        <div>
+          <h1>Suigotchi</h1>
+          <span class="wordmark-note">YOUR LITTLE STAR</span>
+        </div>
+      </div>
+      <div class="day-counter"><span>CARE DAY</span><b id="cycle-number">00</b></div>
+      <button id="reset-button" class="reset-button" aria-label="Reset Suisei" title="Start over">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4.9 9a7.5 7.5 0 0 1 12.4-2L20 12M4 17v-5h5m10.1 3a7.5 7.5 0 0 1-12.4 2L4 12"/></svg>
+        <span>Start over</span>
+      </button>
+    </header>
+
+    <section id="playroom" class="playroom" aria-label="Suisei's room">
+      <div class="room-window" aria-hidden="true">
+        <div class="window-sky"><span class="window-moon">☾</span><i class="window-star star-a">✦</i><i class="window-star star-b">·</i><i class="window-star star-c">✧</i></div>
+        <div class="window-crossbar"></div>
+      </div>
+      <div class="curtain curtain-left" aria-hidden="true"></div>
+      <div class="curtain curtain-right" aria-hidden="true"></div>
+      <div class="wall-star wall-star-a" aria-hidden="true">✦</div>
+      <div class="wall-star wall-star-b" aria-hidden="true">✧</div>
+      <div class="wall-shelf" aria-hidden="true"><span></span><i>★</i><b>♡</b></div>
+
+      <div class="stats-hud" aria-label="Suisei's care stats">
+        <div class="stat-item hunger-stat">
+          <div class="stat-line"><span><i aria-hidden="true">♥</i> Hunger</span><b id="hunger-number">50</b></div>
+          <div class="meter" role="meter" aria-label="Hunger" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span id="hunger-meter"></span></div>
+        </div>
+        <div class="stat-item bath-stat">
+          <div class="stat-line"><span><i aria-hidden="true">●</i> Bath</span><b id="bath-number">50</b></div>
+          <div class="meter" role="meter" aria-label="Bath" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span id="bath-meter"></span></div>
+        </div>
+        <div class="stat-item fun-stat">
+          <div class="stat-line"><span><i aria-hidden="true">✦</i> Fun</span><b id="fun-number">50</b></div>
+          <div class="meter" role="meter" aria-label="Fun" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span id="fun-meter"></span></div>
+        </div>
+      </div>
+
+      <figure class="pet-figure">
+        <div class="pet-photo" role="img" aria-label="A real Hoshimachi Suisei plush doll"></div>
+        <figcaption>
+          <strong>Suisei</strong>
+          <span class="pet-mood"><i aria-hidden="true"></i><span id="mood-line">A tiny star is waiting for you.</span></span>
+        </figcaption>
+      </figure>
+
+      <div class="message-bubble" aria-live="polite">
+        <span class="bubble-star" aria-hidden="true">✦</span>
+        <p id="sky-message">The night is calm. Take good care of Suisei.</p>
+      </div>
+
+      <div class="action-effects" aria-hidden="true">
+        <span class="fx-food">♥</span>
+        <span class="fx-drop drop-one">●</span><span class="fx-drop drop-two">●</span><span class="fx-drop drop-three">●</span>
+        <span class="fx-comet">✦</span>
+        <span class="fx-sleep">Zzz</span>
+        <span class="fx-wish">✦</span>
+      </div>
+      <div class="floor-line" aria-hidden="true"></div>
+      <div class="room-label"><span class="room-label-star">✦</span> COMET NEST</div>
+    </section>
+
+    <section class="care-dock" aria-label="Care actions">
+      <div class="dock-heading"><strong>Care time!</strong><span>What would she like?</span></div>
+      <div class="care-actions">
+        <button class="care-button feed" data-action="feed">
+          <span class="action-icon" aria-hidden="true"><svg viewBox="0 0 36 36"><path d="M7 18h22l-3 9H10l-3-9Z"/><path d="M11 14c2-3 4-3 6 0m3-2c2-3 4-3 6 0M7 18h22"/></svg></span>
+          <span class="button-copy"><b>Feed</b><small>snack time</small></span>
+          <span class="button-arrow" aria-hidden="true">›</span>
+        </button>
+        <button class="care-button shower" data-action="shower">
+          <span class="action-icon" aria-hidden="true"><svg viewBox="0 0 36 36"><path d="M18 5S9 16 9 22a9 9 0 0 0 18 0c0-6-9-17-9-17Z"/><path d="m13 23 1 2m4 1v2m4-5 1 2"/></svg></span>
+          <span class="button-copy"><b>Shower</b><small>sparkle time</small></span>
+          <span class="button-arrow" aria-hidden="true">›</span>
+        </button>
+        <button class="care-button play" data-action="play">
+          <span class="action-icon" aria-hidden="true"><svg viewBox="0 0 36 36"><path d="m18 4 3.7 9.3L31 17l-9.3 3.7L18 30l-3.7-9.3L5 17l9.3-3.7L18 4Z"/><path d="m28 26 1.5 3.5L33 31l-3.5 1.5L28 36l-1.5-3.5L23 31l3.5-1.5L28 26Z"/></svg></span>
+          <span class="button-copy"><b>Play</b><small>chase a star</small></span>
+          <span class="button-arrow" aria-hidden="true">›</span>
+        </button>
+        <button class="care-button sleep" data-action="sleep">
+          <span class="action-icon" aria-hidden="true"><svg viewBox="0 0 36 36"><path d="M27.5 23.5A13 13 0 0 1 12.5 8.5 13 13 0 1 0 27.5 23.5Z"/><path d="m27 7 1.4 3.6L32 12l-3.6 1.4L27 17l-1.4-3.6L22 12l3.6-1.4L27 7Z"/></svg></span>
+          <span class="button-copy"><b>Sleep</b><small>drift away</small></span>
+          <span class="button-arrow" aria-hidden="true">›</span>
+        </button>
+      </div>
+    </section>
+
+    <footer class="game-footer">
+      <span class="footer-note"><i aria-hidden="true">✦</i> A little care goes a long way</span>
+      <button id="check-button" class="check-button" aria-label="Check flag">
+        <span aria-hidden="true">✦</span> Check the sky
+      </button>
+    </footer>
+  </main>
+  <script src="./renderer.js"></script>
+</body>
+</html>

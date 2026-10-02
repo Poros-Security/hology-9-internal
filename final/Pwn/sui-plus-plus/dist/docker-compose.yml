@@ -1,0 +1,7 @@
+services:
+  suipp:
+    build: .
+    environment:
+      GZCTF_FLAG: ${GZCTF_FLAG:-}
+    ports:
+      - "1337:1337"

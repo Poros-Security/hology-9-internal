@@ -26,11 +26,10 @@ index 60dc193..39182a3 100644
  // This method may transition the elements kind of the JSArray once, to make
  // sure that all elements provided as arguments in the specified range can be
  // added without further elements kinds transitions.
-@@ -263,6 +273,202 @@ V8_WARN_UNUSED_RESULT Maybe<bool> TryFastArrayFill(
+@@ -263,6 +273,185 @@ V8_WARN_UNUSED_RESULT Maybe<bool> TryFastArrayFill(
  }
  }  // namespace
  
-+
 +BUILTIN(SuiArrayPack) {
 +  HandleScope scope(isolate);
 +
@@ -173,6 +172,7 @@ index 60dc193..39182a3 100644
 +  MaybeHandle<Object> maybe_result =
 +      Execution::Call(isolate, callback_obj, receiver, 0, nullptr);
 +  if (maybe_result.is_null()) return ReadOnlyRoots(isolate).exception();
++
 +
 +  Tagged<FixedDoubleArray> elements =
 +      FixedDoubleArray::cast(samples->elements());
