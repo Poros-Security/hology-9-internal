@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "doki-doki"
+author: "2byte"
+
+description: |
+  <b> WARNING !!! MALWARE INSIDE, ANALYZE WITH YOUR OWN RISKS </b>
+
+  And I've been waiting for the sunset, waiting on a sorry but you're never sorry.
+  Isn't it a bit unethical?
+  Now tell me haven't I give you enough?
+
+  <b> PASSWORD :  doki-doki-suru-wa </b>
+
+  SHA-256 archive : e908259b0376420f6b0b80d070f8af79dee263a0b203bfa6d47af066b24ecaac
+
+  Link : https://drive.google.com/file/d/1WF0pYMj6sgNiec33YPoXy4k0b8keLO6N/view?usp=sharing
+
+type: "StaticAttachment"
+value: 1000
+
+flags:
+  - "HOLOGY9{hari_hari_ngeprobset_buat_trauma_dumping_6164687761206171696c6c61}"
