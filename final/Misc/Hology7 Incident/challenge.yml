@@ -4,8 +4,11 @@ name: "Hology7 Incident"
 author: "Jersyy"
 
 description: |
-  uhh i dont even know what chall is this, analyze the pattern, check the king and get the flag
+  uhh i don't even know what chall is this, analyze the pattern, check the king and get the flag. That's it
 
+scoreCurve: CTFd
+difficulty: 50
+minScoreRate: 0.20
 type: "DynamicContainer"
 value: 1000
 
