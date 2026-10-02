@@ -4,6 +4,9 @@ author: "Jersyy"
 description: |
   plis solp kan, ez kok
 
+scoreCurve: CTFd
+difficulty: 50
+minScoreRate: 0.20
 type: "StaticAttachment"
 value: 1000
 
