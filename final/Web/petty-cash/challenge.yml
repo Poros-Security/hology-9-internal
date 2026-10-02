@@ -12,7 +12,7 @@ description: |
 type: "DynamicContainer"
 value: 1000
 
-provide: "./dist/petty-cash.zip"
+provide: "./dist"
 
 container:
   flagTemplate: "HOLOGY9{un10n_s3l3ct_th3n_sh3ll_[TEAM_HASH]}"
