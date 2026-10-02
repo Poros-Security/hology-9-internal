@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "Achheerrrrrrrrrrrrrrroooooooooooooonnnnnnnnnnnnn"
+author: "Ariq Ardian"
+
+# support markdown & html tags
+description: |
+  RSA with a strange quotient.
+
+type: "DynamicContainer" # don't touch this value
+value: 1000 # don't touch this value
+
+container:
+    flagTemplate: "HOLOGY9{https://youtu.be/U3X8yQb0YXI?si=V1u-sKLKAqtpdWZo_[TEAM_HASH]}"
+    containerImage: "{{.slug}}:latest"
+    memoryLimit: 1024
+    cpuCount: 2
+    storageLimit: 1024
+    exposePort: 2000
+    enableTrafficCapture: true
+
+provide: "./dist"
+
+scripts:
+    start: cd src && docker compose up -d --build
