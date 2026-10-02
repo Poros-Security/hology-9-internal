@@ -1,0 +1,7 @@
+services:
+  chall:
+    build: .
+    image: acheron:latest
+    restart: unless-stopped
+    ports:
+      - "2000:2000"
