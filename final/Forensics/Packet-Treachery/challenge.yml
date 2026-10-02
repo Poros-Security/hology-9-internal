@@ -11,6 +11,7 @@ description: |
   and exfiltrated sensitive data
  
 
+
 type: "DynamicContainer" # don't touch this value
 value: 1000 # don't touch this value
 
@@ -26,3 +27,4 @@ container:
 scripts:
   start: cd src && docker compose up -d --build
 
+provide: "./dist"
