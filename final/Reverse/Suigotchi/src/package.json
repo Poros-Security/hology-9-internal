@@ -1,0 +1,52 @@
+{
+  "name": "suigotchi",
+  "version": "1.0.0",
+  "description": "A tiny star-pet game with a hidden care ritual",
+  "desktopName": "suigotchi",
+  "main": "electron/main.cjs",
+  "author": "Suigotchi Challenge",
+  "license": "UNLICENSED",
+  "scripts": {
+    "build:native": "node scripts/build-native.cjs",
+    "start": "npm run build:native && electron .",
+    "debug": "npm run build:native && electron --inspect=9229 .",
+    "dist:dir": "npm run build:native && electron-builder --dir",
+    "dist:linux-tar": "npm run build:native && ELECTRON_BUILDER_COMPRESSION_LEVEL=3 electron-builder --linux tar.gz",
+    "dist:linux": "npm run build:native && electron-builder --linux"
+  },
+  "devDependencies": {
+    "electron": "44.5.1",
+    "electron-builder": "26.15.3",
+    "node-api-headers": "1.9.0"
+  },
+  "build": {
+    "appId": "com.suigotchi.game",
+    "productName": "Suigotchi",
+    "asar": true,
+    "asarUnpack": [
+      "build/Release/*.node"
+    ],
+    "files": [
+      "electron/**/*",
+      "build/Release/*.node",
+      "package.json"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "linux": {
+      "syncDesktopName": true,
+      "icon": "assets/suigotchi.png",
+      "target": [
+        "AppImage",
+        "tar.gz",
+        "dir"
+      ],
+      "category": "Game",
+      "executableName": "suigotchi",
+      "artifactName": "Suigotchi-${version}-${arch}.${ext}",
+      "synopsis": "Care for a tiny comet fumo",
+      "description": "A cozy star-pet game with an unusual secret."
+    }
+  }
+}

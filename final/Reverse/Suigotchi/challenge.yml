@@ -1,0 +1,14 @@
+name: "Suigotchi"
+author: "HOLOGY9"
+
+description: |
+  A tamagotchi Suisei game. Keep her happy will ya.
+
+  Download: [Suigotchi-1.0.0-x64.tar.gz](https://drive.google.com/file/d/1O3ZYZ3JyXXb-Jepqdu2y6IBu5MGu0d_3/view?usp=sharing)
+  SHA-256: `d54955bf80c7ebedef69cbf38b55f8e075660c284261e50cc717376e718b4885`
+
+type: "StaticAttachment"
+value: 1000
+
+flags:
+  - "HOLOGY9{5u1g0tch1_h1dd3n_c0m3t_r1tu4l_9f3a7c2e}"

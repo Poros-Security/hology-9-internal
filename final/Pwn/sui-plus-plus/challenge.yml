@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "Sui++"
+author: "Hology9"
+description: |
+  Suipepe
+
+type: "DynamicContainer"
+value: 1000
+provide: "./dist"
+
+container:
+  flagTemplate: "HOLOGY9{Su1Ch4n_w4444_Ky0uu_Mouu_K4w4iii!!!_[TEAM_HASH]}"
+  containerImage: "{{.slug}}:latest"
+  memoryLimit: 512
+  cpuCount: 1
+  storageLimit: 512
+  exposePort: 1337
+  enableTrafficCapture: false
+
+scripts:
+  start: cd src && make && cp suipp ../dist/suipp && docker build -t {{.slug}} .

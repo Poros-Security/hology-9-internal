@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "SuiJail"
+author: "Hology 2026"
+
+description: |
+  Five connected prison cells. Escape using only your Python shell! 
+
+type: "DynamicContainer"
+value: 1000
+
+container:
+  flagTemplate: "HOLOGY9{Try1NG_0Ut_N3w_k1nD_0f_J41l_H0p3fully_1ts_Fun_[TEAM_HASH]}"
+  containerImage: "{{.slug}}:latest"
+  memoryLimit: 256
+  cpuCount: 1
+  storageLimit: 256
+  exposePort: 31337
+  enableTrafficCapture: false
+
+scripts:
+  start: cd src && docker build -t {{.slug}} .
