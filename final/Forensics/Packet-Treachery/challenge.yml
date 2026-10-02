@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "Packet Treachery"
+author: "ghoti"
+
+category: "Forensics"
+
+description: |
+  We have a confirmed breach, but the exact exploit chain is unknown.
+  An attacker targeted an exposed service, chained it into remote execution,
+  and exfiltrated sensitive data
+ 
+
+type: "StaticAttachment"
+value: 1000             
+
+flags:
+  - "HOLOGY9{3xc3pt10n_r3sp0ns3_g03s_brrr}"
+
+provide: "./dist"
+
+scripts:
+  start:   cd src && docker compose -p {{.slug}} up --build -d
+  stop:    cd src && docker compose -p {{.slug}} down --volumes
+  restart:
+    interval: 15m
+    execute: cd src && docker compose -p {{.slug}} restart
+
