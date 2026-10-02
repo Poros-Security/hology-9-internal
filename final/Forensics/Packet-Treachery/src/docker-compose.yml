@@ -1,16 +1,8 @@
-cat > src/docker-compose.yml <<'EOF'
 services:
   packet-treachery:
     build: .
-    restart: on-failure
+    restart: unless-stopped
+    environment:
+      GZCTF_FLAG: "${GZCTF_FLAG:-HOLOGY9_local_test_flag}"
     ports:
-      - "11133:11133"
-    deploy:
-      resources:
-        limits:
-          cpus: "0.5"
-          memory: "256M"
-        reservations:
-          cpus: "0.25"
-          memory: "128M"
-EOF
+      - "1133:1133"

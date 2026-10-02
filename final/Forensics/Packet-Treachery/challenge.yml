@@ -11,18 +11,18 @@ description: |
   and exfiltrated sensitive data
  
 
-type: "StaticAttachment"
-value: 1000             
+type: "DynamicContainer" # don't touch this value
+value: 1000 # don't touch this value
 
-flags:
-  - "HOLOGY9{3xc3pt10n_r3sp0ns3_g03s_brrr}"
-
-provide: "./dist"
+container:
+  flagTemplate: "HOLOGY9{3xc3pt10n_r3sp0ns3_g03s_brrr_[TEAM_HASH]}"
+  containerImage: "{{.slug}}:latest"
+  memoryLimit: 1024
+  cpuCount: 2
+  storageLimit: 1024
+  exposePort: 2234
+  enableTrafficCapture: true
 
 scripts:
-  start:   cd src && docker compose -p {{.slug}} up --build -d
-  stop:    cd src && docker compose -p {{.slug}} down --volumes
-  restart:
-    interval: 15m
-    execute: cd src && docker compose -p {{.slug}} restart
+  start: cd src && docker compose up -d --build
 

