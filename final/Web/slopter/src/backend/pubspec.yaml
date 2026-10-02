@@ -1,0 +1,11 @@
+name: slopter_api
+description: Slopter merchant coupon platform API
+publish_to: none
+
+environment:
+  sdk: ^3.5.0
+
+dependencies:
+  http: ^1.2.0
+  shelf: ^1.4.0
+  shelf_router: ^1.1.0

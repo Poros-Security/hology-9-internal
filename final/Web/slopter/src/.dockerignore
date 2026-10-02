@@ -1,0 +1,5 @@
+backend/.dart_tool
+backend/pubspec.lock
+frontend/.dart_tool
+frontend/build
+**/.DS_Store
