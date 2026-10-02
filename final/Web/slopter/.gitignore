@@ -1,0 +1,7 @@
+src/frontend/build
+src/frontend/.dart_tool
+src/backend/.dart_tool
+src/backend/pubspec.lock
+design-ref/node_modules
+.DS_Store
+__pycache__

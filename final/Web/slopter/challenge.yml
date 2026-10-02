@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "Slopter"
+author: "yesver"
+
+# support markdown & html tags
+description: |
+  Sign in as Halden Coffee Co: `halden.co` / `slopter2026`
+
+type: "DynamicContainer" # don't touch this value
+value: 1000 # don't touch this value
+
+container:
+    flagTemplate: "HOLOGY9{slopter_7f81874533[TEAM_HASH]07a3bf515e}"
+    containerImage: "{{.slug}}:latest"
+    memoryLimit: 512
+    cpuCount: 2
+    storageLimit: 512
+    exposePort: 80
+    enableTrafficCapture: false
+
+provide: "./dist"
+scripts:
+    start: cd src && docker build -t {{.slug}} .
