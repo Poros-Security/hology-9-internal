@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "Hology7 Incident"
+author: "Jersyy"
+
+description: |
+  FIDE was busy.
+
+type: "DynamicContainer"
+value: 1000
+
+container:
+  flagTemplate: "HOLOGY9{0nly_th3_0G_kN0wS_Wh4t_h44p3n3d_1n_H0loGy7_[TEAM_HASH]}"
+  containerImage: "{{.slug}}:latest"
+  memoryLimit: 256
+  cpuCount: 1
+  storageLimit: 256
+  exposePort: 8085
+  enableTrafficCapture: false
+
+scripts:
+  start: cd src && docker build -t {{.slug}} .

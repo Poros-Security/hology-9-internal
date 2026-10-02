@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hology7 Incident</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="stage">
+      <div class="topbar">
+        <div>
+          <h1>Hology7 Incident</h1>
+          <p id="note">Beat Magnus seven times in a row. Two minutes per board.</p>
+        </div>
+        <div class="actions">
+          <label class="theme">
+            <input id="theme" type="checkbox">
+            <span>Dark</span>
+          </label>
+          <button id="reset" type="button">New</button>
+        </div>
+      </div>
+      <div id="board" class="board" aria-label="Chess board"></div>
+    </section>
+    <aside class="panel">
+      <div class="brand">
+        <span class="avatar" aria-hidden="true">MC</span>
+        <div class="who">
+          <strong>Magnus Carlsen</strong>
+          <span id="presence">online</span>
+        </div>
+        <strong id="timer">2:00</strong>
+      </div>
+      <div class="status">
+        <div><span class="label">Round</span><strong id="round">1 / 7</strong></div>
+        <div><span class="label">Moves</span><strong id="clock">0 / 5</strong></div>
+      </div>
+      <div id="pips" class="pips" aria-label="Rounds cleared"></div>
+      <div id="banner" class="banner" hidden></div>
+      <div id="log" class="log" role="log" aria-live="polite" aria-label="Chat with Magnus Carlsen"></div>
+      <form id="form" class="movebox">
+        <input id="move" name="move" autocomplete="off" spellcheck="false" maxlength="4" placeholder="Your move, e.g. a1b2" aria-label="Your move">
+        <button type="submit">Move</button>
+      </form>
+      <div id="flag" class="flag" hidden></div>
+    </aside>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
