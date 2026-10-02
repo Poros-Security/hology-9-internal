@@ -1,7 +1,9 @@
 services:
   chall:
     build: .
-    image: acheron:latest
+    image: ${IMAGE_NAME:-acheron}:latest
     restart: unless-stopped
     ports:
       - "2000:2000"
+    environment:
+      GZCTF_FLAG: "${GZCTF_FLAG:-HOLOGY9{local_dynamic_flag}}"

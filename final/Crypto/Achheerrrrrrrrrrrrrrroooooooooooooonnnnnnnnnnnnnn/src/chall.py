@@ -2,7 +2,7 @@ import os
 from secrets import randbits, randbelow
 from Crypto.Util.number import getPrime, isPrime
 
-FLAG = os.getenv("FLAG", "HOLOGY9{REDACTED}")
+FLAG = os.getenv("GZCTF_FLAG") or os.getenv("FLAG") or "HOLOGY9{REDACTED}"
 e = 65537
 
 def mul(a, b, m, D):
@@ -20,7 +20,7 @@ def pw(a, n, m, D):
 
 while True:
     p, coeffs = getPrime(512), getPrime(32)
-    r = randbits(384) 
+    r = randbits(384)
     q = coeffs*p + r
     if isPrime(q):
         break
