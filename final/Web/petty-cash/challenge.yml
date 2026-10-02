@@ -18,7 +18,7 @@ container:
   flagTemplate: "HOLOGY9{un10n_s3l3ct_th3n_sh3ll_[TEAM_HASH]}"
   containerImage: "{{.slug}}:latest"
   memoryLimit: 256
-  cpuCount: 0.5
+  cpuCount: 1
   storageLimit: 512
   exposePort: 8013
   enableTrafficCapture: false
