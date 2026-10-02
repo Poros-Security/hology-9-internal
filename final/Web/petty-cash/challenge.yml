@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dimasma0305/gzcli/refs/heads/main/internal/template/templates/others/ctf-template/.gzctf/challenge.schema.yaml
+
+name: "petty cash"
+author: "zenc"
+
+description: |
+  Ledger handles expense reports for the finance team. There's a search box
+  for looking up old reports, nothing fancy, but maybe worth a closer look.
+
+  Connect: http://{{ .host }}:{{ .port }}/
+
+  Demo account: finance / finance123
+
+type: "DynamicContainer"
+value: 1000
+
+provide: "./dist"
+
+container:
+  flagTemplate: "HOLOGY9{un10n_s3l3ct_th3n_sh3ll_[TEAM_HASH]}"
+  containerImage: "{{.slug}}:latest"
+  memoryLimit: 256
+  cpuCount: 0.5
+  storageLimit: 512
+  exposePort: 8013
+  enableTrafficCapture: false
+
+scripts:
+  start: docker build -t {{.slug}} .

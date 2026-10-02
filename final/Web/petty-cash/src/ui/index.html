@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ledger - Expense Reports</title>
+<link rel="stylesheet" href="/app.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="brand"><span class="mark"></span> Ledger</div>
+    <div class="links">
+      <a href="#">Expenses</a>
+      <a href="#">Reports</a>
+      <a href="#">Reconciliation</a>
+    </div>
+    <button id="logout" class="btn-outline">Log out</button>
+  </nav>
+
+  <main class="shell">
+    <span class="eyebrow"><span class="dot"></span> Expense reports</span>
+    <h1>Search the ledger</h1>
+    <p class="lead">Look up past reports by note. Nothing fancy, just the finance team's archive.</p>
+
+    <div class="card">
+      <form id="search-form" class="search-bar">
+        <input type="text" name="note" placeholder="Search notes..." autocomplete="off">
+        <button type="submit">Search</button>
+      </form>
+      <p id="error" class="error"></p>
+      <table id="results">
+        <thead>
+          <tr><th>ID</th><th>Employee</th><th>Amount</th><th>Note</th><th>Status</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
