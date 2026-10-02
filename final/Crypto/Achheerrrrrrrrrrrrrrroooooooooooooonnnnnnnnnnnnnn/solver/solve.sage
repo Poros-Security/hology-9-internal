@@ -1,16 +1,16 @@
 from sage.all import *
 from pwn import *
 
-io = process(["python3","chall.py"])
-io.sendlineafter(b"> ", b"1")
+conn = process(["python3","chall.py"])
+conn.sendlineafter(b"> ", b"1")
 
-n = int(io.recvline_contains(b"n = ").split(b" = ")[1])
-e = int(io.recvline_contains(b"e = ").split(b" = ")[1])
-c = int(io.recvline_contains(b"c = ").split(b" = ")[1])
-coeffs = int(io.recvline_contains(b"coeffs = ").split(b" = ")[1])
-mod = int(io.recvline_contains(b"mod = ").split(b" = ")[1])
-D = int(io.recvline_contains(b"D = ").split(b" = ")[1])
-line = io.recvline_contains(b"quotient = ")
+n = int(conn.recvline_contains(b"n = ").split(b" = ")[1])
+e = int(conn.recvline_contains(b"e = ").split(b" = ")[1])
+c = int(conn.recvline_contains(b"c = ").split(b" = ")[1])
+coeffs = int(conn.recvline_contains(b"coeffs = ").split(b" = ")[1])
+mod = int(conn.recvline_contains(b"mod = ").split(b" = ")[1])
+D = int(conn.recvline_contains(b"D = ").split(b" = ")[1])
+line = conn.recvline_contains(b"quotient = ")
 A, B = map(int, line.split(b"(")[1].rstrip(b")\n").split(b","))
 
 F = GF(mod)
@@ -45,6 +45,6 @@ print(f"[+] p      = {p}")
 print(f"[+] q      = {q}")
 print(f"[+] secret = {secret}")
 
-io.sendlineafter(b"> ", b"2")
-io.sendlineafter(b"secret?> ", str(secret).encode())
-io.interactive()
+conn.sendlineafter(b"> ", b"2")
+conn.sendlineafter(b"secret?> ", str(secret).encode())
+conn.interactive()
