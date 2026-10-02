@@ -1,0 +1,13 @@
+name: "Lost Signal"
+author: "Ariq Ardian"
+
+description: |
+  Just found this old terminal but still waiting for a signal. Can you recover the signals?
+
+type: "StaticAttachment"
+value: 1000
+
+flags:
+  - "HOLOGY9{g3NeR4te_Fl4g_1deA_1s_S4m3_d1fFiCuL7y_t0_g3n3r4tE_g1T_cOm1t7_L0l_:V:V}"
+
+provide: "./dist"
