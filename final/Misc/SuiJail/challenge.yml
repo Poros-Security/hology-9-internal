@@ -17,6 +17,6 @@ container:
   storageLimit: 256
   exposePort: 31337
   enableTrafficCapture: false
-
+provide: "./dist"
 scripts:
   start: cd src && docker build -t {{.slug}} .

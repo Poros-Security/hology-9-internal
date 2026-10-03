@@ -96,8 +96,8 @@ def solve_through(host: str, port: int, target: int = 5, checkpoint: str = "") -
 
 def cli(target: int) -> None:
     parser = argparse.ArgumentParser(description=f"Solve SuiJail through Jail {target}.")
-    parser.add_argument("host", nargs="?", default="127.0.0.1")
-    parser.add_argument("port", nargs="?", type=int, default=31337)
+    parser.add_argument("host", nargs="?", default="38.147.122.175")
+    parser.add_argument("port", nargs="?", type=int, default=34351)
     parser.add_argument("--checkpoint", default="", help="resume token printed after an earlier jail")
     args = parser.parse_args()
     result = solve_through(args.host, args.port, target, args.checkpoint)
