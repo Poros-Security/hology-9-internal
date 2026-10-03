@@ -10,6 +10,7 @@ WORKDIR /home/ctf
 COPY --chown=ctf:ctf suipp /home/ctf/suipp
 COPY --chown=ctf:ctf flag.txt /home/ctf/flag.txt
 COPY --chown=ctf:ctf start.sh /home/ctf/start.sh
+RUN chmod 755 /home/ctf/suipp
 
 USER ctf
 EXPOSE 1337
